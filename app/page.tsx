@@ -51,11 +51,11 @@ export default function Home() {
         <div className="project-grid">
           <article className="project-card">
             <div className="project-preview barber"><div className="mini-browser"><small>BARBEARIA PRIME</small><b>Estilo que combina com você.</b><i>Agendar horário</i></div><div className="mini-phone">AGENDE<br/>ONLINE</div></div>
-            <div className="project-info"><div><span>Site institucional</span><span>Agendamento</span></div><h3>Barbearia Prime</h3><p>Apresentação de serviços, profissionais e agendamento rápido pelo celular.</p><a href="#contato">Ver estudo do projeto →</a></div>
+            <div className="project-info"><div><span>Site institucional</span><span>Agendamento</span></div><h3>Barbearia Prime</h3><p>Apresentação de serviços, profissionais e agendamento rápido pelo celular.</p><a href="https://caiovfaria.github.io/Landing-Page-Barbearia/" target="_blank" rel="noreferrer">Ver estudo do projeto →</a></div>
           </article>
           <article className="project-card">
             <div className="project-preview pizza"><div className="mini-browser"><small>PIZZARIA SABOR</small><b>Seu pedido, do seu jeito.</b><i>Ver cardápio</i></div><div className="mini-phone">PEDIDO<br/>FÁCIL</div></div>
-            <div className="project-info"><div><span>Cardápio online</span><span>WhatsApp</span></div><h3>Pizzaria Sabor</h3><p>Cardápio organizado, montagem do pedido e envio direto para o WhatsApp.</p><a href="#contato">Ver estudo do projeto →</a></div>
+            <div className="project-info"><div><span>Cardápio online</span><span>WhatsApp</span></div><h3>Pizzaria Sabor</h3><p>Cardápio organizado, montagem do pedido e envio direto para o WhatsApp.</p><a href="https://caiovfaria.github.io/Pizzaria/" target="_blank" rel="noreferrer">Ver estudo do projeto →</a></div>
           </article>
           <article className="project-card project-concept">
             <div className="concept-number">03</div><p>Próximo projeto</p><h3>Uma solução pode ser criada para o seu negócio.</h3><a className="text-link" href={whatsapp} target="_blank" rel="noreferrer">Conversar sobre uma ideia →</a>
