@@ -7,7 +7,7 @@ export default function Home() {
   return (
     <main>
       <header className="site-header">
-        <a className="brand" href="#inicio" aria-label="Ir para o início">C.VIAN<span>.dev</span></a>
+        <a className="brand" href="#inicio" aria-label="Ir para o início">C.Vian<span>.dev</span></a>
         <nav aria-label="Navegação principal">
           <a href="#projetos">Projetos</a><a href="#servicos">Serviços</a><a href="#sobre">Sobre</a>
         </nav>
@@ -89,7 +89,7 @@ export default function Home() {
         <a className="contact-button" href={whatsapp} target="_blank" rel="noreferrer">Solicitar orçamento no WhatsApp →</a>
       </section>
 
-      <footer><a className="brand" href="#inicio">C.Vian<span>.dev</span></a><p>Sites e sistemas para pequenos negócios.</p><div><a href="#projetos">Projetos</a><a href="#servicos">Serviços</a><a href="#sobre">Sobre</a></div><small>© 2026 SEU NOME. Projeto de portfólio.</small></footer>
+      <footer><a className="brand" href="#inicio">C.Vian<span>.dev</span></a><p>Sites e sistemas para pequenos negócios.</p><div><a href="#projetos">Projetos</a><a href="#servicos">Serviços</a><a href="#sobre">Sobre</a></div><small>© 2026 C.Vian. Projeto de portfólio.</small></footer>
     </main>
   );
 }
