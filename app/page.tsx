@@ -1,5 +1,5 @@
 export default function Home() {
-  const wa = (message: string) => `https://wa.me/5500000000000?text=${encodeURIComponent(message)}`;
+  const wa = (message: string) => `https://wa.me/+55(21)999167694?text=${encodeURIComponent(message)}`;
   const whatsapp = wa("Olá! Vi seu portfólio e gostaria de conversar sobre um projeto para o meu negócio.");
   const landingWhatsapp = wa("Olá! Vi o serviço de Landing Page no seu portfólio e gostaria de conversar sobre a criação de uma landing page para o meu negócio.");
   const institutionalWhatsapp = wa("Olá! Vi o serviço de Site Institucional no seu portfólio e gostaria de conversar sobre a criação de um site institucional para o meu negócio.");
@@ -7,7 +7,7 @@ export default function Home() {
   return (
     <main>
       <header className="site-header">
-        <a className="brand" href="#inicio" aria-label="Ir para o início">SEU NOME<span>.dev</span></a>
+        <a className="brand" href="#inicio" aria-label="Ir para o início">C.VIAN<span>.dev</span></a>
         <nav aria-label="Navegação principal">
           <a href="#projetos">Projetos</a><a href="#servicos">Serviços</a><a href="#sobre">Sobre</a>
         </nav>
@@ -89,7 +89,7 @@ export default function Home() {
         <a className="contact-button" href={whatsapp} target="_blank" rel="noreferrer">Solicitar orçamento no WhatsApp →</a>
       </section>
 
-      <footer><a className="brand" href="#inicio">SEU NOME<span>.dev</span></a><p>Sites e sistemas para pequenos negócios.</p><div><a href="#projetos">Projetos</a><a href="#servicos">Serviços</a><a href="#sobre">Sobre</a></div><small>© 2026 SEU NOME. Projeto de portfólio.</small></footer>
+      <footer><a className="brand" href="#inicio">Caio Viana<span>.dev</span></a><p>Sites e sistemas para pequenos negócios.</p><div><a href="#projetos">Projetos</a><a href="#servicos">Serviços</a><a href="#sobre">Sobre</a></div><small>© 2026 SEU NOME. Projeto de portfólio.</small></footer>
     </main>
   );
 }
