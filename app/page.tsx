@@ -1,5 +1,5 @@
 export default function Home() {
-  const wa = (message: string) => `https://wa.me/+55(21)999167694?text=${encodeURIComponent(message)}`;
+  const wa = (message: string) => `https://wa.me/5521999167694?text=${encodeURIComponent(message)}`;
   const whatsapp = wa("Olá! Vi seu portfólio e gostaria de conversar sobre um projeto para o meu negócio.");
   const landingWhatsapp = wa("Olá! Vi o serviço de Landing Page no seu portfólio e gostaria de conversar sobre a criação de uma landing page para o meu negócio.");
   const institutionalWhatsapp = wa("Olá! Vi o serviço de Site Institucional no seu portfólio e gostaria de conversar sobre a criação de um site institucional para o meu negócio.");
