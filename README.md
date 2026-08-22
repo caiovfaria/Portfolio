@@ -38,4 +38,5 @@ O teste gera a versão de produção e confirma que as principais seções do po
 
 ## Configuração antes do uso comercial
 
-Substitua `SEU NOME` e o número demonstrativo `5500000000000` pelos dados profissionais reais antes de divulgar o portfólio para clientes.
+Já online em: https://portfolio.caiovfaria07.workers.dev/
+
