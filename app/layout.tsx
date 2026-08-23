@@ -12,7 +12,7 @@ export async function generateMetadata(): Promise<Metadata> {
   const host = requestHeaders.get("host") ?? "localhost:3000";
   const protocol = host.includes("localhost") ? "http" : "https";
   const base = new URL(`${protocol}://${host}`);
-  const title = "Seu Nome | Sites e sistemas para pequenos negócios";
+  const title = "C.Vian | Sites e sistemas para pequenos negócios";
   const description = "Desenvolvimento de sites rápidos, responsivos e integrados ao WhatsApp para pequenos negócios.";
   return {
     metadataBase: base,
