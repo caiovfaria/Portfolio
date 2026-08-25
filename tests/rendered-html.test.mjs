@@ -30,8 +30,8 @@ test("renderiza o portfólio completo", async () => {
   const html = await response.text();
   assert.match(html, /Sites e sistemas que transformam visitas em clientes/i);
   assert.match(html, /Projetos em destaque/i);
-  assert.match(html, /Barbearia Prime/i);
-  assert.match(html, /Pizzaria Sabor/i);
+  assert.match(html, /Barbearia Norte/i);
+  assert.match(html, /Pizzaria Fornalha/i);
   assert.match(html, /Landing page/i);
   assert.match(html, /Site institucional/i);
   assert.match(html, /Sistema web/i);

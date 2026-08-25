@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export default function Home() {
   const wa = (message: string) => `https://wa.me/5521999167694?text=${encodeURIComponent(message)}`;
   const whatsapp = wa("Olá! Vi seu portfólio e gostaria de conversar sobre um projeto para o meu negócio.");
@@ -50,15 +52,15 @@ export default function Home() {
         <div className="section-heading"><p>PORTFÓLIO</p><h2>Projetos em destaque</h2><span>Soluções demonstrativas criadas para problemas reais de pequenos negócios.</span></div>
         <div className="project-grid">
           <article className="project-card">
-            <div className="project-preview barber"><div className="mini-browser"><small>BARBEARIA PRIME</small><b>Estilo que combina com você.</b><i>Agendar horário</i></div><div className="mini-phone">AGENDE<br/>ONLINE</div></div>
-            <div className="project-info"><div><span>Site institucional</span><span>Agendamento</span></div><h3>Barbearia Prime</h3><p>Apresentação de serviços, profissionais e agendamento rápido pelo celular.</p><a href="https://caiovfaria.github.io/Landing-Page-Barbearia/" target="_blank" rel="noreferrer">Ver projeto →</a></div>
+            <div className="project-preview project-screenshot barber"><Image src="/projects/barbearia-menu.png" alt="Tela inicial do site Barbearia Norte" fill sizes="(max-width: 900px) 100vw, 58vw" priority/><span className="project-image-label">Barbearia Norte</span></div>
+            <div className="project-info"><div><span>Site institucional</span><span>Agendamento</span></div><h3>Barbearia Norte</h3><p>Apresentação de serviços, profissionais e agendamento rápido pelo celular.</p><a href="https://caiovfaria.github.io/Landing-Page-Barbearia/" target="_blank" rel="noreferrer">Ver projeto →</a></div>
           </article>
           <article className="project-card">
-            <div className="project-preview pizza"><div className="mini-browser"><small>PIZZARIA SABOR</small><b>Seu pedido, do seu jeito.</b><i>Ver cardápio</i></div><div className="mini-phone">PEDIDO<br/>FÁCIL</div></div>
-            <div className="project-info"><div><span>Cardápio online</span><span>WhatsApp</span></div><h3>Pizzaria Sabor</h3><p>Cardápio organizado, montagem do pedido e envio direto para o WhatsApp.</p><a href="https://caiovfaria.github.io/Pizzaria/" target="_blank" rel="noreferrer">Ver projeto →</a></div>
+            <div className="project-preview project-screenshot pizza"><Image src="/projects/pizzaria-menu.png" alt="Tela do cardápio da Pizzaria Fornalha" fill sizes="(max-width: 900px) 100vw, 42vw"/><span className="project-image-label">Pizzaria Fornalha</span></div>
+            <div className="project-info"><div><span>Cardápio online</span><span>WhatsApp</span></div><h3>Pizzaria Fornalha</h3><p>Cardápio organizado, montagem do pedido e envio direto para o WhatsApp.</p><a href="https://caiovfaria.github.io/Pizzaria/" target="_blank" rel="noreferrer">Ver projeto →</a></div>
           </article>
           <article className="project-card project-concept">
-            <div className="concept-number">03</div><p>Próximo projeto</p><h3>Uma solução pode ser criada para o seu negócio.</h3><a className="text-link" href={whatsapp} target="_blank" rel="noreferrer">Conversar sobre uma ideia →</a>
+            <div className="concept-number">03</div><div className="concept-copy"><p>Próximo projeto</p><h3>Uma solução pode ser criada para o seu negócio.</h3></div><a className="text-link" href={whatsapp} target="_blank" rel="noreferrer">Conversar sobre uma ideia →</a>
           </article>
         </div>
       </section>
