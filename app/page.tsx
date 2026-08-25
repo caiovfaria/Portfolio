@@ -52,11 +52,11 @@ export default function Home() {
         <div className="section-heading"><p>PORTFÓLIO</p><h2>Projetos em destaque</h2><span>Soluções demonstrativas criadas para problemas reais de pequenos negócios.</span></div>
         <div className="project-grid">
           <article className="project-card">
-            <div className="project-preview project-screenshot barber"><Image src="/projects/barbearia-menu.png" alt="Tela inicial do site Barbearia Norte" fill sizes="(max-width: 900px) 100vw, 58vw" priority/><span className="project-image-label">Barbearia Norte</span></div>
+            <div className="project-preview project-screenshot barber"><Image src="/projects/barbearia-menu.png" alt="Tela inicial em modo escuro do site Barbearia Norte" fill sizes="(max-width: 900px) 100vw, 50vw" priority/><span className="project-image-label">Barbearia Norte</span></div>
             <div className="project-info"><div><span>Site institucional</span><span>Agendamento</span></div><h3>Barbearia Norte</h3><p>Apresentação de serviços, profissionais e agendamento rápido pelo celular.</p><a href="https://caiovfaria.github.io/Landing-Page-Barbearia/" target="_blank" rel="noreferrer">Ver projeto →</a></div>
           </article>
           <article className="project-card">
-            <div className="project-preview project-screenshot pizza"><Image src="/projects/pizzaria-menu.png" alt="Tela do cardápio da Pizzaria Fornalha" fill sizes="(max-width: 900px) 100vw, 42vw"/><span className="project-image-label">Pizzaria Fornalha</span></div>
+            <div className="project-preview project-screenshot pizza"><Image src="/projects/pizzaria-menu.png" alt="Tela do menu principal da Pizzaria Fornalha" fill sizes="(max-width: 900px) 100vw, 50vw"/><span className="project-image-label">Pizzaria Fornalha</span></div>
             <div className="project-info"><div><span>Cardápio online</span><span>WhatsApp</span></div><h3>Pizzaria Fornalha</h3><p>Cardápio organizado, montagem do pedido e envio direto para o WhatsApp.</p><a href="https://caiovfaria.github.io/Pizzaria/" target="_blank" rel="noreferrer">Ver projeto →</a></div>
           </article>
           <article className="project-card project-concept">
