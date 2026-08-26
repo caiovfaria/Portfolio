@@ -35,6 +35,11 @@ test("renderiza o portfólio completo", async () => {
   assert.match(html, /Landing page/i);
   assert.match(html, /Site institucional/i);
   assert.match(html, /Sistema web/i);
+  assert.match(html, /Ver estudo do projeto/i);
+  assert.match(html, /O que eu consigo criar para o seu negócio/i);
+  assert.match(html, /Monte uma primeira versão do seu projeto/i);
+  assert.match(html, /Sem uma solução própria/i);
+  assert.match(html, /Conte sobre o seu negócio/i);
 });
 
 test("não publica elementos temporários do modelo inicial", async () => {
