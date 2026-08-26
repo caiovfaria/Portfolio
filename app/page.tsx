@@ -10,7 +10,7 @@ export default function Home() {
   const systemWhatsapp = wa("Olá! Vi o serviço de Sistema Web no seu portfólio e gostaria de conversar sobre uma solução personalizada para o meu negócio.");
   return (
     <main>
-      <div className="identity-rail" aria-hidden="true">CV — DIGITAL / 2026</div>
+      <div className="identity-rail" aria-hidden="true">C.V — DIGITAL / 2026</div>
       <header className="site-header">
         <a className="brand" href="#inicio" aria-label="Ir para o início">C.Vian<span>.dev</span></a>
         <nav aria-label="Navegação principal">
@@ -29,7 +29,7 @@ export default function Home() {
           <div className="hero-trust" aria-label="Diferenciais">
             <span>✓ Entrega organizada</span><span>✓ Integração com WhatsApp</span><span>✓ Foco em resultados</span>
           </div>
-          <div className="hero-signature" aria-hidden="true"><b>CV</b><span>CLAREZA<br/>PERFORMANCE<br/>CONVERSÃO</span></div>
+          <div className="hero-signature" aria-hidden="true"><b>C.V</b><span>CLAREZA<br/>PERFORMANCE<br/>CONVERSÃO</span></div>
         </div>
         <div className="hero-visual" aria-label="Exemplo de site em computador e celular">
           <div className="browser-card">
@@ -108,7 +108,7 @@ export default function Home() {
         <div className="comparison-heading"><p>ANTES / DEPOIS</p><h2>Uma presença digital muda a forma como o negócio é percebido.</h2></div>
         <div className="comparison-board">
           <div className="comparison-column before"><header><span>—</span><strong>Sem uma solução própria</strong></header><ul><li>Atendimento espalhado e repetitivo</li><li>Informações difíceis de encontrar</li><li>Dependência total das redes sociais</li><li>Clientes desistem no caminho</li><li>Processos feitos manualmente</li></ul></div>
-          <div className="comparison-switch" aria-hidden="true"><b>CV</b><span>TRANSFORMA</span></div>
+          <div className="comparison-switch" aria-hidden="true"><b>C.V</b><span>TRANSFORMA</span></div>
           <div className="comparison-column after"><header><span>+</span><strong>Com uma solução bem construída</strong></header><ul><li>Solicitações organizadas</li><li>Serviços e preços apresentados com clareza</li><li>Presença digital própria e profissional</li><li>Caminho rápido até o contato ou pedido</li><li>Rotinas simplificadas e automatizadas</li></ul></div>
         </div>
       </section>
