@@ -9,7 +9,7 @@ const projectTypes = [
 ] as const;
 
 const additions = [
-  { id: "whatsapp", label: "WhatsApp integrado", value: 250 },
+  { id: "whatsapp", label: "WhatsApp avançado", value: 250 },
   { id: "agendamento", label: "Agendamento online", value: 600 },
   { id: "catalogo", label: "Catálogo ou cardápio", value: 500 },
   { id: "pagamento", label: "Pagamento online", value: 1200 },
@@ -25,7 +25,7 @@ const formatMoney = (value: number) => new Intl.NumberFormat("pt-BR", {
 
 export default function QuoteSimulator() {
   const [projectType, setProjectType] = useState<(typeof projectTypes)[number]["id"]>("institucional");
-  const [selected, setSelected] = useState<string[]>(["whatsapp"]);
+  const [selected, setSelected] = useState<string[]>([]);
   const [deadline, setDeadline] = useState("normal");
 
   const estimate = useMemo(() => {
@@ -56,7 +56,7 @@ export default function QuoteSimulator() {
       <div className="quote-intro">
         <p className="section-kicker">ESTIMATIVA INTERATIVA</p>
         <h2>Monte uma primeira versão do seu projeto.</h2>
-        <p>Escolha o tipo de solução e as funções mais importantes. A faixa é inicial e fica exata depois de uma conversa rápida.</p>
+        <p>Escolha o tipo de solução e as funções mais importantes. O WhatsApp básico já está incluído; o adicional avançado cria mensagens e um fluxo personalizado. A faixa fica exata depois de uma conversa rápida.</p>
         <div className="quote-seal" aria-hidden="true"><b>C.V</b><span>PROJETO SOB MEDIDA</span></div>
       </div>
 
