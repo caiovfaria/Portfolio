@@ -32,6 +32,7 @@ test("renderiza o portfólio completo", async () => {
   assert.match(html, /Projetos em destaque/i);
   assert.match(html, /Barbearia Norte/i);
   assert.match(html, /Pizzaria Fornalha/i);
+  assert.match(html, /pizzaria-menu\.png/i);
   assert.match(html, /Landing page/i);
   assert.match(html, /Site institucional/i);
   assert.match(html, /Sistema web/i);

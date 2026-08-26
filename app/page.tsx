@@ -64,7 +64,7 @@ export default function Home() {
             </div>
           </article>
           <article className="project-card">
-            <div className="project-preview project-screenshot pizza"><Image src="/projects/pizzaria-menu.png" alt="Tela do menu principal da Pizzaria Fornalha" fill sizes="(max-width: 900px) 100vw, 50vw"/><span className="project-image-label">Pizzaria Fornalha</span></div>
+            <div className="project-preview project-screenshot pizza"><Image src="/projects/pizzaria-menu.png" alt="Tela do menu principal da Pizzaria Fornalha" fill sizes="(max-width: 900px) 100vw, 50vw" unoptimized/><span className="project-image-label">Pizzaria Fornalha</span></div>
             <div className="project-info">
               <div><span>Cardápio online</span><span>Sistema de pedidos</span></div><h3>Pizzaria Fornalha</h3><p>Cardápio organizado, personalização e montagem completa do pedido.</p>
               <div className="project-actions"><a href="https://caiovfaria.github.io/Pizzaria/" target="_blank" rel="noreferrer">Abrir projeto ao vivo ↗</a></div>
