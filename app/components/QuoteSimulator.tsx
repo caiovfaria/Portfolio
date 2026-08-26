@@ -31,8 +31,8 @@ export default function QuoteSimulator() {
   const estimate = useMemo(() => {
     const base = projectTypes.find((item) => item.id === projectType)?.base ?? 0;
     const extras = additions.filter((item) => selected.includes(item.id)).reduce((total, item) => total + item.value, 0);
-    const urgency = deadline === "prioridade" ? 1.2 : 1;
-    const minimum = Math.round((base + extras) * urgency / 50) * 50;
+    const deadlineFactor = deadline === "prioridade" ? 1.2 : deadline === "flexivel" ? 0.9 : 1;
+    const minimum = Math.round((base + extras) * deadlineFactor / 50) * 50;
     return { minimum, maximum: Math.round(minimum * 1.25 / 50) * 50 };
   }, [deadline, projectType, selected]);
 
@@ -46,7 +46,7 @@ export default function QuoteSimulator() {
     "Olá! Montei uma estimativa no seu portfólio.",
     `Projeto: ${selectedType}.`,
     `Funcionalidades: ${selectedAdditions.length ? selectedAdditions.join(", ") : "escopo básico"}.`,
-    `Prazo: ${deadline === "prioridade" ? "prioridade" : deadline === "flexivel" ? "flexível" : "até 30 dias"}.`,
+    `Prazo: ${deadline === "prioridade" ? "prioridade (+20%)" : deadline === "flexivel" ? "flexível (-10%)" : projectType === "sistema" ? "até 30 dias para a primeira versão funcional" : "até 30 dias"}.`,
     `Estimativa inicial exibida: ${formatMoney(estimate.minimum)} a ${formatMoney(estimate.maximum)}.`,
     "Gostaria de conversar sobre o escopo.",
   ].join("\n");
@@ -85,10 +85,11 @@ export default function QuoteSimulator() {
         <fieldset>
           <legend>3. Qual é o prazo?</legend>
           <div className="choice-row compact">
-            <button type="button" className={deadline === "flexivel" ? "selected" : ""} onClick={() => setDeadline("flexivel")}>Flexível</button>
-            <button type="button" className={deadline === "normal" ? "selected" : ""} onClick={() => setDeadline("normal")}>Até 30 dias</button>
-            <button type="button" className={deadline === "prioridade" ? "selected" : ""} onClick={() => setDeadline("prioridade")}>Prioridade</button>
+            <button type="button" className={deadline === "prioridade" ? "selected" : ""} onClick={() => setDeadline("prioridade")}>Prioridade <small>+20%</small></button>
+            <button type="button" className={deadline === "normal" ? "selected" : ""} onClick={() => setDeadline("normal")}>Até 30 dias <small>valor normal</small></button>
+            <button type="button" className={deadline === "flexivel" ? "selected" : ""} onClick={() => setDeadline("flexivel")}>Flexível <small>−10%</small></button>
           </div>
+          {projectType === "sistema" && <p className="deadline-note">Para sistemas web, “até 30 dias” corresponde à primeira versão funcional.</p>}
         </fieldset>
 
         <div className="quote-result" aria-live="polite">
