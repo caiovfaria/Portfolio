@@ -5,6 +5,7 @@ import "./globals.css";
 import "./portfolio.css";
 import "./refresh.css";
 import "./experience.css";
+import "./project-detail.css";
 const geist = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
 export async function generateMetadata(): Promise<Metadata> {
   const requestHeaders = await headers();

@@ -1,5 +1,7 @@
 import Image from "next/image";
+import Link from "next/link";
 import ContactBrief from "./components/ContactBrief";
+import HeroShowcase from "./components/HeroShowcase";
 import QuoteSimulator from "./components/QuoteSimulator";
 
 export default function Home() {
@@ -20,6 +22,7 @@ export default function Home() {
       </header>
       <section className="hero" id="inicio">
         <div className="hero-copy">
+          <a className="availability-pill hero-availability" href={whatsapp} target="_blank" rel="noreferrer"><i></i> Agenda aberta · 2 vagas para novos projetos</a>
           <p className="eyebrow">Desenvolvimento web para pequenos negócios</p>
           <h1>Sites e sistemas que transformam visitas em clientes.</h1>
           <p className="lead">Soluções rápidas, responsivas e integradas ao WhatsApp para apresentar seu negócio e facilitar novos pedidos e agendamentos.</p>
@@ -31,18 +34,7 @@ export default function Home() {
           </div>
           <div className="hero-signature" aria-hidden="true"><b>C.V</b><span>CLAREZA<br/>PERFORMANCE<br/>CONVERSÃO</span></div>
         </div>
-        <div className="hero-visual" aria-label="Exemplo de site em computador e celular">
-          <div className="browser-card">
-            <div className="browser-bar"><i></i><i></i><i></i></div>
-            <div className="demo-content">
-              <small>Soluções digitais sob medida</small><strong>Seu negócio mais profissional.</strong>
-              <p>Presença digital clara, rápida e confiável.</p><b>Quero um orçamento</b>
-            </div>
-          </div>
-          <div className="phone-card">
-            <span>SEU NEGÓCIO</span><strong>Mais fácil de encontrar.</strong><i>WhatsApp integrado</i><i>Design responsivo</i>
-          </div>
-        </div>
+        <HeroShowcase />
       </section>
 
       <section className="feature-strip" aria-label="Vantagens">
@@ -56,18 +48,18 @@ export default function Home() {
         <div className="section-heading"><p>PORTFÓLIO</p><h2>Projetos em destaque</h2><span>Soluções demonstrativas criadas para problemas reais de pequenos negócios.</span></div>
         <div className="project-grid">
           <article className="project-card">
-            <div className="project-preview project-screenshot barber"><Image src="/projects/barbearia-menu.png" alt="Tela inicial em modo escuro do site Barbearia Norte" fill sizes="(max-width: 900px) 100vw, 50vw" priority/><span className="project-image-label">Barbearia Norte</span></div>
+            <div className="project-preview project-screenshot barber"><Image src="/projects/barbearia-menu.png" alt="Tela inicial em modo escuro do site Barbearia Norte" fill sizes="(max-width: 900px) 100vw, 50vw" priority unoptimized/><span className="project-image-label">Barbearia Norte</span><span className="project-demo-status">DEMONSTRAÇÃO DISPONÍVEL</span></div>
             <div className="project-info">
               <div><span>Site institucional</span><span>Agendamento</span></div><h3>Barbearia Norte</h3><p>Apresentação de serviços, profissionais e agendamento rápido pelo celular.</p>
-              <div className="project-actions"><a href="https://caiovfaria.github.io/Landing-Page-Barbearia/" target="_blank" rel="noreferrer">Abrir projeto ao vivo ↗</a></div>
+              <div className="project-actions"><Link href="/projetos/barbearia">Ver estudo completo →</Link><a href="https://caiovfaria.github.io/Landing-Page-Barbearia/" target="_blank" rel="noreferrer">Abrir ao vivo ↗</a></div>
               <details className="case-study"><summary>Ver estudo do projeto <b>+</b></summary><div className="case-study-content"><div><small>PROBLEMA</small><p>Transformar uma barbearia de bairro em uma marca digital mais confiável e facilitar o agendamento.</p></div><div><small>SOLUÇÃO</small><p>Site imersivo, serviços claros, catálogo de produtos e chamada direta para reserva.</p></div><ul><li>Experiência responsiva</li><li>Agendamento rápido</li><li>Catálogo comercial</li><li>Identidade premium</li></ul><div className="case-meta"><span><b>HTML · CSS · JAVASCRIPT</b>Tecnologias</span><span><b>7–10 DIAS</b>Prazo típico</span></div></div></details>
             </div>
           </article>
           <article className="project-card">
-            <div className="project-preview project-screenshot pizza"><Image src="/projects/pizzaria-menu.png" alt="Tela do menu principal da Pizzaria Fornalha" fill sizes="(max-width: 900px) 100vw, 50vw" unoptimized/><span className="project-image-label">Pizzaria Fornalha</span></div>
+            <div className="project-preview project-screenshot pizza"><Image src="/projects/pizzaria-menu.png" alt="Tela do menu principal da Pizzaria Fornalha" fill sizes="(max-width: 900px) 100vw, 50vw" unoptimized/><span className="project-image-label">Pizzaria Fornalha</span><span className="project-demo-status">DEMONSTRAÇÃO DISPONÍVEL</span></div>
             <div className="project-info">
               <div><span>Cardápio online</span><span>Sistema de pedidos</span></div><h3>Pizzaria Fornalha</h3><p>Cardápio organizado, personalização e montagem completa do pedido.</p>
-              <div className="project-actions"><a href="https://caiovfaria.github.io/Pizzaria/" target="_blank" rel="noreferrer">Abrir projeto ao vivo ↗</a></div>
+              <div className="project-actions"><Link href="/projetos/pizzaria">Ver estudo completo →</Link><a href="https://caiovfaria.github.io/Pizzaria/" target="_blank" rel="noreferrer">Abrir ao vivo ↗</a></div>
               <details className="case-study"><summary>Ver estudo do projeto <b>+</b></summary><div className="case-study-content"><div><small>PROBLEMA</small><p>Organizar muitos sabores e opções sem tornar o pedido confuso ou demorado.</p></div><div><small>SOLUÇÃO</small><p>Fluxo completo para escolher, personalizar, revisar e concluir cada pedido.</p></div><ul><li>15 sabores cadastrados</li><li>Favoritos e busca</li><li>Personalização do pedido</li><li>Resumo e finalização</li></ul><div className="case-meta"><span><b>REACT · TYPESCRIPT · VITE</b>Tecnologias</span><span><b>3–5 SEMANAS</b>Prazo típico</span></div></div></details>
             </div>
           </article>

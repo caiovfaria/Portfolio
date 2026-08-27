@@ -1,13 +1,13 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 
-async function render() {
+async function render(path = "/") {
   const workerUrl = new URL("../dist/server/index.js", import.meta.url);
   workerUrl.searchParams.set("test", `${process.pid}-${Date.now()}`);
   const { default: worker } = await import(workerUrl.href);
 
   return worker.fetch(
-    new Request("http://localhost/", {
+    new Request(`http://localhost${path}`, {
       headers: { accept: "text/html" },
     }),
     {
@@ -32,6 +32,8 @@ test("renderiza o portfólio completo", async () => {
   assert.match(html, /Projetos em destaque/i);
   assert.match(html, /Barbearia Norte/i);
   assert.match(html, /Pizzaria Fornalha/i);
+  assert.match(html, /Agenda aberta/i);
+  assert.match(html, /Ver estudo completo/i);
   assert.match(html, /pizzaria-menu\.png/i);
   assert.match(html, /Landing page/i);
   assert.match(html, /Site institucional/i);
@@ -46,6 +48,21 @@ test("renderiza o portfólio completo", async () => {
   assert.match(html, /−10%/i);
   assert.match(html, /Sem uma solução própria/i);
   assert.match(html, /Conte sobre o seu negócio/i);
+});
+
+test("renderiza os estudos completos dos projetos", async () => {
+  for (const [path, project, image] of [["/projetos/barbearia", "Barbearia Norte", "barbearia-menu.png"], ["/projetos/pizzaria", "Pizzaria Fornalha", "pizzaria-menu.png"]]) {
+    const response = await render(path);
+    assert.equal(response.status, 200);
+    const html = await response.text();
+    assert.match(html, new RegExp(project, "i"));
+    assert.match(html, /O que precisava ser resolvido/i);
+    assert.match(html, /O projeto vai além da aparência/i);
+    assert.match(html, /Demonstração do projeto/i);
+    assert.match(html, /Quero algo semelhante/i);
+    assert.match(html, new RegExp(`<title>${project} \\| Projeto C\\.Vian</title>`, "i"));
+    assert.match(html, new RegExp(image.replace(".", "\\."), "i"));
+  }
 });
 
 test("não publica elementos temporários do modelo inicial", async () => {
