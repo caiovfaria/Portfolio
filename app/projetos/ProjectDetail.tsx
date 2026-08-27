@@ -1,5 +1,5 @@
+/* eslint-disable @next/next/no-html-link-for-pages */
 import Image from "next/image";
-import Link from "next/link";
 import type { ProjectData } from "./project-data";
 
 export default function ProjectDetail({ project }: { project: ProjectData }) {
@@ -8,9 +8,9 @@ export default function ProjectDetail({ project }: { project: ProjectData }) {
   return (
     <main className="detail-page">
       <header className="detail-header">
-        <Link className="brand" href="/" aria-label="Voltar ao portfólio">C.Vian<span>.dev</span></Link>
+        <a className="brand" href="/" aria-label="Voltar ao portfólio">C.Vian<span>.dev</span></a>
         <a className="availability-pill" href={whatsapp} target="_blank" rel="noreferrer"><i></i> Agenda aberta · 2 vagas</a>
-        <Link className="detail-back" href="/#projetos">← Todos os projetos</Link>
+        <a className="detail-back" href="/#projetos">← Todos os projetos</a>
       </header>
 
       <section className="detail-hero">
@@ -52,11 +52,11 @@ export default function ProjectDetail({ project }: { project: ProjectData }) {
       </section>
 
       <section className="detail-cta">
-        <div><p>PRÓXIMO PROJETO</p><h2>{project.nextName}</h2><Link href={`/projetos/${project.nextSlug}`}>Conhecer este projeto →</Link></div>
+        <div><p>PRÓXIMO PROJETO</p><h2>{project.nextName}</h2><a href={`/projetos/${project.nextSlug}`}>Conhecer este projeto →</a></div>
         <div><p>TEM UMA IDEIA?</p><h2>Vamos transformar em uma solução profissional.</h2><a href={whatsapp} target="_blank" rel="noreferrer">Conversar pelo WhatsApp →</a></div>
       </section>
 
-      <footer className="detail-footer"><Link className="brand" href="/">C.Vian<span>.dev</span></Link><span>Projeto demonstrativo · 2026</span><Link href="/">Voltar ao portfólio ↑</Link></footer>
+      <footer className="detail-footer"><a className="brand" href="/">C.Vian<span>.dev</span></a><span>Projeto demonstrativo · 2026</span><a href="/">Voltar ao portfólio ↑</a></footer>
     </main>
   );
 }

@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
 import { useEffect, useState } from "react";
 
 const projects = [
@@ -37,12 +36,12 @@ export default function HeroShowcase() {
     <div className="hero-visual hero-showcase" aria-label="Demonstração dos projetos em computador e celular">
       <div className="browser-card showcase-browser">
         <div className="browser-bar"><i></i><i></i><i></i><span>c.vian / projeto em destaque</span></div>
-        <Link className="showcase-screen" href={current.href} aria-label={`Conhecer o projeto ${current.name}`}>
+        <a className="showcase-screen" href={current.href} aria-label={`Conhecer o projeto ${current.name}`}>
           {projects.map((project, index) => (
             <Image key={project.name} className={index === active ? "active" : ""} src={project.image} alt={project.alt} fill sizes="(max-width: 900px) 100vw, 50vw" priority={index === 0} unoptimized />
           ))}
           <span className="showcase-overlay"><small>{current.type}</small><strong>{current.name}</strong><b>Explorar projeto →</b></span>
-        </Link>
+        </a>
       </div>
       <div className="phone-card showcase-phone" aria-hidden="true">
         <span>DEMONSTRAÇÃO</span><strong>{current.name}</strong><i>Experiência responsiva</i><i>Fluxo comercial claro</i>
