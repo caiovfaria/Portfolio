@@ -1,6 +1,7 @@
 /* eslint-disable @next/next/no-html-link-for-pages */
 import Image from "next/image";
 import type { ProjectData } from "./project-data";
+import BrandLogo from "../components/BrandLogo";
 
 export default function ProjectDetail({ project }: { project: ProjectData }) {
   const whatsapp = `https://wa.me/5521999167694?text=${encodeURIComponent(`Olá! Vi o projeto ${project.name} no seu portfólio e gostaria de conversar sobre uma solução semelhante para o meu negócio.`)}`;
@@ -8,7 +9,7 @@ export default function ProjectDetail({ project }: { project: ProjectData }) {
   return (
     <main className="detail-page">
       <header className="detail-header">
-        <a className="brand" href="/" aria-label="Voltar ao portfólio">C.Vian<span>.dev</span></a>
+        <BrandLogo href="/" label="Voltar ao portfólio" />
         <a className="availability-pill" href={whatsapp} target="_blank" rel="noreferrer"><i></i> Agenda aberta · 2 vagas</a>
         <a className="detail-back" href="/#projetos">← Todos os projetos</a>
       </header>
@@ -56,7 +57,7 @@ export default function ProjectDetail({ project }: { project: ProjectData }) {
         <div><p>TEM UMA IDEIA?</p><h2>Vamos transformar em uma solução profissional.</h2><a href={whatsapp} target="_blank" rel="noreferrer">Conversar pelo WhatsApp →</a></div>
       </section>
 
-      <footer className="detail-footer"><a className="brand" href="/">C.Vian<span>.dev</span></a><span>Projeto demonstrativo · 2026</span><a href="/">Voltar ao portfólio ↑</a></footer>
+      <footer className="detail-footer"><BrandLogo href="/" label="Voltar ao portfólio" /><span>Projeto demonstrativo · 2026</span><a href="/">Voltar ao portfólio ↑</a></footer>
     </main>
   );
 }

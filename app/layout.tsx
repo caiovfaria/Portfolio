@@ -9,6 +9,7 @@ import "./experience.css";
 import "./project-detail.css";
 import "./responsive.css";
 import "./motion.css";
+import "./identity-nav.css";
 const geist = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
 export async function generateMetadata(): Promise<Metadata> {
   const requestHeaders = await headers();

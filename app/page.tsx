@@ -2,6 +2,8 @@ import Image from "next/image";
 import ContactBrief from "./components/ContactBrief";
 import HeroShowcase from "./components/HeroShowcase";
 import QuoteSimulator from "./components/QuoteSimulator";
+import BrandLogo from "./components/BrandLogo";
+import SiteHeader from "./components/SiteHeader";
 
 export default function Home() {
   const wa = (message: string) => `https://wa.me/5521999167694?text=${encodeURIComponent(message)}`;
@@ -12,13 +14,7 @@ export default function Home() {
   return (
     <main>
       <div className="identity-rail" aria-hidden="true">C.V — DIGITAL / 2026</div>
-      <header className="site-header">
-        <a className="brand" href="#inicio" aria-label="Ir para o início">C.Vian<span>.dev</span></a>
-        <nav aria-label="Navegação principal">
-          <a href="#projetos">Projetos</a><a href="#solucoes">Soluções</a><a href="#orcamento">Orçamento</a><a href="#sobre">Sobre</a>
-        </nav>
-        <a className="button button-small" href={whatsapp} target="_blank" rel="noreferrer">Falar no WhatsApp</a>
-      </header>
+      <SiteHeader whatsapp={whatsapp} />
       <section className="hero" id="inicio">
         <div className="hero-copy">
           <a className="availability-pill hero-availability" href={whatsapp} target="_blank" rel="noreferrer"><i></i> Agenda aberta · 2 vagas para novos projetos</a>
@@ -118,7 +114,7 @@ export default function Home() {
 
       <ContactBrief />
 
-      <footer><a className="brand" href="#inicio">C.Vian<span>.dev</span></a><p>Sites e sistemas para pequenos negócios.</p><div><a href="#projetos">Projetos</a><a href="#solucoes">Soluções</a><a href="#orcamento">Orçamento</a><a href="#sobre">Sobre</a></div><small>© 2026 C.Vian. Projeto de portfólio.</small></footer>
+      <footer><BrandLogo href="#inicio" /><p>Sites e sistemas para pequenos negócios.</p><div><a href="#projetos">Projetos</a><a href="#solucoes">Soluções</a><a href="#orcamento">Orçamento</a><a href="#sobre">Sobre</a></div><small>© 2026 C.Vian. Projeto de portfólio.</small></footer>
     </main>
   );
 }
