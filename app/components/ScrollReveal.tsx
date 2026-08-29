@@ -43,7 +43,7 @@ export default function ScrollReveal() {
       document.querySelectorAll<HTMLElement>(selector).forEach((element, index) => {
         const isProject = element.matches(".project-card");
         element.dataset.reveal = isProject && index % 2 ? "right" : "up";
-        element.style.setProperty("--reveal-delay", `${Math.min(index * 70, 280)}ms`);
+        element.style.setProperty("--reveal-delay", `${Math.min(index * 90, 360)}ms`);
         elements.add(element);
       });
     });
