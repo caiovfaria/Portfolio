@@ -1,0 +1,350 @@
+/* Final responsive layer: shared safeguards for the home and project pages. */
+html,
+body {
+  max-width: 100%;
+  overflow-x: clip;
+}
+
+main {
+  overflow-x: clip;
+  overflow-y: visible;
+}
+
+img,
+svg,
+video {
+  max-width: 100%;
+}
+
+.hero > *,
+.project-grid > *,
+.service-grid > *,
+.quote-section > *,
+.comparison-board > *,
+.about-section > *,
+.brief-section > *,
+.detail-hero > *,
+.detail-story > *,
+.detail-cta > * {
+  min-width: 0;
+}
+
+.button,
+.service-grid article > a,
+.quote-result a,
+.detail-cta a {
+  max-width: 100%;
+  white-space: normal;
+  text-align: center;
+}
+
+.button-small,
+.quote-result a {
+  min-height: 44px;
+}
+
+@media (max-width: 900px) {
+  .hero-copy,
+  .detail-hero-copy {
+    min-width: 0;
+  }
+
+  .detail-story {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .hero-copy {
+    width: 100%;
+  }
+
+  .hero-availability {
+    width: 100%;
+    justify-content: center;
+    padding: 9px 12px;
+    text-align: center;
+    white-space: normal;
+  }
+
+  .hero-availability i {
+    flex: 0 0 auto;
+  }
+
+  .hero-trust {
+    column-gap: 14px;
+    row-gap: 12px;
+  }
+
+  .hero-trust span {
+    padding-right: 0;
+    border-right: 0;
+  }
+
+  .showcase-overlay {
+    right: 14px;
+    max-width: calc(100% - 28px);
+  }
+
+  .project-image-label {
+    left: 12px;
+    bottom: 12px;
+    padding: 7px 10px;
+    font-size: 9px;
+  }
+
+  .project-demo-status {
+    max-width: calc(100% - 24px);
+    text-align: center;
+    line-height: 1.25;
+  }
+
+  .project-concept {
+    grid-template-columns: 62px minmax(0, 1fr);
+    gap: 16px;
+    padding: 30px 24px;
+  }
+
+  .project-concept .concept-number {
+    font-size: 52px;
+  }
+
+  .project-concept .concept-copy h3 {
+    overflow-wrap: break-word;
+  }
+
+  .service-grid article,
+  .service-grid .recommended {
+    padding: 34px 28px;
+  }
+
+  .service-grid article > a {
+    min-height: 48px;
+    align-items: center;
+  }
+
+  .quote-builder,
+  .comparison-column,
+  .brief-copy,
+  .brief-form {
+    min-width: 0;
+  }
+
+  .quote-result {
+    padding: 22px;
+  }
+
+  .about-card {
+    box-shadow: 8px 8px 0 var(--electric);
+  }
+
+  .detail-summary {
+    margin-inline: 20px;
+  }
+
+  .detail-screen img {
+    max-width: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .site-header,
+  .detail-header {
+    gap: 14px;
+  }
+
+  .hero {
+    padding-inline: 18px;
+  }
+
+  .feature-strip,
+  .contact-section,
+  .detail-summary {
+    margin-inline: 16px;
+  }
+
+  .section,
+  .comparison-section,
+  .detail-story,
+  .detail-features,
+  .detail-process {
+    padding-inline: 18px;
+  }
+
+  .section-heading h2,
+  .about-copy h2,
+  .quote-intro h2,
+  .comparison-heading h2,
+  .brief-copy h2,
+  .detail-story h2,
+  .detail-section-heading h2,
+  .detail-cta h2 {
+    overflow-wrap: break-word;
+  }
+
+  .project-actions {
+    width: 100%;
+  }
+
+  .project-actions a {
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  .comparison-column {
+    padding: 30px 24px;
+  }
+
+  .detail-footer {
+    padding-inline: 18px;
+  }
+}
+
+@media (max-width: 380px) {
+  .site-header,
+  .detail-header {
+    padding-inline: 16px;
+  }
+
+  .hero {
+    padding: 122px 16px 72px;
+  }
+
+  .hero h1 {
+    font-size: 43px;
+    line-height: .94;
+    letter-spacing: -2.7px;
+  }
+
+  .hero-availability {
+    font-size: 7.5px;
+    letter-spacing: .45px;
+  }
+
+  .eyebrow {
+    font-size: 9px;
+    letter-spacing: 1.55px;
+  }
+
+  .lead {
+    font-size: 15px;
+  }
+
+  .showcase-browser .browser-bar span {
+    display: none;
+  }
+
+  .showcase-overlay strong {
+    font-size: 14px;
+  }
+
+  .feature-strip,
+  .contact-section,
+  .detail-summary {
+    margin-inline: 12px;
+  }
+
+  .section,
+  .comparison-section,
+  .detail-story,
+  .detail-features,
+  .detail-process {
+    padding-inline: 16px;
+  }
+
+  .section-heading h2,
+  .about-copy h2 {
+    font-size: 38px;
+    letter-spacing: -2px;
+  }
+
+  .project-info {
+    padding-inline: 20px;
+  }
+
+  .project-concept {
+    grid-template-columns: 54px minmax(0, 1fr);
+    column-gap: 12px;
+    padding: 26px 20px;
+  }
+
+  .project-concept .concept-number {
+    font-size: 46px;
+  }
+
+  .project-concept h3 {
+    font-size: 20px;
+  }
+
+  .service-grid article,
+  .service-grid .recommended {
+    padding: 32px 24px;
+  }
+
+  .quote-section {
+    padding-inline: 16px;
+  }
+
+  .quote-builder {
+    padding: 22px 18px;
+  }
+
+  .quote-intro h2,
+  .comparison-heading h2,
+  .brief-copy h2 {
+    font-size: 36px;
+    letter-spacing: -2px;
+  }
+
+  .comparison-column {
+    padding: 28px 20px;
+  }
+
+  .brief-section {
+    margin-inline: 10px;
+  }
+
+  .brief-copy,
+  .brief-form {
+    padding: 28px 22px;
+  }
+
+  .process-grid,
+  .detail-process > div:last-child {
+    padding-left: 62px;
+  }
+
+  .process-grid b,
+  .detail-process article b {
+    left: -62px;
+  }
+
+  .process-grid article:not(:last-child)::after,
+  .detail-process article:not(:last-child)::after {
+    left: -35px;
+  }
+
+  .detail-hero {
+    padding: 62px 16px 72px;
+  }
+
+  .detail-hero h1 {
+    font-size: 40px;
+    letter-spacing: -2.4px;
+  }
+
+  .detail-story h2,
+  .detail-section-heading h2,
+  .detail-cta h2 {
+    font-size: 36px;
+    letter-spacing: -2px;
+  }
+
+  .detail-summary {
+    margin-top: 24px;
+  }
+
+  .detail-footer {
+    padding-inline: 16px;
+  }
+}

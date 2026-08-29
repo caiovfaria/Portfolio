@@ -1,11 +1,14 @@
 import type { Metadata } from "next";
 import { headers } from "next/headers";
 import { Geist } from "next/font/google";
+import ScrollReveal from "./components/ScrollReveal";
 import "./globals.css";
 import "./portfolio.css";
 import "./refresh.css";
 import "./experience.css";
 import "./project-detail.css";
+import "./responsive.css";
+import "./motion.css";
 const geist = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
 export async function generateMetadata(): Promise<Metadata> {
   const requestHeaders = await headers();
@@ -32,5 +35,5 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
-  return <html lang="pt-BR"><body className={geist.variable}>{children}</body></html>;
+  return <html lang="pt-BR"><body className={geist.variable}>{children}<ScrollReveal /></body></html>;
 }
