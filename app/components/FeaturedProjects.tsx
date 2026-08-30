@@ -28,7 +28,7 @@ const projects = [
   },
 ] as const;
 
-export default function FeaturedProjects({ contactUrl }: { contactUrl: string }) {
+export default function FeaturedProjects() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [direction, setDirection] = useState<"next" | "previous">("next");
   const activeProject = projects[activeIndex];
@@ -117,7 +117,7 @@ export default function FeaturedProjects({ contactUrl }: { contactUrl: string })
       <article className="project-concept project-invitation">
         <div className="concept-number">03</div>
         <div className="concept-copy"><p>PRÓXIMO PROJETO</p><h3>Uma solução pode ser criada para o seu negócio.</h3></div>
-        <a className="text-link" href={contactUrl} target="_blank" rel="noreferrer">Conversar sobre uma ideia →</a>
+        <a className="text-link" href="#contato">Conversar sobre uma ideia →</a>
       </article>
     </div>
   );

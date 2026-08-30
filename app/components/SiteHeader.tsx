@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import BrandLogo from "./BrandLogo";
+import InstagramCta from "./InstagramCta";
 
 const links = [
   ["#projetos", "Projetos"],
@@ -10,7 +11,7 @@ const links = [
   ["#sobre", "Sobre"],
 ] as const;
 
-export default function SiteHeader({ whatsapp }: { whatsapp: string }) {
+export default function SiteHeader() {
   const [open, setOpen] = useState(false);
   const toggleRef = useRef<HTMLButtonElement>(null);
   const firstLinkRef = useRef<HTMLAnchorElement>(null);
@@ -44,7 +45,7 @@ export default function SiteHeader({ whatsapp }: { whatsapp: string }) {
       <nav className="desktop-nav" aria-label="Navegação principal">
         {links.map(([href, text]) => <a href={href} key={href}>{text}</a>)}
       </nav>
-      <a className="button button-small" href={whatsapp} target="_blank" rel="noreferrer">Falar no WhatsApp</a>
+      <InstagramCta className="button button-small header-instagram" />
       <button
         ref={toggleRef}
         className={`menu-toggle${open ? " is-open" : ""}`}
@@ -70,7 +71,7 @@ export default function SiteHeader({ whatsapp }: { whatsapp: string }) {
         aria-label="Navegação mobile"
         aria-hidden={!open}
       >
-        <p><span>NAVEGAÇÃO</span><b>04 LINKS</b></p>
+        <p><span>NAVEGAÇÃO</span><b>05 LINKS</b></p>
         {links.map(([href, text], index) => (
           <a
             ref={index === 0 ? firstLinkRef : undefined}
@@ -82,6 +83,7 @@ export default function SiteHeader({ whatsapp }: { whatsapp: string }) {
             <small>0{index + 1}</small><span>{text}</span><b>↘</b>
           </a>
         ))}
+        <InstagramCta className="mobile-instagram" />
       </nav>
     </header>
   );

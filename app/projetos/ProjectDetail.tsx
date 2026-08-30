@@ -4,13 +4,11 @@ import type { ProjectData } from "./project-data";
 import BrandLogo from "../components/BrandLogo";
 
 export default function ProjectDetail({ project }: { project: ProjectData }) {
-  const whatsapp = `https://wa.me/5521999167694?text=${encodeURIComponent(`Olá! Vi o projeto ${project.name} no seu portfólio e gostaria de conversar sobre uma solução semelhante para o meu negócio.`)}`;
-
   return (
     <main className="detail-page">
       <header className="detail-header">
         <BrandLogo href="/" label="Voltar ao portfólio" />
-        <a className="availability-pill" href={whatsapp} target="_blank" rel="noreferrer"><i></i> Agenda aberta · 2 vagas</a>
+        <span className="availability-pill"><i></i> Agenda aberta · 2 vagas</span>
         <a className="detail-back" href="/#projetos">← Todos os projetos</a>
       </header>
 
@@ -21,7 +19,7 @@ export default function ProjectDetail({ project }: { project: ProjectData }) {
           <span>{project.description}</span>
           <div className="detail-actions">
             <a className="button detail-primary" href={project.liveUrl} target="_blank" rel="noreferrer">Abrir projeto ao vivo ↗</a>
-            <a className="button detail-secondary" href={whatsapp} target="_blank" rel="noreferrer">Quero algo semelhante</a>
+            <a className="button detail-secondary" href="/#contato">Quero algo semelhante</a>
           </div>
         </div>
         <div className={`detail-device ${project.slug}`}>
@@ -54,7 +52,7 @@ export default function ProjectDetail({ project }: { project: ProjectData }) {
 
       <section className="detail-cta">
         <div><p>PRÓXIMO PROJETO</p><h2>{project.nextName}</h2><a href={`/projetos/${project.nextSlug}`}>Conhecer este projeto →</a></div>
-        <div><p>TEM UMA IDEIA?</p><h2>Vamos transformar em uma solução profissional.</h2><a href={whatsapp} target="_blank" rel="noreferrer">Conversar pelo WhatsApp →</a></div>
+        <div><p>TEM UMA IDEIA?</p><h2>Vamos transformar em uma solução profissional.</h2><a href="/#contato">Preparar minha ideia →</a></div>
       </section>
 
       <footer className="detail-footer"><BrandLogo href="/" label="Voltar ao portfólio" /><span>Projeto demonstrativo · 2026</span><a href="/">Voltar ao portfólio ↑</a></footer>

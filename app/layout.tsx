@@ -12,6 +12,7 @@ import "./motion.css";
 import "./identity-nav.css";
 import "./featured-projects.css";
 import "./radius-system.css";
+import "./contact-channel.css";
 const geist = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
 export async function generateMetadata(): Promise<Metadata> {
   const requestHeaders = await headers();
@@ -19,7 +20,7 @@ export async function generateMetadata(): Promise<Metadata> {
   const protocol = host.includes("localhost") ? "http" : "https";
   const base = new URL(`${protocol}://${host}`);
   const title = "C.Vian | Sites e sistemas para pequenos negócios";
-  const description = "Desenvolvimento de sites rápidos, responsivos e integrados ao WhatsApp para pequenos negócios.";
+  const description = "Desenvolvimento de sites rápidos, responsivos e pensados para gerar contatos para pequenos negócios.";
   return {
     metadataBase: base,
     title,

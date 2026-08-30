@@ -6,26 +6,21 @@ import BrandLogo from "./components/BrandLogo";
 import SiteHeader from "./components/SiteHeader";
 
 export default function Home() {
-  const wa = (message: string) => `https://wa.me/5521999167694?text=${encodeURIComponent(message)}`;
-  const whatsapp = wa("Olá! Vi seu portfólio e gostaria de conversar sobre um projeto para o meu negócio.");
-  const landingWhatsapp = wa("Olá! Vi o serviço de Landing Page no seu portfólio e gostaria de conversar sobre a criação de uma landing page para o meu negócio.");
-  const institutionalWhatsapp = wa("Olá! Vi o serviço de Site Institucional no seu portfólio e gostaria de conversar sobre a criação de um site institucional para o meu negócio.");
-  const systemWhatsapp = wa("Olá! Vi o serviço de Sistema Web no seu portfólio e gostaria de conversar sobre uma solução personalizada para o meu negócio.");
   return (
     <main>
       <div className="identity-rail" aria-hidden="true">C.V — DIGITAL / 2026</div>
-      <SiteHeader whatsapp={whatsapp} />
+      <SiteHeader />
       <section className="hero" id="inicio">
         <div className="hero-copy">
-          <a className="availability-pill hero-availability" href={whatsapp} target="_blank" rel="noreferrer"><i></i> Agenda aberta · 2 vagas para novos projetos</a>
+          <span className="availability-pill hero-availability"><i></i> Agenda aberta · 2 vagas para novos projetos</span>
           <p className="eyebrow">Desenvolvimento web para pequenos negócios</p>
           <h1>Sites e sistemas que transformam visitas em clientes.</h1>
-          <p className="lead">Soluções rápidas, responsivas e integradas ao WhatsApp para apresentar seu negócio e facilitar novos pedidos e agendamentos.</p>
+          <p className="lead">Soluções rápidas, responsivas e pensadas para apresentar seu negócio, facilitar contatos, pedidos e agendamentos.</p>
           <div className="hero-actions">
             <a className="button button-dark" href="#projetos">Ver projetos</a>
           </div>
           <div className="hero-trust" aria-label="Diferenciais">
-            <span>✓ Entrega organizada</span><span>✓ Integração com WhatsApp</span><span>✓ Foco em resultados</span>
+            <span>✓ Entrega organizada</span><span>✓ Contato simplificado</span><span>✓ Foco em resultados</span>
           </div>
           <div className="hero-signature" aria-hidden="true"><b>C.V</b><span>CLAREZA<br/>PERFORMANCE<br/>CONVERSÃO</span></div>
         </div>
@@ -34,14 +29,14 @@ export default function Home() {
 
       <section className="feature-strip" aria-label="Vantagens">
         <article><span>01</span><div><strong>Agilidade</strong><p>Prazos claros e contato próximo.</p></div></article>
-        <article><span>02</span><div><strong>WhatsApp integrado</strong><p>O caminho mais rápido até você.</p></div></article>
+        <article><span>02</span><div><strong>Contato inteligente</strong><p>Um caminho simples até você.</p></div></article>
         <article><span>03</span><div><strong>Seguro e confiável</strong><p>Boas práticas em cada entrega.</p></div></article>
         <article><span>04</span><div><strong>Foco em conversão</strong><p>Design pensado para gerar contatos.</p></div></article>
       </section>
 
       <section className="section projects-section" id="projetos">
         <div className="section-heading"><p>PORTFÓLIO</p><h2>Projetos em destaque</h2><span>Soluções demonstrativas criadas para problemas reais de pequenos negócios.</span></div>
-        <FeaturedProjects contactUrl={whatsapp} />
+        <FeaturedProjects />
       </section>
 
       <section className="section capabilities-section" id="solucoes">
@@ -53,7 +48,7 @@ export default function Home() {
             ["PA", "Painel administrativo", "Controle centralizado das informações importantes do negócio."],
             ["LG", "Área do cliente", "Login, histórico, dados pessoais e conteúdos exclusivos."],
             ["PD", "Pedidos online", "Montagem, revisão e envio completo do pedido."],
-            ["WA", "WhatsApp inteligente", "Mensagens prontas com informações escolhidas pelo cliente."],
+            ["CT", "Contato inteligente", "Mensagens e informações organizadas para facilitar o atendimento."],
             ["PG", "Pagamentos", "Integração para cobranças, assinaturas ou vendas online."],
             ["GS", "Gestão de serviços", "Clientes, status, orçamento e acompanhamento de processos."],
           ].map(([code, title, description], index) => <article key={code}><div><b>{code}</b><small>0{index + 1}</small></div><h3>{title}</h3><p>{description}</p></article>)}
@@ -63,9 +58,9 @@ export default function Home() {
       <section className="section services-section" id="servicos">
         <div className="section-heading"><p>SERVIÇOS</p><h2>Escolha o ponto de partida</h2><span>Escopos claros que podem evoluir junto com o seu negócio.</span></div>
         <div className="service-grid">
-          <article><div className="service-icon">LP</div><h3>Landing page</h3><p>Página estratégica para apresentar uma oferta e gerar contatos.</p><small>A partir de</small><strong>R$ 1.200</strong><ul><li>Design responsivo</li><li>Integração com WhatsApp</li><li>Publicação e orientação</li></ul><a href={landingWhatsapp} target="_blank" rel="noreferrer">Quero uma landing page →</a></article>
-          <article className="recommended"><em>MAIS INDICADO</em><div className="service-icon">SI</div><h3>Site institucional</h3><p>Presença profissional para explicar serviços e construir confiança.</p><small>A partir de</small><strong>R$ 2.500</strong><ul><li>Até 5 páginas</li><li>SEO técnico básico</li><li>Formulário e métricas</li></ul><a href={institutionalWhatsapp} target="_blank" rel="noreferrer">Quero um site institucional →</a></article>
-          <article><div className="service-icon">SW</div><h3>Sistema web</h3><p>Solução personalizada para organizar processos do seu negócio.</p><small>Investimento</small><strong>Sob orçamento</strong><ul><li>Escopo personalizado</li><li>Painel administrativo</li><li>Treinamento e suporte</li></ul><a href={systemWhatsapp} target="_blank" rel="noreferrer">Quero um sistema web →</a></article>
+          <article><div className="service-icon">LP</div><h3>Landing page</h3><p>Página estratégica para apresentar uma oferta e gerar contatos.</p><small>A partir de</small><strong>R$ 1.200</strong><ul><li>Design responsivo</li><li>Integração com canais de contato</li><li>Publicação e orientação</li></ul><a href="#contato">Quero uma landing page →</a></article>
+          <article className="recommended"><em>MAIS INDICADO</em><div className="service-icon">SI</div><h3>Site institucional</h3><p>Presença profissional para explicar serviços e construir confiança.</p><small>A partir de</small><strong>R$ 2.500</strong><ul><li>Até 5 páginas</li><li>SEO técnico básico</li><li>Formulário e métricas</li></ul><a href="#contato">Quero um site institucional →</a></article>
+          <article><div className="service-icon">SW</div><h3>Sistema web</h3><p>Solução personalizada para organizar processos do seu negócio.</p><small>Investimento</small><strong>Sob orçamento</strong><ul><li>Escopo personalizado</li><li>Painel administrativo</li><li>Treinamento e suporte</li></ul><a href="#contato">Quero um sistema web →</a></article>
         </div>
       </section>
 

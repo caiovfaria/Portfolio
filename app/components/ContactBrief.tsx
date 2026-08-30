@@ -1,6 +1,7 @@
 "use client";
 
 import { FormEvent, useState } from "react";
+import InstagramCta from "./InstagramCta";
 
 export default function ContactBrief() {
   const [name, setName] = useState("");
@@ -8,6 +9,7 @@ export default function ContactBrief() {
   const [hasSite, setHasSite] = useState("Não");
   const [goal, setGoal] = useState("Conseguir mais clientes");
   const [details, setDetails] = useState("");
+  const [feedback, setFeedback] = useState("");
 
   const submit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -19,7 +21,9 @@ export default function ContactBrief() {
       `Detalhes: ${details || "Prefiro explicar durante a conversa."}`,
       "Gostaria de receber uma orientação inicial.",
     ].join("\n");
-    window.open(`https://wa.me/5521999167694?text=${encodeURIComponent(message)}`, "_blank", "noopener,noreferrer");
+    navigator.clipboard.writeText(message)
+      .then(() => setFeedback("Resumo copiado. Ele está pronto para ser enviado quando o Instagram estiver conectado."))
+      .catch(() => setFeedback("Não foi possível copiar automaticamente. Selecione os dados preenchidos e tente novamente."));
   };
 
   return (
@@ -27,8 +31,8 @@ export default function ContactBrief() {
       <div className="brief-copy">
         <p>VAMOS CONVERSAR?</p>
         <h2>Conte sobre o seu negócio.</h2>
-        <span>Responda quatro perguntas rápidas. Sua mensagem chegará organizada e nossa conversa começa direto no que importa.</span>
-        <div className="brief-note"><b>01</b><span>Sem compromisso<br/>Resposta direta pelo WhatsApp</span></div>
+        <span>Responda quatro perguntas rápidas. Seu resumo ficará organizado para começar a conversa direto no que importa.</span>
+        <div className="brief-note"><b>01</b><span>Sem compromisso<br/>Contato pelo Instagram em breve</span></div>
       </div>
       <form className="brief-form" onSubmit={submit}>
         <label><span>Seu nome</span><input value={name} onChange={(event) => setName(event.target.value)} placeholder="Como posso te chamar?" required /></label>
@@ -38,9 +42,12 @@ export default function ContactBrief() {
           <label><span>Principal objetivo</span><select value={goal} onChange={(event) => setGoal(event.target.value)}><option>Conseguir mais clientes</option><option>Organizar atendimentos</option><option>Vender pela internet</option><option>Apresentar melhor o negócio</option><option>Criar um sistema interno</option></select></label>
         </div>
         <label><span>O que você imagina?</span><textarea value={details} onChange={(event) => setDetails(event.target.value)} placeholder="Conte brevemente sua ideia, necessidade ou dificuldade atual." rows={4} /></label>
-        <button type="submit">Preparar conversa no WhatsApp →</button>
+        <div className="brief-contact-actions">
+          <button type="submit">Copiar resumo do projeto →</button>
+          <InstagramCta className="brief-instagram" />
+        </div>
+        <p className="contact-feedback" aria-live="polite">{feedback}</p>
       </form>
     </section>
   );
 }
-

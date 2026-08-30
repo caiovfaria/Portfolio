@@ -9,7 +9,7 @@ const projectTypes = [
 ] as const;
 
 const additions = [
-  { id: "whatsapp", label: "WhatsApp avançado", value: 250 },
+  { id: "contato", label: "Fluxo de contato avançado", value: 250 },
   { id: "agendamento", label: "Agendamento online", value: 600 },
   { id: "catalogo", label: "Catálogo ou cardápio", value: 500 },
   { id: "pagamento", label: "Pagamento online", value: 1200 },
@@ -27,6 +27,7 @@ export default function QuoteSimulator() {
   const [projectType, setProjectType] = useState<(typeof projectTypes)[number]["id"]>("institucional");
   const [selected, setSelected] = useState<string[]>([]);
   const [deadline, setDeadline] = useState("normal");
+  const [feedback, setFeedback] = useState("");
 
   const estimate = useMemo(() => {
     const base = projectTypes.find((item) => item.id === projectType)?.base ?? 0;
@@ -51,12 +52,18 @@ export default function QuoteSimulator() {
     "Gostaria de conversar sobre o escopo.",
   ].join("\n");
 
+  const copyEstimate = () => {
+    navigator.clipboard.writeText(message)
+      .then(() => setFeedback("Estimativa copiada. Use este resumo na sua próxima conversa."))
+      .catch(() => setFeedback("Não foi possível copiar a estimativa automaticamente."));
+  };
+
   return (
     <section className="quote-section" id="orcamento">
       <div className="quote-intro">
         <p className="section-kicker">ESTIMATIVA INTERATIVA</p>
         <h2>Monte uma primeira versão do seu projeto.</h2>
-        <p>Escolha o tipo de solução e as funções mais importantes. O WhatsApp básico já está incluído; o adicional avançado cria mensagens e um fluxo personalizado. A faixa fica exata depois de uma conversa rápida.</p>
+        <p>Escolha o tipo de solução e as funções mais importantes. O contato básico já está incluído; o fluxo avançado organiza mensagens e etapas personalizadas. A faixa fica exata depois de uma conversa rápida.</p>
         <div className="quote-seal" aria-hidden="true"><b>C.V</b><span>PROJETO SOB MEDIDA</span></div>
       </div>
 
@@ -94,8 +101,9 @@ export default function QuoteSimulator() {
 
         <div className="quote-result" aria-live="polite">
           <div><small>Estimativa inicial</small><strong>{formatMoney(estimate.minimum)} <i>—</i> {formatMoney(estimate.maximum)}</strong><span>Valor sujeito à definição do escopo.</span></div>
-          <a href={`https://wa.me/5521999167694?text=${encodeURIComponent(message)}`} target="_blank" rel="noreferrer">Enviar projeto no WhatsApp →</a>
+          <button type="button" onClick={copyEstimate}>Copiar estimativa →</button>
         </div>
+        <p className="quote-feedback" aria-live="polite">{feedback}</p>
       </div>
     </section>
   );

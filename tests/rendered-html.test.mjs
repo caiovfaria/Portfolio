@@ -41,8 +41,11 @@ test("renderiza o portfólio completo", async () => {
   assert.match(html, /Mostrar próximo projeto/i);
   assert.match(html, /O que eu consigo criar para o seu negócio/i);
   assert.match(html, /Monte uma primeira versão do seu projeto/i);
-  assert.match(html, /WhatsApp básico já está incluído/i);
-  assert.match(html, /WhatsApp avançado/i);
+  assert.match(html, /Fluxo de contato avançado/i);
+  assert.match(html, /Instagram em breve/i);
+  assert.match(html, /Copiar resumo do projeto/i);
+  assert.doesNotMatch(html, /WhatsApp/i);
+  assert.doesNotMatch(html, /wa\.me/i);
   assert.match(html, /Prioridade/i);
   assert.match(html, /valor normal/i);
   assert.match(html, /−10%/i);
@@ -60,6 +63,8 @@ test("renderiza os estudos completos dos projetos", async () => {
     assert.match(html, /O projeto vai além da aparência/i);
     assert.match(html, /Demonstração do projeto/i);
     assert.match(html, /Quero algo semelhante/i);
+    assert.doesNotMatch(html, /WhatsApp/i);
+    assert.doesNotMatch(html, /wa\.me/i);
     assert.match(html, new RegExp(`<title>${project} \\| Projeto C\\.Vian</title>`, "i"));
     assert.match(html, new RegExp(image.replace(".", "\\."), "i"));
   }
