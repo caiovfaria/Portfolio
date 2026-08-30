@@ -1,0 +1,104 @@
+/* Stage 5: a shared corner language for interactive and content surfaces. */
+.button,
+.contact-button,
+.service-grid article > a,
+.quote-result a,
+.brief-form button,
+.detail-cta a,
+.featured-actions a,
+.project-concept .text-link {
+  border-radius: var(--radius-sm);
+}
+
+.button-small,
+.availability-pill,
+.eyebrow,
+.project-demo-status {
+  border-radius: var(--radius-pill);
+}
+
+.menu-toggle,
+.choice-row button,
+.feature-choices label,
+.brief-form input,
+.brief-form select,
+.brief-form textarea,
+.showcase-switch button,
+.featured-content li,
+.featured-status,
+.detail-device > b,
+.project-image-label,
+.about-points span {
+  border-radius: var(--radius-sm);
+}
+
+.browser-card,
+.showcase-screen,
+.showcase-overlay,
+.featured-frame,
+.featured-screen,
+.service-icon,
+.quote-result,
+.comparison-column,
+.brief-form,
+.detail-device,
+.detail-screen,
+.detail-feature-grid article {
+  border-radius: var(--radius-md);
+}
+
+.feature-strip,
+.service-grid article,
+.quote-builder,
+.about-card,
+.contact-section,
+.brief-section,
+.project-concept,
+.detail-summary,
+.mobile-nav,
+.capability-grid,
+.detail-feature-grid {
+  border-radius: var(--radius-lg);
+}
+
+.featured-carousel {
+  border-radius: var(--radius-xl);
+}
+
+.browser-card,
+.showcase-screen,
+.featured-frame,
+.featured-screen,
+.featured-carousel,
+.feature-strip,
+.capability-grid,
+.service-grid article,
+.quote-builder,
+.comparison-column,
+.about-card,
+.contact-section,
+.brief-section,
+.detail-device,
+.detail-screen,
+.detail-summary,
+.detail-feature-grid {
+  overflow: hidden;
+}
+
+.recommended em {
+  border-radius: 0 0 var(--radius-sm) var(--radius-sm);
+}
+
+@media (max-width: 600px) {
+  .featured-carousel {
+    border-radius: var(--radius-lg);
+  }
+
+  .feature-strip,
+  .contact-section,
+  .brief-section,
+  .project-concept,
+  .detail-summary {
+    border-radius: var(--radius-md);
+  }
+}
