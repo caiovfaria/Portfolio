@@ -96,6 +96,12 @@
   overflow: visible;
 }
 
+/* Project feature blocks keep their original straight rectangular frame. */
+.detail-feature-grid,
+.detail-feature-grid article {
+  border-radius: 0;
+}
+
 @media (max-width: 600px) {
   .featured-carousel {
     border-radius: var(--radius-lg);
