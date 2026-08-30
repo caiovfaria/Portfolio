@@ -12,7 +12,7 @@ export default function Home() {
       <SiteHeader />
       <section className="hero" id="inicio">
         <div className="hero-copy">
-          <span className="availability-pill hero-availability"><i></i> Agenda aberta · 2 vagas para novos projetos</span>
+          <span className="availability-pill hero-availability"><i></i> Agenda aberta · 5 vagas para novos projetos</span>
           <p className="eyebrow">Desenvolvimento web para pequenos negócios</p>
           <h1>Sites e sistemas que transformam visitas em clientes.</h1>
           <p className="lead">Soluções rápidas, responsivas e pensadas para apresentar seu negócio, facilitar contatos, pedidos e agendamentos.</p>

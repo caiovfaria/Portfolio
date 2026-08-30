@@ -8,7 +8,7 @@ export default function ProjectDetail({ project }: { project: ProjectData }) {
     <main className="detail-page">
       <header className="detail-header">
         <BrandLogo href="/" label="Voltar ao portfólio" />
-        <span className="availability-pill"><i></i> Agenda aberta · 2 vagas</span>
+        <span className="availability-pill"><i></i> Agenda aberta · 5 vagas</span>
         <a className="detail-back" href="/#projetos">← Todos os projetos</a>
       </header>
 
