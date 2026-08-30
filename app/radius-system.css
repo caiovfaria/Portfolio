@@ -89,6 +89,13 @@
   border-radius: 0 0 var(--radius-sm) var(--radius-sm);
 }
 
+/* Pricing cards keep the original straight frame and allow the recommendation label to sit above it. */
+.service-grid article,
+.service-grid .recommended {
+  border-radius: 0;
+  overflow: visible;
+}
+
 @media (max-width: 600px) {
   .featured-carousel {
     border-radius: var(--radius-lg);

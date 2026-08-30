@@ -44,7 +44,7 @@ export default function ScrollReveal() {
       document.querySelectorAll<HTMLElement>(selector).forEach((element, index) => {
         const isProject = element.matches(".project-card");
         element.dataset.reveal = isProject && index % 2 ? "right" : "up";
-        element.style.setProperty("--reveal-delay", `${Math.min(index * 90, 360)}ms`);
+        element.style.setProperty("--reveal-delay", `${Math.min(index * 55, 165)}ms`);
         elements.add(element);
       });
     });
@@ -62,7 +62,7 @@ export default function ScrollReveal() {
           observer.unobserve(entry.target);
         });
       },
-      { rootMargin: "0px 0px -8% 0px", threshold: 0.12 },
+      { rootMargin: "0px 0px 12% 0px", threshold: 0.01 },
     );
 
     elements.forEach((element) => observer.observe(element));
