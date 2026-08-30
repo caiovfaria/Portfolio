@@ -26,9 +26,13 @@ export async function generateMetadata(): Promise<Metadata> {
     title,
     description,
     icons: {
-      icon: [{ url: "/brand/cv-logo.png", type: "image/png" }],
-      shortcut: "/brand/cv-logo.png",
-      apple: "/brand/cv-logo.png",
+      icon: [
+        { url: "/favicon-cv.ico?v=3", sizes: "any" },
+        { url: "/favicon-cv-32.png?v=3", sizes: "32x32", type: "image/png" },
+        { url: "/favicon-cv-16.png?v=3", sizes: "16x16", type: "image/png" },
+      ],
+      shortcut: "/favicon-cv.ico?v=3",
+      apple: "/apple-touch-icon-cv.png?v=3",
     },
     openGraph: { title, description, type: "website", url: base, images: [{ url: new URL("/og.png", base).toString(), width: 1200, height: 630, alt: "Portfólio de desenvolvimento web" }] },
     twitter: { card: "summary_large_image", title, description, images: [new URL("/og.png", base).toString()] },
