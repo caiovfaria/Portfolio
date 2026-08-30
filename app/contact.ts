@@ -1,3 +1,3 @@
-export const INSTAGRAM_URL = "https://www.instagram.com/c.vian_dev/";
+export const INSTAGRAM_URL = "https://ig.me/m/c.vian_dev";
 
-export const hasInstagramUrl = /^https:\/\/(www\.)?instagram\.com\/.+/i.test(INSTAGRAM_URL);
+export const hasInstagramUrl = /^https:\/\/ig\.me\/m\/[a-z0-9._]+$/i.test(INSTAGRAM_URL);

@@ -18,7 +18,7 @@ function InstagramIcon() {
 
 export default function InstagramCta({
   className = "",
-  label = "Ver Instagram",
+  label = "Enviar mensagem",
   pendingLabel = "Instagram em breve",
 }: InstagramCtaProps) {
   const classes = `instagram-cta ${className}`.trim();

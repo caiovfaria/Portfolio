@@ -42,8 +42,8 @@ test("renderiza o portfólio completo", async () => {
   assert.match(html, /O que eu consigo criar para o seu negócio/i);
   assert.match(html, /Monte uma primeira versão do seu projeto/i);
   assert.match(html, /Fluxo de contato avançado/i);
-  assert.match(html, /Ver Instagram/i);
-  assert.match(html, /instagram\.com\/c\.vian_dev/i);
+  assert.match(html, /Enviar mensagem/i);
+  assert.match(html, /ig\.me\/m\/c\.vian_dev/i);
   assert.match(html, /Copiar resumo do projeto/i);
   assert.doesNotMatch(html, /WhatsApp/i);
   assert.doesNotMatch(html, /wa\.me/i);

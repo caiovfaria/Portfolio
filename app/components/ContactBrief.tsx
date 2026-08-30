@@ -22,7 +22,7 @@ export default function ContactBrief() {
       "Gostaria de receber uma orientação inicial.",
     ].join("\n");
     navigator.clipboard.writeText(message)
-      .then(() => setFeedback("Resumo copiado. Agora abra o Instagram e envie esta mensagem para começar a conversa."))
+      .then(() => setFeedback("Resumo copiado. Clique em “Enviar mensagem” para abrir nossa conversa no Instagram e cole o texto."))
       .catch(() => setFeedback("Não foi possível copiar automaticamente. Selecione os dados preenchidos e tente novamente."));
   };
 
