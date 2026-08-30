@@ -38,7 +38,7 @@ test("renderiza o portfólio completo", async () => {
   assert.match(html, /Landing page/i);
   assert.match(html, /Site institucional/i);
   assert.match(html, /Sistema web/i);
-  assert.match(html, /Ver estudo do projeto/i);
+  assert.match(html, /Mostrar próximo projeto/i);
   assert.match(html, /O que eu consigo criar para o seu negócio/i);
   assert.match(html, /Monte uma primeira versão do seu projeto/i);
   assert.match(html, /WhatsApp básico já está incluído/i);

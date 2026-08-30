@@ -4,7 +4,8 @@ import { useEffect } from "react";
 
 const revealGroups = [
   ".feature-strip article",
-  ".project-grid > .project-card",
+  ".featured-carousel",
+  ".project-invitation",
   ".capability-grid article",
   ".service-grid article",
   ".comparison-board > *",
