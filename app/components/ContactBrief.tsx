@@ -22,7 +22,7 @@ export default function ContactBrief() {
       "Gostaria de receber uma orientação inicial.",
     ].join("\n");
     navigator.clipboard.writeText(message)
-      .then(() => setFeedback("Resumo copiado. Ele está pronto para ser enviado quando o Instagram estiver conectado."))
+      .then(() => setFeedback("Resumo copiado. Agora abra o Instagram e envie esta mensagem para começar a conversa."))
       .catch(() => setFeedback("Não foi possível copiar automaticamente. Selecione os dados preenchidos e tente novamente."));
   };
 
@@ -32,7 +32,7 @@ export default function ContactBrief() {
         <p>VAMOS CONVERSAR?</p>
         <h2>Conte sobre o seu negócio.</h2>
         <span>Responda quatro perguntas rápidas. Seu resumo ficará organizado para começar a conversa direto no que importa.</span>
-        <div className="brief-note"><b>01</b><span>Sem compromisso<br/>Contato pelo Instagram em breve</span></div>
+        <div className="brief-note"><b>01</b><span>Sem compromisso<br/>Contato direto pelo Instagram</span></div>
       </div>
       <form className="brief-form" onSubmit={submit}>
         <label><span>Seu nome</span><input value={name} onChange={(event) => setName(event.target.value)} placeholder="Como posso te chamar?" required /></label>
