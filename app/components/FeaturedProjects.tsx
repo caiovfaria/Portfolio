@@ -5,6 +5,28 @@ import { useCallback, useState } from "react";
 
 const projects = [
   {
+    name: "Bar do Toninho",
+    category: "Landing page para bar e restaurante",
+    description: "Uma presença digital descontraída para apresentar cardápio, programação, ambiente e facilitar o contato com o público.",
+    image: null,
+    imageAlt: "Prévia estilizada do site Bar do Toninho",
+    tags: ["React", "Landing page", "Design responsivo"],
+    caseUrl: "https://github.com/caiovfaria/bar-do-toninho",
+    liveUrl: "https://caiovfaria.github.io/bar-do-toninho/",
+    accent: "toninho",
+  },
+  {
+    name: "Clínica Lumina",
+    category: "Landing page para clínica odontológica",
+    description: "Uma experiência leve e acolhedora para apresentar tratamentos, construir confiança e conduzir pacientes ao agendamento.",
+    image: null,
+    imageAlt: "Prévia estilizada do site Clínica Lumina",
+    tags: ["Next.js", "Saúde", "Design responsivo"],
+    caseUrl: "https://github.com/caiovfaria/Clinica-Lumina",
+    liveUrl: "https://clinica-lumina-caio.cvfninja.chatgpt.site/",
+    accent: "lumina",
+  },
+  {
     name: "Barbearia Norte",
     category: "Site institucional + agendamento",
     description: "Uma experiência imersiva para apresentar serviços, fortalecer a marca e transformar visitas em agendamentos rápidos.",
@@ -66,14 +88,22 @@ export default function FeaturedProjects() {
             <div className="featured-frame">
               <div className="featured-browser-bar"><i /><i /><i /><span>PROJETO AO VIVO</span></div>
               <div className="featured-screen">
-                <Image
-                  src={activeProject.image}
-                  alt={activeProject.imageAlt}
-                  fill
-                  sizes="(max-width: 900px) 100vw, 65vw"
-                  priority
-                  unoptimized
-                />
+                {activeProject.image ? (
+                  <Image
+                    src={activeProject.image}
+                    alt={activeProject.imageAlt}
+                    fill
+                    sizes="(max-width: 900px) 100vw, 65vw"
+                    priority
+                    unoptimized
+                  />
+                ) : (
+                  <div className="project-site-preview" role="img" aria-label={activeProject.imageAlt}>
+                    <div className="project-site-nav"><strong>{activeProject.name}</strong><span>Sobre</span><span>Serviços</span><i>Contato</i></div>
+                    <div className="project-site-copy"><small>{activeProject.category}</small><b>{activeProject.name === "Bar do Toninho" ? "Cerveja gelada, petisco na mesa e boa conversa." : "Seu sorriso merece cuidado, conforto e confiança."}</b><p>{activeProject.description}</p><em>Conhecer o projeto</em></div>
+                    <div className="project-site-mark" aria-hidden="true">{activeProject.name === "Bar do Toninho" ? "BT" : "CL"}</div>
+                  </div>
+                )}
               </div>
             </div>
             <span className="featured-watermark" aria-hidden="true">0{activeIndex + 1}</span>
@@ -88,7 +118,7 @@ export default function FeaturedProjects() {
               {activeProject.tags.map((tag) => <li key={tag}>{tag}</li>)}
             </ul>
             <div className="featured-actions">
-              <a className="featured-primary" href={activeProject.caseUrl}>Ver estudo completo <span>→</span></a>
+              <a className="featured-primary" href={activeProject.caseUrl} target={activeProject.caseUrl.startsWith("http") ? "_blank" : undefined} rel={activeProject.caseUrl.startsWith("http") ? "noreferrer" : undefined}>{activeProject.caseUrl.startsWith("http") ? "Código no GitHub" : "Ver estudo completo"} <span>{activeProject.caseUrl.startsWith("http") ? "↗" : "→"}</span></a>
               <a className="featured-secondary" href={activeProject.liveUrl} target="_blank" rel="noreferrer">Abrir ao vivo <span>↗</span></a>
             </div>
           </div>
@@ -115,7 +145,7 @@ export default function FeaturedProjects() {
       </div>
 
       <article className="project-concept project-invitation">
-        <div className="concept-number">03</div>
+        <div className="concept-number">05</div>
         <div className="concept-copy"><p>PRÓXIMO PROJETO</p><h3>Uma solução pode ser criada para o seu negócio.</h3></div>
         <a className="text-link" href="#contato">Conversar sobre uma ideia →</a>
       </article>
