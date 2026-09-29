@@ -3,18 +3,18 @@
 import { useMemo, useState } from "react";
 
 const projectTypes = [
-  { id: "landing", label: "Landing page", base: 1200 },
-  { id: "institucional", label: "Site institucional", base: 2500 },
-  { id: "sistema", label: "Sistema web", base: 4500 },
+  { id: "landing", label: "Landing page", base: 800 },
+  { id: "institucional", label: "Site institucional", base: 1700 },
+  { id: "sistema", label: "Sistema web", base: 3100 },
 ] as const;
 
 const additions = [
-  { id: "contato", label: "Fluxo de contato avançado", value: 250 },
-  { id: "agendamento", label: "Agendamento online", value: 600 },
-  { id: "catalogo", label: "Catálogo ou cardápio", value: 500 },
-  { id: "pagamento", label: "Pagamento online", value: 1200 },
-  { id: "painel", label: "Painel administrativo", value: 1500 },
-  { id: "seo", label: "SEO e métricas", value: 350 },
+  { id: "contato", label: "Fluxo de contato avançado", value: 150 },
+  { id: "agendamento", label: "Agendamento online", value: 400 },
+  { id: "catalogo", label: "Catálogo ou cardápio", value: 350 },
+  { id: "pagamento", label: "Pagamento online", value: 800 },
+  { id: "painel", label: "Painel administrativo", value: 1000 },
+  { id: "seo", label: "SEO e métricas", value: 200 },
 ] as const;
 
 const formatMoney = (value: number) => new Intl.NumberFormat("pt-BR", {
