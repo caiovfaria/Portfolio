@@ -83,8 +83,21 @@ export default function Home() {
       </section>
 
       <section className="section about-section" id="sobre">
-        <div className="about-copy"><p className="section-label">SOBRE MIM</p><h2>Soluções simples, comunicação próxima e atenção aos detalhes.</h2><p>Sou desenvolvedor web freelancer e ajudo pequenos negócios a apresentarem melhor seus serviços, facilitarem o atendimento e construírem uma presença digital própria.</p><div className="about-points"><span>✓ Atendimento direto</span><span>✓ Soluções personalizadas</span><span>✓ Compromisso com prazos</span></div></div>
-        <div className="about-card"><small>MEU COMPROMISSO</small><strong>Entender antes de desenvolver.</strong><p>Cada projeto começa pelo problema do negócio. A tecnologia vem depois, como ferramenta para criar uma solução útil.</p><div><b>100%</b><span>responsivo<br/>e personalizado</span></div></div>
+        <figure className="about-portrait">
+          <img src="/caio-viana-portfolio.png" alt="Caio Viana, desenvolvedor web e estudante de Engenharia de Software" />
+          <figcaption><b>Caio Viana</b><span>Desenvolvimento web · Engenharia de Software</span></figcaption>
+        </figure>
+        <div className="about-content">
+          <div className="about-copy">
+            <p className="section-label">SOBRE MIM</p>
+            <h2>Aprendizado constante, projetos reais e atenção aos detalhes.</h2>
+            <p>Sou Caio Viana, estudante de Engenharia de Software na FIAP e desenvolvedor web. Transformo o que estudo em soluções práticas, criando sites responsivos e experiências digitais que ajudam pequenos negócios a apresentar serviços, receber pedidos e organizar atendimentos.</p>
+            <p>Já desenvolvi projetos completos para uma barbearia e uma pizzaria, trabalhando com HTML, CSS, JavaScript, React, TypeScript, Vite e Tailwind CSS. Também utilizo Python, Git, GitHub e automações de publicação no meu processo.</p>
+            <p>Fora do código, meus 11 anos no movimento escoteiro fortaleceram minha escuta, colaboração e capacidade de resolver imprevistos. Também participei do Rio Innovation Week, fui sorteado pela FIAP para participar da BSides e criar novos contatos, e tive um projeto reconhecido como destaque acadêmico na Global Solution.</p>
+            <div className="about-points"><span>Engenharia de Software · FIAP</span><span>React · TypeScript · Python</span><span>Projetos do planejamento à publicação</span></div>
+          </div>
+          <div className="about-card"><small>MEU COMPROMISSO</small><strong>Entender antes de desenvolver.</strong><p>Cada projeto começa pelo problema do negócio. A tecnologia entra como ferramenta para construir uma solução clara, útil e preparada para evoluir.</p><div><b>ALUNO FIAP</b><span>Destaque acadêmico<br/>na Global Solution</span></div></div>
+        </div>
       </section>
 
       <ContactBrief />
