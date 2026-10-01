@@ -1,3 +1,6 @@
+"use client";
+
+import { useId, useRef } from "react";
 import { hasInstagramUrl, INSTAGRAM_URL } from "../contact";
 
 type InstagramCtaProps = {
@@ -21,11 +24,44 @@ export default function InstagramCta({
   label = "Enviar mensagem",
   pendingLabel = "Instagram em breve",
 }: InstagramCtaProps) {
+  const dialogRef = useRef<HTMLDialogElement>(null);
+  const titleId = useId();
   const classes = `instagram-cta ${className}`.trim();
   const content = <><InstagramIcon /><span>{hasInstagramUrl ? label : pendingLabel}</span></>;
 
   if (hasInstagramUrl) {
-    return <a className={classes} href={INSTAGRAM_URL} target="_blank" rel="noreferrer">{content}</a>;
+    return (
+      <>
+        <button className={classes} type="button" onClick={() => dialogRef.current?.showModal()}>
+          {content}
+        </button>
+        <dialog
+          ref={dialogRef}
+          className="privacy-dialog"
+          aria-labelledby={titleId}
+          onClick={(event) => {
+            if (event.target === event.currentTarget) event.currentTarget.close();
+          }}
+        >
+          <div className="privacy-dialog-card">
+            <button className="privacy-dialog-close" type="button" aria-label="Fechar aviso" onClick={() => dialogRef.current?.close()}>×</button>
+            <p>ANTES DE CONTINUAR</p>
+            <h2 id={titleId}>Sua privacidade importa.</h2>
+            <span>
+              Os dados preenchidos ficam no seu navegador e servem apenas para montar o resumo da conversa. Este site não envia nem salva essas informações em um banco de dados.
+            </span>
+            <span>
+              Ao continuar, o Instagram será aberto em uma nova aba. A mensagem só será enviada quando você decidir enviá-la por lá, seguindo também as regras de privacidade da Meta.
+            </span>
+            <a className="privacy-dialog-policy" href="/privacidade">Ler a Política de Privacidade completa</a>
+            <div className="privacy-dialog-actions">
+              <button type="button" onClick={() => dialogRef.current?.close()}>Voltar</button>
+              <a href={INSTAGRAM_URL} target="_blank" rel="noreferrer" onClick={() => dialogRef.current?.close()}>Continuar para o Instagram</a>
+            </div>
+          </div>
+        </dialog>
+      </>
+    );
   }
 
   return (

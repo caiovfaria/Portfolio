@@ -43,7 +43,9 @@ test("renderiza o portfólio completo", async () => {
   assert.match(html, /Monte uma primeira versão do seu projeto/i);
   assert.match(html, /Fluxo de contato avançado/i);
   assert.match(html, /Enviar mensagem/i);
-  assert.match(html, /ig\.me\/m\/c\.vian_dev/i);
+  assert.match(html, /Sua privacidade importa/i);
+  assert.match(html, /Continuar para o Instagram/i);
+  assert.match(html, /Política de Privacidade completa/i);
   assert.match(html, /Copiar resumo do projeto/i);
   assert.doesNotMatch(html, /WhatsApp/i);
   assert.doesNotMatch(html, /wa\.me/i);
@@ -52,6 +54,19 @@ test("renderiza o portfólio completo", async () => {
   assert.match(html, /−10%/i);
   assert.match(html, /Sem uma solução própria/i);
   assert.match(html, /Conte sobre o seu negócio/i);
+});
+
+test("explica o uso dos dados na política de privacidade", async () => {
+  const response = await render("/privacidade");
+  assert.equal(response.status, 200);
+  const html = await response.text();
+
+  assert.match(html, /Política de Privacidade/i);
+  assert.match(html, /não envia nem armazena/i);
+  assert.match(html, /nome do visitante/i);
+  assert.match(html, /Instagram/i);
+  assert.match(html, /direitos sobre seus dados/i);
+  assert.match(html, /01 de outubro de 2026/i);
 });
 
 test("renderiza os estudos completos dos projetos", async () => {

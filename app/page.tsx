@@ -89,7 +89,7 @@ export default function Home() {
 
       <ContactBrief />
 
-      <footer><BrandLogo href="#inicio" /><p>Sites e sistemas para pequenos negócios.</p><div><a href="#projetos">Projetos</a><a href="#solucoes">Soluções</a><a href="#orcamento">Orçamento</a><a href="#sobre">Sobre</a></div><small>© 2026 C.Vian. Projeto de portfólio.</small></footer>
+      <footer><BrandLogo href="#inicio" /><p>Sites e sistemas para pequenos negócios.</p><div><a href="#projetos">Projetos</a><a href="#solucoes">Soluções</a><a href="#orcamento">Orçamento</a><a href="#sobre">Sobre</a><a href="/privacidade">Privacidade</a></div><small>© 2026 C.Vian. Projeto de portfólio.</small></footer>
     </main>
   );
 }

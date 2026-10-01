@@ -55,7 +55,7 @@ export default function ProjectDetail({ project }: { project: ProjectData }) {
         <div><p>TEM UMA IDEIA?</p><h2>Vamos transformar em uma solução profissional.</h2><a href="/#contato">Preparar minha ideia →</a></div>
       </section>
 
-      <footer className="detail-footer"><BrandLogo href="/" label="Voltar ao portfólio" /><span>Projeto demonstrativo · 2026</span><a href="/">Voltar ao portfólio ↑</a></footer>
+      <footer className="detail-footer"><BrandLogo href="/" label="Voltar ao portfólio" /><span>Projeto demonstrativo · 2026</span><nav aria-label="Links do rodapé"><a href="/privacidade">Privacidade</a><a href="/">Voltar ao portfólio ↑</a></nav></footer>
     </main>
   );
 }

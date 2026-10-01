@@ -13,6 +13,7 @@ import "./identity-nav.css";
 import "./featured-projects.css";
 import "./radius-system.css";
 import "./contact-channel.css";
+import "./privacy.css";
 const geist = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
 export async function generateMetadata(): Promise<Metadata> {
   const requestHeaders = await headers();
