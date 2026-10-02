@@ -52,6 +52,55 @@
   will-change: auto;
 }
 
+.glitch-title {
+  position: relative;
+  isolation: isolate;
+}
+
+.glitch-title::before,
+.glitch-title::after {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  color: inherit;
+  content: attr(data-glitch);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.reveal-ready .glitch-title.is-visible::before,
+.reveal-ready [data-reveal].is-visible .glitch-title::before {
+  color: var(--electric);
+  animation: title-glitch-top 720ms steps(2, end) 90ms both;
+}
+
+.reveal-ready .glitch-title.is-visible::after,
+.reveal-ready [data-reveal].is-visible .glitch-title::after {
+  color: var(--teal);
+  animation: title-glitch-bottom 720ms steps(2, end) 120ms both;
+}
+
+@keyframes title-glitch-top {
+  0%, 100% { opacity: 0; transform: translate(0); clip-path: inset(0 0 100%); }
+  12% { opacity: .82; transform: translate(-4px, 1px); clip-path: inset(8% 0 66%); }
+  24% { opacity: 0; transform: translate(0); clip-path: inset(52% 0 30%); }
+  38% { opacity: .66; transform: translate(3px, -1px); clip-path: inset(36% 0 44%); }
+  52% { opacity: 0; transform: translate(0); clip-path: inset(78% 0 8%); }
+  68% { opacity: .5; transform: translate(-2px); clip-path: inset(64% 0 19%); }
+  82% { opacity: 0; transform: translate(0); clip-path: inset(12% 0 76%); }
+}
+
+@keyframes title-glitch-bottom {
+  0%, 100% { opacity: 0; transform: translate(0); clip-path: inset(100% 0 0); }
+  16% { opacity: .68; transform: translate(4px, -1px); clip-path: inset(70% 0 12%); }
+  30% { opacity: 0; transform: translate(0); clip-path: inset(18% 0 63%); }
+  44% { opacity: .58; transform: translate(-3px, 1px); clip-path: inset(48% 0 31%); }
+  58% { opacity: 0; transform: translate(0); clip-path: inset(82% 0 5%); }
+  74% { opacity: .44; transform: translate(2px); clip-path: inset(24% 0 58%); }
+  88% { opacity: 0; transform: translate(0); clip-path: inset(60% 0 25%); }
+}
+
 @media (max-width: 600px) {
   .reveal-ready [data-reveal],
   .reveal-ready [data-reveal="left"],
@@ -79,5 +128,11 @@
     opacity: 1;
     transform: none;
     transition: none;
+  }
+
+  .glitch-title::before,
+  .glitch-title::after {
+    content: none;
+    animation: none;
   }
 }

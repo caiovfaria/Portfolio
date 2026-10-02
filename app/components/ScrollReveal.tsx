@@ -30,6 +30,17 @@ const revealBlocks = [
   ".detail-section-heading",
 ];
 
+const glitchHeadings = [
+  ".hero-copy h1",
+  ".section-heading h2",
+  ".comparison-heading h2",
+  ".about-copy h2",
+  ".brief-section h2",
+  ".detail-hero h1",
+  ".detail-section-heading h2",
+  ".detail-cta h2",
+];
+
 export default function ScrollReveal() {
   useLayoutEffect(() => {
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -58,6 +69,13 @@ export default function ScrollReveal() {
         element.dataset.reveal = variant;
         element.style.setProperty("--reveal-delay", `${Math.min(index * 90, 360)}ms`);
         elements.add(element);
+      });
+    });
+
+    glitchHeadings.forEach((selector) => {
+      document.querySelectorAll<HTMLElement>(selector).forEach((heading) => {
+        heading.classList.add("glitch-title");
+        heading.dataset.glitch = heading.textContent?.trim() ?? "";
       });
     });
 
