@@ -7,14 +7,14 @@ const projects = [
   {
     name: "Barbearia Norte",
     type: "Site + agendamento",
-    image: "/projects/barbearia-menu.png",
+    image: "/projects/barbearia-menu.webp",
     alt: "Tela inicial em modo escuro do site Barbearia Norte",
     href: "/projetos/barbearia",
   },
   {
     name: "Pizzaria Fornalha",
     type: "Cardápio + pedidos",
-    image: "/projects/pizzaria-menu.png",
+    image: "/projects/pizzaria-menu.webp",
     alt: "Tela do menu principal da Pizzaria Fornalha",
     href: "/projetos/pizzaria",
   },
@@ -26,8 +26,25 @@ export default function HeroShowcase() {
   useEffect(() => {
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (reducedMotion) return;
-    const timer = window.setInterval(() => setActive((current) => (current + 1) % projects.length), 5200);
-    return () => window.clearInterval(timer);
+
+    let timer: number | undefined;
+    const stop = () => {
+      if (timer) window.clearInterval(timer);
+      timer = undefined;
+    };
+    const start = () => {
+      stop();
+      if (document.visibilityState === "visible") {
+        timer = window.setInterval(() => setActive((current) => (current + 1) % projects.length), 5200);
+      }
+    };
+
+    start();
+    document.addEventListener("visibilitychange", start);
+    return () => {
+      stop();
+      document.removeEventListener("visibilitychange", start);
+    };
   }, []);
 
   const current = projects[active];

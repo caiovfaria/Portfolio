@@ -87,6 +87,12 @@ function prepareWaveText(element: HTMLElement) {
 
   element.dataset.waveReady = "true";
   element.classList.add("wave-text");
+
+  if (label.length > 160) {
+    element.classList.add("wave-block");
+    return;
+  }
+
   element.setAttribute("aria-label", label);
 
   const walker = document.createTreeWalker(element, NodeFilter.SHOW_TEXT);
@@ -98,8 +104,8 @@ function prepareWaveText(element: HTMLElement) {
     currentNode = walker.nextNode();
   }
 
-  let characterIndex = 0;
-  const delayStep = label.length > 180 ? 5 : label.length > 90 ? 8 : 14;
+  let wordIndex = 0;
+  const delayStep = label.length > 180 ? 18 : label.length > 90 ? 24 : 34;
 
   textNodes.forEach((textNode) => {
     const fragment = document.createDocumentFragment();
@@ -115,15 +121,9 @@ function prepareWaveText(element: HTMLElement) {
       const word = document.createElement("span");
       word.className = "wave-word";
       word.setAttribute("aria-hidden", "true");
-
-      Array.from(token).forEach((character) => {
-        const characterSpan = document.createElement("span");
-        characterSpan.className = "wave-char";
-        characterSpan.style.setProperty("--char-delay", `${Math.min(characterIndex * delayStep, 900)}ms`);
-        characterSpan.textContent = character;
-        word.append(characterSpan);
-        characterIndex += 1;
-      });
+      word.style.setProperty("--word-delay", `${Math.min(wordIndex * delayStep, 520)}ms`);
+      word.textContent = token;
+      wordIndex += 1;
 
       fragment.append(word);
     });
@@ -136,6 +136,7 @@ export default function ScrollReveal() {
   useLayoutEffect(() => {
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const elements = new Set<HTMLElement>();
+    const progressElement = document.querySelector<HTMLElement>("[data-scroll-reveal-controller]");
     let frame = 0;
 
     const updateScrollProgress = () => {
@@ -143,7 +144,7 @@ export default function ScrollReveal() {
       frame = requestAnimationFrame(() => {
         const distance = document.documentElement.scrollHeight - window.innerHeight;
         const progress = distance > 0 ? Math.min(Math.max(window.scrollY / distance, 0), 1) : 0;
-        document.documentElement.style.setProperty("--scroll-progress", progress.toFixed(4));
+        if (progressElement) progressElement.style.transform = `scaleX(${progress.toFixed(4)})`;
       });
     };
 
@@ -203,7 +204,6 @@ export default function ScrollReveal() {
       window.removeEventListener("scroll", updateScrollProgress);
       cancelAnimationFrame(frame);
       document.documentElement.classList.remove("reveal-ready");
-      document.documentElement.style.removeProperty("--scroll-progress");
     };
   }, []);
 

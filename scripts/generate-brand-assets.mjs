@@ -1,7 +1,7 @@
 import { writeFile } from "node:fs/promises";
 import sharp from "sharp";
 
-const source = "public/brand/cvf-logo.png";
+const source = "public/brand/cvf-logo.webp";
 const faviconSource = "public/favicon-cvf-v2.svg";
 
 async function png(size, output) {

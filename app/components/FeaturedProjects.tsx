@@ -5,7 +5,7 @@ const projects = [
     name: "Barbearia Norte",
     category: "Site institucional + agendamento",
     description: "Uma experiência imersiva para apresentar serviços, fortalecer a marca e transformar visitas em agendamentos rápidos.",
-    image: "/projects/barbearia-menu.png",
+    image: "/projects/barbearia-menu.webp",
     imageAlt: "Tela inicial em modo escuro do site Barbearia Norte",
     tags: ["Site institucional", "Agendamento", "Identidade premium"],
     caseUrl: "/projetos/barbearia",
@@ -16,7 +16,7 @@ const projects = [
     name: "Pizzaria Fornalha",
     category: "Cardápio e sistema de pedidos",
     description: "Um fluxo completo para encontrar sabores, personalizar produtos e concluir pedidos com clareza em qualquer tela.",
-    image: "/projects/pizzaria-menu.png",
+    image: "/projects/pizzaria-menu.webp",
     imageAlt: "Tela do menu principal da Pizzaria Fornalha",
     tags: ["React", "Cardápio online", "Sistema de pedidos"],
     caseUrl: "/projetos/pizzaria",
@@ -46,7 +46,6 @@ export default function FeaturedProjects() {
                       alt={project.imageAlt}
                       fill
                       sizes="(max-width: 900px) 100vw, 65vw"
-                      priority={index === 0}
                       unoptimized
                     />
                   </div>

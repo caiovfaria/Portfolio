@@ -35,7 +35,7 @@ test("renderiza o portfólio completo", async () => {
   assert.match(html, /Agenda aberta/i);
   assert.doesNotMatch(html, /5 vagas/i);
   assert.match(html, /Ver estudo completo/i);
-  assert.match(html, /pizzaria-menu\.png/i);
+  assert.match(html, /pizzaria-menu\.webp/i);
   assert.match(html, /Landing page/i);
   assert.match(html, /Site institucional/i);
   assert.match(html, /Sistema web/i);
@@ -75,7 +75,7 @@ test("explica o uso dos dados na política de privacidade", async () => {
 });
 
 test("renderiza os estudos completos dos projetos", async () => {
-  for (const [path, project, image] of [["/projetos/barbearia", "Barbearia Norte", "barbearia-menu.png"], ["/projetos/pizzaria", "Pizzaria Fornalha", "pizzaria-menu.png"]]) {
+  for (const [path, project, image] of [["/projetos/barbearia", "Barbearia Norte", "barbearia-menu.webp"], ["/projetos/pizzaria", "Pizzaria Fornalha", "pizzaria-menu.webp"]]) {
     const response = await render(path);
     assert.equal(response.status, 200);
     const html = await response.text();
