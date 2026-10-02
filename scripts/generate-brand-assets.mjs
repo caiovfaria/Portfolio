@@ -2,6 +2,7 @@ import { writeFile } from "node:fs/promises";
 import sharp from "sharp";
 
 const source = "public/brand/cvf-logo.png";
+const faviconSource = "public/favicon-cvf-v2.svg";
 
 async function png(size, output) {
   await sharp(source)
@@ -11,6 +12,8 @@ async function png(size, output) {
 }
 
 await Promise.all([
+  sharp(faviconSource).resize(16, 16).png({ compressionLevel: 9 }).toFile("public/favicon-cvf-v2-16.png"),
+  sharp(faviconSource).resize(32, 32).png({ compressionLevel: 9 }).toFile("public/favicon-cvf-v2-32.png"),
   png(16, "public/favicon-cvf-16.png"),
   png(32, "public/favicon-cvf-32.png"),
   png(64, "public/favicon-cvf-64.png"),
@@ -23,7 +26,7 @@ await Promise.all([
   png(180, "public/apple-touch-icon-cv.png"),
 ]);
 
-const faviconPng = await sharp(source)
+const faviconPng = await sharp(faviconSource)
   .resize(256, 256, { fit: "cover" })
   .png({ compressionLevel: 9 })
   .toBuffer();
@@ -43,6 +46,7 @@ icoHeader.writeUInt32LE(22, 18);
 const faviconIco = Buffer.concat([icoHeader, faviconPng]);
 
 await Promise.all([
+  writeFile("public/favicon-cvf-v2.ico", faviconIco),
   writeFile("public/favicon-cvf.ico", faviconIco),
   writeFile("public/favicon-cv.ico", faviconIco),
   writeFile("public/favicon.ico", faviconIco),

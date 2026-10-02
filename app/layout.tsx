@@ -28,12 +28,12 @@ export async function generateMetadata(): Promise<Metadata> {
     description,
     icons: {
       icon: [
-        { url: "/favicon-cvf.ico?v=1", sizes: "any" },
-        { url: "/favicon-cvf-32.png?v=1", sizes: "32x32", type: "image/png" },
-        { url: "/favicon-cvf-16.png?v=1", sizes: "16x16", type: "image/png" },
+        { url: "/favicon-cvf-v2.svg", type: "image/svg+xml" },
+        { url: "/favicon-cvf-v2-32.png", sizes: "32x32", type: "image/png" },
+        { url: "/favicon-cvf-v2-16.png", sizes: "16x16", type: "image/png" },
       ],
-      shortcut: "/favicon-cvf.ico?v=1",
-      apple: "/apple-touch-icon-cvf.png?v=1",
+      shortcut: "/favicon-cvf-v2.ico",
+      apple: "/apple-touch-icon-cvf.png?v=2",
     },
     openGraph: { title, description, type: "website", url: base, images: [{ url: new URL("/og.png", base).toString(), width: 1200, height: 630, alt: "Portfólio de desenvolvimento web" }] },
     twitter: { card: "summary_large_image", title, description, images: [new URL("/og.png", base).toString()] },
