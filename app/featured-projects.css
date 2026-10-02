@@ -977,3 +977,81 @@
     transition: none;
   }
 }
+
+/* Tipografia acessível nos cards compactos. */
+.projects-sequence .carousel-topline > span {
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+.projects-sequence .carousel-topline p {
+  font-size: 13px;
+}
+
+.projects-sequence .carousel-topline p b {
+  font-size: 24px;
+}
+
+.projects-sequence .featured-browser-bar span {
+  font-size: 9px;
+}
+
+.projects-sequence .featured-status {
+  gap: 9px;
+  padding: 11px 14px;
+  font-size: 12px;
+  line-height: 1.35;
+}
+
+.projects-sequence .featured-status i {
+  width: 8px;
+  height: 8px;
+  flex: 0 0 8px;
+}
+
+.projects-sequence .featured-category {
+  margin-bottom: 16px;
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.projects-sequence .featured-description {
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+.projects-sequence .featured-content li {
+  padding: 9px 11px;
+  font-size: 12px;
+  line-height: 1.35;
+}
+
+.projects-sequence .featured-actions a {
+  min-height: 54px;
+  padding-inline: 18px;
+  font-size: 14px;
+  line-height: 1.35;
+}
+
+@media (max-width: 600px) {
+  .projects-sequence .carousel-topline > span,
+  .projects-sequence .featured-status {
+    font-size: 11px;
+  }
+
+  .projects-sequence .featured-category {
+    font-size: 12px;
+  }
+
+  .projects-sequence .featured-description {
+    font-size: 16px;
+  }
+
+  .projects-sequence .featured-content li {
+    font-size: 11px;
+  }
+
+  .projects-sequence .featured-actions a {
+    font-size: 14px;
+  }
+}
