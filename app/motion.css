@@ -72,13 +72,13 @@
 .reveal-ready .glitch-title.is-visible::before,
 .reveal-ready [data-reveal].is-visible .glitch-title::before {
   color: var(--electric);
-  animation: title-glitch-top 720ms steps(2, end) 90ms both;
+  animation: title-glitch-top 1300ms steps(2, end) 120ms both;
 }
 
 .reveal-ready .glitch-title.is-visible::after,
 .reveal-ready [data-reveal].is-visible .glitch-title::after {
   color: var(--teal);
-  animation: title-glitch-bottom 720ms steps(2, end) 120ms both;
+  animation: title-glitch-bottom 1300ms steps(2, end) 180ms both;
 }
 
 @keyframes title-glitch-top {
@@ -99,6 +99,44 @@
   58% { opacity: 0; transform: translate(0); clip-path: inset(82% 0 5%); }
   74% { opacity: .44; transform: translate(2px); clip-path: inset(24% 0 58%); }
   88% { opacity: 0; transform: translate(0); clip-path: inset(60% 0 25%); }
+}
+
+.wave-word {
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.wave-char {
+  display: inline-block;
+}
+
+.reveal-ready .wave-char {
+  opacity: 0;
+  transform: translate3d(0, -.9em, 0) rotate(-4deg);
+  will-change: opacity, transform;
+}
+
+.reveal-ready .wave-text.is-visible .wave-char,
+.reveal-ready [data-reveal].is-visible .wave-text .wave-char {
+  animation: letter-wave-in 680ms cubic-bezier(.16, 1, .3, 1) var(--char-delay) both;
+}
+
+@keyframes letter-wave-in {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, -.9em, 0) rotate(-4deg);
+  }
+  56% {
+    opacity: 1;
+    transform: translate3d(0, .12em, 0) rotate(1deg);
+  }
+  76% {
+    transform: translate3d(0, -.04em, 0) rotate(0);
+  }
+  100% {
+    opacity: 1;
+    transform: none;
+  }
 }
 
 @media (max-width: 600px) {
@@ -133,6 +171,13 @@
   .glitch-title::before,
   .glitch-title::after {
     content: none;
+    animation: none;
+  }
+
+  .wave-char,
+  .reveal-ready .wave-char {
+    opacity: 1;
+    transform: none;
     animation: none;
   }
 }

@@ -34,12 +34,103 @@ const glitchHeadings = [
   ".hero-copy h1",
   ".section-heading h2",
   ".comparison-heading h2",
+  ".featured-content h3",
+  ".project-invitation h3",
+  ".capability-grid h3",
+  ".service-grid h3",
+  ".process-grid h3",
   ".about-copy h2",
   ".brief-section h2",
   ".detail-hero h1",
+  ".detail-story h2",
   ".detail-section-heading h2",
   ".detail-cta h2",
 ];
+
+const waveTextBlocks = [
+  ".hero-copy .eyebrow",
+  ".hero-copy .lead",
+  ".feature-strip strong",
+  ".feature-strip p",
+  ".section-heading > p",
+  ".section-heading > span",
+  ".featured-category",
+  ".featured-description",
+  ".project-invitation .concept-kicker",
+  ".project-invitation .concept-copy > span",
+  ".capability-grid article > p",
+  ".service-grid article > p",
+  ".comparison-heading > p",
+  ".comparison-column li",
+  ".process-grid article > p",
+  ".about-copy > p",
+  ".about-card > small",
+  ".about-card > strong",
+  ".about-card > p",
+  ".brief-copy > p",
+  ".brief-copy > span",
+  ".detail-hero-copy > p",
+  ".detail-hero-copy > span",
+  ".detail-story > div > p",
+  ".detail-story > div > span",
+  ".detail-section-heading > p",
+  ".detail-section-heading > span",
+  ".detail-feature-grid strong",
+  ".detail-process article > span",
+];
+
+function prepareWaveText(element: HTMLElement) {
+  if (element.dataset.waveReady === "true") return;
+
+  const label = element.textContent?.replace(/\s+/g, " ").trim();
+  if (!label) return;
+
+  element.dataset.waveReady = "true";
+  element.classList.add("wave-text");
+  element.setAttribute("aria-label", label);
+
+  const walker = document.createTreeWalker(element, NodeFilter.SHOW_TEXT);
+  const textNodes: Text[] = [];
+  let currentNode = walker.nextNode();
+
+  while (currentNode) {
+    textNodes.push(currentNode as Text);
+    currentNode = walker.nextNode();
+  }
+
+  let characterIndex = 0;
+  const delayStep = label.length > 180 ? 5 : label.length > 90 ? 8 : 14;
+
+  textNodes.forEach((textNode) => {
+    const fragment = document.createDocumentFragment();
+
+    (textNode.textContent ?? "").split(/(\s+)/).forEach((token) => {
+      if (!token) return;
+
+      if (/^\s+$/.test(token)) {
+        fragment.append(document.createTextNode(token));
+        return;
+      }
+
+      const word = document.createElement("span");
+      word.className = "wave-word";
+      word.setAttribute("aria-hidden", "true");
+
+      Array.from(token).forEach((character) => {
+        const characterSpan = document.createElement("span");
+        characterSpan.className = "wave-char";
+        characterSpan.style.setProperty("--char-delay", `${Math.min(characterIndex * delayStep, 900)}ms`);
+        characterSpan.textContent = character;
+        word.append(characterSpan);
+        characterIndex += 1;
+      });
+
+      fragment.append(word);
+    });
+
+    textNode.parentNode?.replaceChild(fragment, textNode);
+  });
+}
 
 export default function ScrollReveal() {
   useLayoutEffect(() => {
@@ -77,6 +168,10 @@ export default function ScrollReveal() {
         heading.classList.add("glitch-title");
         heading.dataset.glitch = heading.textContent?.trim() ?? "";
       });
+    });
+
+    waveTextBlocks.forEach((selector) => {
+      document.querySelectorAll<HTMLElement>(selector).forEach(prepareWaveText);
     });
 
     updateScrollProgress();
