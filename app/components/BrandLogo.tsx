@@ -6,12 +6,12 @@ type BrandLogoProps = {
   className?: string;
 };
 
-export default function BrandLogo({ href, label = "C.Vian — início", className = "" }: BrandLogoProps) {
+export default function BrandLogo({ href, label = "CVF — início", className = "" }: BrandLogoProps) {
   return (
     <a className={`brand brand-logo ${className}`.trim()} href={href} aria-label={label}>
       <Image
         className="brand-mark"
-        src="/brand/cv-logo.png"
+        src="/brand/cvf-logo.png"
         alt=""
         width={48}
         height={48}
@@ -20,7 +20,7 @@ export default function BrandLogo({ href, label = "C.Vian — início", classNam
         aria-hidden="true"
       />
       <span className="brand-wordmark">
-        <strong>C.Vian</strong>
+        <strong>CVF</strong>
         <small>WEB / SYSTEMS</small>
       </span>
     </a>

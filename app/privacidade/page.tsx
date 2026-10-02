@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import BrandLogo from "../components/BrandLogo";
 
 export const metadata: Metadata = {
-  title: "Política de Privacidade | C.Vian",
-  description: "Saiba como as informações são tratadas ao entrar em contato pelo portfólio C.Vian.",
+  title: "Política de Privacidade | CVF",
+  description: "Saiba como as informações são tratadas ao entrar em contato pelo portfólio CVF.",
 };
 
 export default function PrivacyPage() {
@@ -32,7 +32,7 @@ export default function PrivacyPage() {
         <article>
           <section>
             <span>01</span>
-            <div><h2>Quem é responsável</h2><p>Este portfólio é administrado por Caio Viana de Faria, sob a marca C.Vian, responsável pelas decisões relacionadas ao uso das informações recebidas diretamente durante o atendimento.</p></div>
+            <div><h2>Quem é responsável</h2><p>Este portfólio é administrado por Caio Viana de Faria, sob a marca CVF, responsável pelas decisões relacionadas ao uso das informações recebidas diretamente durante o atendimento.</p></div>
           </section>
 
           <section>

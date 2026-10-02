@@ -67,7 +67,7 @@ export async function projectMetadata(project: ProjectData): Promise<Metadata> {
   const host = requestHeaders.get("host") ?? "localhost:3000";
   const protocol = host.includes("localhost") ? "http" : "https";
   const base = new URL(`${protocol}://${host}`);
-  const title = `${project.name} | Projeto C.Vian`;
+  const title = `${project.name} | Projeto CVF`;
   return {
     title,
     description: project.description,

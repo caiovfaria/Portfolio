@@ -20,7 +20,7 @@ export async function generateMetadata(): Promise<Metadata> {
   const host = requestHeaders.get("host") ?? "localhost:3000";
   const protocol = host.includes("localhost") ? "http" : "https";
   const base = new URL(`${protocol}://${host}`);
-  const title = "C.Vian | Sites e sistemas para pequenos negócios";
+  const title = "CVF | Sites e sistemas para pequenos negócios";
   const description = "Desenvolvimento de sites rápidos, responsivos e pensados para gerar contatos para pequenos negócios.";
   return {
     metadataBase: base,
@@ -28,12 +28,12 @@ export async function generateMetadata(): Promise<Metadata> {
     description,
     icons: {
       icon: [
-        { url: "/favicon-cv.ico?v=3", sizes: "any" },
-        { url: "/favicon-cv-32.png?v=3", sizes: "32x32", type: "image/png" },
-        { url: "/favicon-cv-16.png?v=3", sizes: "16x16", type: "image/png" },
+        { url: "/favicon-cvf.ico?v=1", sizes: "any" },
+        { url: "/favicon-cvf-32.png?v=1", sizes: "32x32", type: "image/png" },
+        { url: "/favicon-cvf-16.png?v=1", sizes: "16x16", type: "image/png" },
       ],
-      shortcut: "/favicon-cv.ico?v=3",
-      apple: "/apple-touch-icon-cv.png?v=3",
+      shortcut: "/favicon-cvf.ico?v=1",
+      apple: "/apple-touch-icon-cvf.png?v=1",
     },
     openGraph: { title, description, type: "website", url: base, images: [{ url: new URL("/og.png", base).toString(), width: 1200, height: 630, alt: "Portfólio de desenvolvimento web" }] },
     twitter: { card: "summary_large_image", title, description, images: [new URL("/og.png", base).toString()] },

@@ -81,7 +81,7 @@ test("renderiza os estudos completos dos projetos", async () => {
     assert.match(html, /Quero algo semelhante/i);
     assert.doesNotMatch(html, /WhatsApp/i);
     assert.doesNotMatch(html, /wa\.me/i);
-    assert.match(html, new RegExp(`<title>${project} \\| Projeto C\\.Vian</title>`, "i"));
+    assert.match(html, new RegExp(`<title>${project} \\| Projeto CVF</title>`, "i"));
     assert.match(html, new RegExp(image.replace(".", "\\."), "i"));
   }
 });

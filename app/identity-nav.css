@@ -264,3 +264,8 @@ footer > .brand-logo {
     transition-duration: .01ms;
   }
 }
+
+/* Keep the background signature aligned with the CVF monogram. */
+.capabilities-section::before {
+  content: "CVF";
+}

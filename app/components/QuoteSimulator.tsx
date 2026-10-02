@@ -64,7 +64,7 @@ export default function QuoteSimulator() {
         <p className="section-kicker">ESTIMATIVA INTERATIVA</p>
         <h2>Monte uma primeira versão do seu projeto.</h2>
         <p>Escolha o tipo de solução e as funções mais importantes. O contato básico já está incluído; o fluxo avançado organiza mensagens e etapas personalizadas. A faixa fica exata depois de uma conversa rápida.</p>
-        <div className="quote-seal" aria-hidden="true"><b>C.V</b><span>PROJETO SOB MEDIDA</span></div>
+        <div className="quote-seal" aria-hidden="true"><b>CVF</b><span>PROJETO SOB MEDIDA</span></div>
       </div>
 
       <div className="quote-builder">

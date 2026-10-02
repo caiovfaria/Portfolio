@@ -8,7 +8,7 @@ import SiteHeader from "./components/SiteHeader";
 export default function Home() {
   return (
     <main>
-      <div className="identity-rail" aria-hidden="true">C.V — DIGITAL / 2026</div>
+      <div className="identity-rail" aria-hidden="true">CVF — DIGITAL / 2026</div>
       <SiteHeader />
       <section className="hero" id="inicio">
         <div className="hero-copy">
@@ -22,7 +22,7 @@ export default function Home() {
           <div className="hero-trust" aria-label="Diferenciais">
             <span>✓ Entrega organizada</span><span>✓ Contato simplificado</span><span>✓ Foco em resultados</span>
           </div>
-          <div className="hero-signature" aria-hidden="true"><b>C.V</b><span>CLAREZA<br/>PERFORMANCE<br/>CONVERSÃO</span></div>
+          <div className="hero-signature" aria-hidden="true"><b>CVF</b><span>CLAREZA<br/>PERFORMANCE<br/>CONVERSÃO</span></div>
         </div>
         <HeroShowcase />
       </section>
@@ -70,7 +70,7 @@ export default function Home() {
         <div className="comparison-heading"><p>ANTES / DEPOIS</p><h2>Uma presença digital muda a forma como o negócio é percebido.</h2></div>
         <div className="comparison-board">
           <div className="comparison-column before"><header><span>—</span><strong>Sem uma solução própria</strong></header><ul><li>Atendimento espalhado e repetitivo</li><li>Informações difíceis de encontrar</li><li>Dependência total das redes sociais</li><li>Clientes desistem no caminho</li><li>Processos feitos manualmente</li></ul></div>
-          <div className="comparison-switch" aria-hidden="true"><b>C.V</b><span>TRANSFORMA</span></div>
+          <div className="comparison-switch" aria-hidden="true"><b>CVF</b><span>TRANSFORMA</span></div>
           <div className="comparison-column after"><header><span>+</span><strong>Com uma solução bem construída</strong></header><ul><li>Solicitações organizadas</li><li>Serviços e preços apresentados com clareza</li><li>Presença digital própria e profissional</li><li>Caminho rápido até o contato ou pedido</li><li>Rotinas simplificadas e automatizadas</li></ul></div>
         </div>
       </section>
@@ -102,7 +102,7 @@ export default function Home() {
 
       <ContactBrief />
 
-      <footer><BrandLogo href="#inicio" /><p>Sites e sistemas para pequenos negócios.</p><div><a href="#projetos">Projetos</a><a href="#solucoes">Soluções</a><a href="#orcamento">Orçamento</a><a href="#sobre">Sobre</a><a href="/privacidade">Privacidade</a></div><small>© 2026 C.Vian. Projeto de portfólio.</small></footer>
+      <footer><BrandLogo href="#inicio" /><p>Sites e sistemas para pequenos negócios.</p><div><a href="#projetos">Projetos</a><a href="#solucoes">Soluções</a><a href="#orcamento">Orçamento</a><a href="#sobre">Sobre</a><a href="/privacidade">Privacidade</a></div><small>© 2026 CVF. Projeto de portfólio.</small></footer>
     </main>
   );
 }
