@@ -648,3 +648,174 @@
     transition: none;
   }
 }
+
+/* Convite final: destaca o visitante como o próximo projeto, sem numeração. */
+.project-invitation {
+  position: relative;
+  isolation: isolate;
+  grid-template-columns: minmax(0, 1fr) auto;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 88% 50%, #c6ff4a2c 0 12%, transparent 33%),
+    linear-gradient(118deg, #263eea 0%, #3d55ff 52%, #2339d7 100%);
+  box-shadow: 0 24px 65px #243dd134;
+  transition: transform .35s ease, box-shadow .35s ease;
+}
+
+.project-invitation::before,
+.project-invitation::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  border-radius: 50%;
+  pointer-events: none;
+  transition: transform .55s cubic-bezier(.2, .8, .2, 1), opacity .35s ease;
+}
+
+.project-invitation::before {
+  width: 240px;
+  height: 240px;
+  right: -76px;
+  top: -92px;
+  border: 1px solid #c6ff4a78;
+  opacity: .7;
+}
+
+.project-invitation::after {
+  width: 110px;
+  height: 110px;
+  right: 155px;
+  bottom: -68px;
+  background: #c6ff4a1f;
+}
+
+.project-invitation:hover,
+.project-invitation:focus-within {
+  transform: translateY(-7px);
+  box-shadow: 0 32px 80px #243dd154;
+}
+
+.project-invitation:hover::before,
+.project-invitation:focus-within::before {
+  transform: scale(1.22) translate(-10px, 8px);
+}
+
+.project-invitation:hover::after,
+.project-invitation:focus-within::after {
+  transform: scale(1.45) translate(-12px, -8px);
+}
+
+.project-invitation .concept-copy {
+  max-width: 760px;
+}
+
+.project-invitation .concept-kicker {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #d9ff82;
+  font-size: 11px;
+  letter-spacing: 1.8px;
+}
+
+.project-invitation .concept-kicker i {
+  width: 9px;
+  height: 9px;
+  flex: 0 0 9px;
+  border-radius: 50%;
+  background: var(--teal);
+  box-shadow: 0 0 0 6px #c6ff4a20, 0 0 24px #c6ff4a99;
+  animation: invitationPulse 2.2s ease-in-out infinite;
+}
+
+.project-invitation h3 {
+  max-width: 760px;
+  margin-top: 14px;
+  color: #fff;
+  font-size: clamp(32px, 4.4vw, 58px);
+  line-height: .98;
+  letter-spacing: -3.3px;
+}
+
+.project-invitation h3 strong {
+  color: var(--teal);
+  font-weight: 900;
+  white-space: nowrap;
+}
+
+.project-invitation .concept-copy > span {
+  display: block;
+  max-width: 610px;
+  margin-top: 18px;
+  color: #d7ddff;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.project-invitation .text-link {
+  position: relative;
+  z-index: 1;
+  min-width: 220px;
+  padding: 17px 20px;
+  border: 1px solid #ffffff55;
+  background: #fff;
+  color: #111413;
+  text-align: center;
+  transition: transform .25s ease, background .25s ease, color .25s ease, box-shadow .25s ease;
+}
+
+.project-invitation .text-link:hover,
+.project-invitation .text-link:focus-visible {
+  background: var(--teal);
+  color: #111413;
+  transform: translateY(-4px);
+  box-shadow: 0 14px 30px #101b7555;
+}
+
+@keyframes invitationPulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(.72); opacity: .65; }
+}
+
+@media (max-width: 900px) {
+  .project-invitation {
+    grid-template-columns: 1fr;
+  }
+
+  .project-invitation .text-link {
+    justify-self: start;
+    margin-top: 24px;
+  }
+}
+
+@media (max-width: 600px) {
+  .project-invitation {
+    display: grid;
+    padding: 34px 26px;
+  }
+
+  .project-invitation h3 {
+    font-size: 36px;
+    letter-spacing: -2.2px;
+  }
+
+  .project-invitation .concept-copy > span {
+    font-size: 14px;
+  }
+
+  .project-invitation .text-link {
+    width: 100%;
+    min-width: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .project-invitation,
+  .project-invitation::before,
+  .project-invitation::after,
+  .project-invitation .text-link,
+  .project-invitation .concept-kicker i {
+    animation: none;
+    transition: none;
+  }
+}

@@ -73,9 +73,12 @@ export default function FeaturedProjects() {
       </div>
 
       <article className="project-concept project-invitation">
-        <div className="concept-number">03</div>
-        <div className="concept-copy"><p>SEU PROJETO</p><h3>Seu negócio pode ocupar o próximo espaço deste portfólio.</h3></div>
-        <a className="text-link" href="#contato">Quero construir meu projeto →</a>
+        <div className="concept-copy">
+          <p className="concept-kicker"><i aria-hidden="true" /> ESPAÇO RESERVADO PARA A SUA IDEIA</p>
+          <h3>O próximo projeto de destaque pode ser <strong>o seu.</strong></h3>
+          <span>Vamos transformar sua ideia em uma solução digital clara, marcante e pronta para gerar resultados.</span>
+        </div>
+        <a className="text-link" href="#contato">Quero criar meu projeto</a>
       </article>
     </div>
   );

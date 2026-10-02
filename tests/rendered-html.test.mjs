@@ -41,7 +41,9 @@ test("renderiza o portfólio completo", async () => {
   assert.match(html, /Sistema web/i);
   assert.match(html, /projects-sequence/i);
   assert.doesNotMatch(html, /Mostrar próximo projeto/i);
-  assert.match(html, /Seu negócio pode ocupar o próximo espaço deste portfólio/i);
+  assert.match(html, /O próximo projeto de destaque pode ser/i);
+  assert.match(html, /Espaço reservado para a sua ideia/i);
+  assert.doesNotMatch(html, /class="concept-number">03/i);
   assert.match(html, /O que eu consigo criar para o seu negócio/i);
   assert.match(html, /Monte uma primeira versão do seu projeto/i);
   assert.match(html, /Fluxo de contato avançado/i);
