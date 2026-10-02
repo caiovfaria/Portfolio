@@ -30,22 +30,6 @@ const revealBlocks = [
   ".detail-section-heading",
 ];
 
-const glitchHeadings = [
-  ".hero-copy h1",
-  ".section-heading h2",
-  ".comparison-heading h2",
-  ".featured-content h3",
-  ".project-invitation h3",
-  ".service-grid h3",
-  ".process-grid h3",
-  ".about-copy h2",
-  ".brief-section h2",
-  ".detail-hero h1",
-  ".detail-story h2",
-  ".detail-section-heading h2",
-  ".detail-cta h2",
-];
-
 const waveTextBlocks = [
   ".hero-copy .eyebrow",
   ".hero-copy .lead",
@@ -159,13 +143,6 @@ export default function ScrollReveal() {
         element.dataset.reveal = variant;
         element.style.setProperty("--reveal-delay", `${Math.min(index * 90, 360)}ms`);
         elements.add(element);
-      });
-    });
-
-    glitchHeadings.forEach((selector) => {
-      document.querySelectorAll<HTMLElement>(selector).forEach((heading) => {
-        heading.classList.add("glitch-title");
-        heading.dataset.glitch = heading.textContent?.trim() ?? "";
       });
     });
 
