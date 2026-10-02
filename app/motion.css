@@ -37,9 +37,32 @@
   transform: translate3d(0, 18px, 0) scale(.982);
 }
 
+.reveal-ready [data-reveal="cascade"] {
+  opacity: 0;
+  transform: translate3d(0, 18px, 0) scale(.992);
+  transition:
+    opacity 520ms ease-out var(--reveal-delay),
+    transform 620ms cubic-bezier(.22, 1, .36, 1) var(--reveal-delay);
+}
+
 .reveal-ready [data-reveal].is-visible {
   opacity: 1;
   transform: none;
+}
+
+.reveal-ready [data-reveal="cascade"] > div > b,
+.reveal-ready [data-reveal="cascade"] h3 {
+  transform: translate3d(0, 8px, 0);
+  opacity: 0;
+  transition:
+    opacity 420ms ease-out calc(var(--reveal-delay) + 90ms),
+    transform 520ms cubic-bezier(.22, 1, .36, 1) calc(var(--reveal-delay) + 90ms);
+}
+
+.reveal-ready [data-reveal="cascade"].is-visible > div > b,
+.reveal-ready [data-reveal="cascade"].is-visible h3 {
+  transform: none;
+  opacity: 1;
 }
 
 .glitch-title {
@@ -181,6 +204,10 @@
     transform: translate3d(0, 18px, 0);
   }
 
+  .reveal-ready [data-reveal="cascade"] {
+    transform: translate3d(0, 14px, 0);
+  }
+
   .reveal-ready [data-reveal="zoom"] {
     transform: translate3d(0, 14px, 0) scale(.99);
   }
@@ -222,5 +249,12 @@
     opacity: 1;
     transform: none;
     animation: none;
+  }
+
+  .reveal-ready [data-reveal="cascade"] > div > b,
+  .reveal-ready [data-reveal="cascade"] h3 {
+    opacity: 1;
+    transform: none;
+    transition: none;
   }
 }
