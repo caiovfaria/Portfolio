@@ -21,7 +21,7 @@ export default function BrandLogo({ href, label = "CVF — início", className =
       />
       <span className="brand-wordmark">
         <strong>CVF</strong>
-        <small>WEB / SYSTEMS</small>
+        <small>SOLUÇÕES DIGITAIS</small>
       </span>
     </a>
   );

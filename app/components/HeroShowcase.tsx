@@ -35,7 +35,7 @@ export default function HeroShowcase() {
   return (
     <div className="hero-visual hero-showcase" aria-label="Demonstração dos projetos em computador e celular">
       <div className="browser-card showcase-browser">
-        <div className="browser-bar"><i></i><i></i><i></i><span>c.vian / projeto em destaque</span></div>
+        <div className="browser-bar"><i></i><i></i><i></i><span>cvf / projeto em destaque</span></div>
         <a className="showcase-screen" href={current.href} aria-label={`Conhecer o projeto ${current.name}`}>
           {projects.map((project, index) => (
             <Image key={project.name} className={index === active ? "active" : ""} src={project.image} alt={project.alt} fill sizes="(max-width: 900px) 100vw, 50vw" priority={index === 0} unoptimized />

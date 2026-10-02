@@ -269,3 +269,12 @@ footer > .brand-logo {
 .capabilities-section::before {
   content: "CVF";
 }
+
+.feature-strip article {
+  min-height: 142px;
+  align-items: flex-start;
+}
+
+.feature-strip p {
+  line-height: 1.5;
+}

@@ -28,17 +28,20 @@ test("renderiza o portfólio completo", async () => {
   assert.match(response.headers.get("content-type") ?? "", /^text\/html\b/i);
 
   const html = await response.text();
-  assert.match(html, /Sites e sistemas que transformam visitas em clientes/i);
+  assert.match(html, /Soluções digitais que transformam visitas em clientes/i);
   assert.match(html, /Projetos em destaque/i);
   assert.match(html, /Barbearia Norte/i);
   assert.match(html, /Pizzaria Fornalha/i);
   assert.match(html, /Agenda aberta/i);
+  assert.doesNotMatch(html, /5 vagas/i);
   assert.match(html, /Ver estudo completo/i);
   assert.match(html, /pizzaria-menu\.png/i);
   assert.match(html, /Landing page/i);
   assert.match(html, /Site institucional/i);
   assert.match(html, /Sistema web/i);
-  assert.match(html, /Mostrar próximo projeto/i);
+  assert.match(html, /projects-sequence/i);
+  assert.doesNotMatch(html, /Mostrar próximo projeto/i);
+  assert.match(html, /Seu negócio pode ocupar o próximo espaço deste portfólio/i);
   assert.match(html, /O que eu consigo criar para o seu negócio/i);
   assert.match(html, /Monte uma primeira versão do seu projeto/i);
   assert.match(html, /Fluxo de contato avançado/i);

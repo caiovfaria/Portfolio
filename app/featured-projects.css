@@ -1,6 +1,15 @@
-/* Stage 4: authored featured-project carousel. */
+/* Stage 4: authored featured-project sequence. */
 .projects-showcase {
   min-width: 0;
+}
+
+.projects-sequence {
+  display: grid;
+  gap: 88px;
+}
+
+.featured-project-card:nth-child(even) {
+  box-shadow: 18px 20px 0 var(--teal);
 }
 
 .featured-carousel {
@@ -491,9 +500,17 @@
 }
 
 @media (max-width: 600px) {
+  .projects-sequence {
+    gap: 52px;
+  }
+
   .featured-carousel {
     padding: 14px;
     box-shadow: 8px 10px 0 var(--electric);
+  }
+
+  .featured-project-card:nth-child(even) {
+    box-shadow: 8px 10px 0 var(--teal);
   }
 
   .carousel-topline {

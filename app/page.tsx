@@ -12,9 +12,9 @@ export default function Home() {
       <SiteHeader />
       <section className="hero" id="inicio">
         <div className="hero-copy">
-          <span className="availability-pill hero-availability"><i></i> Agenda aberta · 5 vagas para novos projetos</span>
-          <p className="eyebrow">Desenvolvimento web para pequenos negócios</p>
-          <h1>Sites e sistemas que transformam visitas em clientes.</h1>
+          <span className="availability-pill hero-availability"><i></i> Agenda aberta para novos projetos</span>
+          <p className="eyebrow">Soluções digitais para pequenos negócios</p>
+          <h1>Soluções digitais que transformam visitas em clientes.</h1>
           <p className="lead">Soluções rápidas, responsivas e pensadas para apresentar seu negócio, facilitar contatos, pedidos e agendamentos.</p>
           <div className="hero-actions">
             <a className="button button-dark" href="#projetos">Ver projetos</a>
@@ -28,14 +28,14 @@ export default function Home() {
       </section>
 
       <section className="feature-strip" aria-label="Vantagens">
-        <article><span>01</span><div><strong>Agilidade</strong><p>Prazos claros e contato próximo.</p></div></article>
-        <article><span>02</span><div><strong>Contato inteligente</strong><p>Um caminho simples até você.</p></div></article>
-        <article><span>03</span><div><strong>Seguro e confiável</strong><p>Boas práticas em cada entrega.</p></div></article>
-        <article><span>04</span><div><strong>Foco em conversão</strong><p>Design pensado para gerar contatos.</p></div></article>
+        <article><span>01</span><div><strong>Agilidade</strong><p>Prioridades claras e entregas por etapas, sem perder qualidade.</p></div></article>
+        <article><span>02</span><div><strong>Contato inteligente</strong><p>Menos atrito entre o interesse do visitante e a conversa certa.</p></div></article>
+        <article><span>03</span><div><strong>Seguro e confiável</strong><p>Boas práticas, testes e cuidado com dados em cada entrega.</p></div></article>
+        <article><span>04</span><div><strong>Foco em conversão</strong><p>Cada seção orienta o visitante a pedir, agendar ou entrar em contato.</p></div></article>
       </section>
 
       <section className="section projects-section" id="projetos">
-        <div className="section-heading"><p>PORTFÓLIO</p><h2>Projetos em destaque</h2><span>Soluções demonstrativas criadas para problemas reais de pequenos negócios.</span></div>
+        <div className="section-heading"><p>PORTFÓLIO</p><h2>Projetos em destaque</h2><span>Soluções criadas para problemas reais de pequenos negócios.</span></div>
         <FeaturedProjects />
       </section>
 
@@ -102,7 +102,7 @@ export default function Home() {
 
       <ContactBrief />
 
-      <footer><BrandLogo href="#inicio" /><p>Sites e sistemas para pequenos negócios.</p><div><a href="#projetos">Projetos</a><a href="#solucoes">Soluções</a><a href="#orcamento">Orçamento</a><a href="#sobre">Sobre</a><a href="/privacidade">Privacidade</a></div><small>© 2026 CVF. Projeto de portfólio.</small></footer>
+      <footer><BrandLogo href="#inicio" /><p>Soluções digitais para pequenos negócios.</p><div><a href="#projetos">Projetos</a><a href="#solucoes">Soluções</a><a href="#orcamento">Orçamento</a><a href="#sobre">Sobre</a><a href="/privacidade">Privacidade</a></div><small>© 2026 CVF. Projeto de portfólio.</small></footer>
     </main>
   );
 }
