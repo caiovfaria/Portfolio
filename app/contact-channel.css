@@ -128,21 +128,26 @@
   line-height: 1.65;
 }
 
-.privacy-dialog-close {
+.privacy-dialog-card > .privacy-dialog-close {
   position: absolute;
-  top: 20px;
-  right: 20px;
+  top: 14px;
+  right: 14px;
+  z-index: 2;
   display: grid;
   place-items: center;
-  width: 42px;
-  height: 42px;
+  width: 30px;
+  min-width: 30px;
+  height: 30px;
+  min-height: 30px;
+  margin: 0;
   padding: 0;
   border: 1px solid #cbd0c9;
   border-radius: 50%;
-  background: transparent;
+  background: #f7f8f3;
   color: #111413;
-  font-size: 25px;
-  line-height: 1;
+  box-shadow: none;
+  font: 700 20px/1 Arial, sans-serif;
+  transform: none;
   cursor: pointer;
 }
 
