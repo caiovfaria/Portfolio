@@ -91,6 +91,15 @@ test("renderiza a página completa sobre Caio", async () => {
   assert.match(html, /Inglês em formação/i);
 });
 
+test("mantém o menu no resumo e liga Saber mais à página completa", async () => {
+  const response = await render("/");
+  assert.equal(response.status, 200);
+  const html = await response.text();
+
+  assert.match(html, /href="#sobre"[^>]*>Sobre</i);
+  assert.match(html, /href="\/sobre"[^>]*>Saber mais sobre mim/i);
+});
+
 test("renderiza os estudos completos dos projetos", async () => {
   for (const [path, project, image] of [["/projetos/barbearia", "Barbearia Norte", "barbearia-menu.webp"], ["/projetos/pizzaria", "Pizzaria Fornalha", "pizzaria-menu.webp"]]) {
     const response = await render(path);

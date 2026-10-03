@@ -75,8 +75,6 @@ function prepareWaveText(element: HTMLElement) {
     return;
   }
 
-  element.setAttribute("aria-label", label);
-
   const walker = document.createTreeWalker(element, NodeFilter.SHOW_TEXT);
   const textNodes: Text[] = [];
   let currentNode = walker.nextNode();
@@ -102,7 +100,6 @@ function prepareWaveText(element: HTMLElement) {
 
       const word = document.createElement("span");
       word.className = "wave-word";
-      word.setAttribute("aria-hidden", "true");
       word.style.setProperty("--word-delay", `${Math.min(wordIndex * delayStep, 520)}ms`);
       word.textContent = token;
       wordIndex += 1;

@@ -517,6 +517,7 @@ textarea:focus-visible {
 }
 
 .brief-form input,
+.brief-form select,
 .brief-form textarea,
 .brief-instagram {
   border-color: #b7aa97;

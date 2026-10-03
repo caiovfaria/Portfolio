@@ -8,7 +8,8 @@ type BrandLogoProps = {
 
 export default function BrandLogo({ href, label = "CVF — início", className = "" }: BrandLogoProps) {
   return (
-    <a className={`brand brand-logo ${className}`.trim()} href={href} aria-label={label}>
+    <a className={`brand brand-logo ${className}`.trim()} href={href}>
+      <span className="sr-only">{label}</span>
       <Image
         className="brand-mark"
         src="/brand/cvf-monogram-white-clean-v1.png"
@@ -19,7 +20,7 @@ export default function BrandLogo({ href, label = "CVF — início", className =
         unoptimized
         aria-hidden="true"
       />
-      <span className="brand-wordmark">
+      <span className="brand-wordmark" aria-hidden="true">
         <small>SOLUÇÕES DIGITAIS</small>
       </span>
     </a>

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type MouseEvent } from "react";
 import BrandLogo from "./BrandLogo";
 import InstagramCta from "./InstagramCta";
 
@@ -39,11 +39,33 @@ export default function SiteHeader() {
 
   const closeMenu = () => setOpen(false);
 
+  const navigateToSection = (event: MouseEvent<HTMLAnchorElement>, href: string) => {
+    const target = document.querySelector<HTMLElement>(href);
+    if (!target) return;
+
+    event.preventDefault();
+    closeMenu();
+    window.history.pushState(null, "", href);
+
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    requestAnimationFrame(() => {
+      target.scrollIntoView({ behavior: reducedMotion ? "auto" : "smooth", block: "start" });
+
+      if (!reducedMotion) {
+        window.setTimeout(() => {
+          if (Math.abs(target.getBoundingClientRect().top) > 8) {
+            target.scrollIntoView({ behavior: "smooth", block: "start" });
+          }
+        }, 700);
+      }
+    });
+  };
+
   return (
     <header className="site-header">
       <BrandLogo href="#inicio" label="Ir para o início" />
       <nav className="desktop-nav" aria-label="Navegação principal">
-        {links.map(([href, text]) => <a href={href} key={href}>{text}</a>)}
+        {links.map(([href, text]) => <a href={href} key={href} onClick={(event) => navigateToSection(event, href)}>{text}</a>)}
       </nav>
       <InstagramCta className="button button-small header-instagram" />
       <button
@@ -77,13 +99,13 @@ export default function SiteHeader() {
             ref={index === 0 ? firstLinkRef : undefined}
             href={href}
             key={href}
-            onClick={closeMenu}
+            onClick={(event) => navigateToSection(event, href)}
             tabIndex={open ? 0 : -1}
           >
             <small>0{index + 1}</small><span>{text}</span><b>↘</b>
           </a>
         ))}
-        <InstagramCta className="mobile-instagram" />
+        <InstagramCta className="mobile-instagram" tabIndex={open ? 0 : -1} />
       </nav>
     </header>
   );

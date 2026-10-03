@@ -7,6 +7,7 @@ type InstagramCtaProps = {
   className?: string;
   label?: string;
   pendingLabel?: string;
+  tabIndex?: number;
 };
 
 function InstagramIcon() {
@@ -23,6 +24,7 @@ export default function InstagramCta({
   className = "",
   label = "Enviar mensagem",
   pendingLabel = "Instagram em breve",
+  tabIndex,
 }: InstagramCtaProps) {
   const dialogRef = useRef<HTMLDialogElement>(null);
   const titleId = useId();
@@ -32,7 +34,7 @@ export default function InstagramCta({
   if (hasInstagramUrl) {
     return (
       <>
-        <button className={classes} type="button" onClick={() => dialogRef.current?.showModal()}>
+        <button className={classes} type="button" tabIndex={tabIndex} onClick={() => dialogRef.current?.showModal()}>
           {content}
         </button>
         <dialog
@@ -69,6 +71,7 @@ export default function InstagramCta({
       className={`${classes} instagram-pending`}
       role="link"
       aria-disabled="true"
+      tabIndex={tabIndex}
       title="O perfil profissional será conectado em breve"
     >
       {content}
