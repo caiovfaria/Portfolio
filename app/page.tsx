@@ -83,8 +83,8 @@ export default function Home() {
       </section>
 
       <section className="section about-section" id="sobre">
-        <figure className="about-portrait">
-          <img src="/caio-viana-portfolio.webp" alt="Caio Viana, desenvolvedor web e estudante de Engenharia de Software" loading="lazy" decoding="async" />
+        <figure className="about-portrait about-portrait--square">
+          <img src="/caio-viana-portfolio-v2.webp" alt="Caio Viana, desenvolvedor web e estudante de Engenharia de Software" loading="lazy" decoding="async" />
           <figcaption><b>Caio Viana</b><span>Desenvolvimento web · Engenharia de Software</span></figcaption>
         </figure>
         <div className="about-content">
