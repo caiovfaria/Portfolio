@@ -11,16 +11,15 @@ export default function BrandLogo({ href, label = "CVF — início", className =
     <a className={`brand brand-logo ${className}`.trim()} href={href} aria-label={label}>
       <Image
         className="brand-mark"
-        src="/brand/cvf-logo.webp"
+        src="/brand/cvf-monogram-white-clean-v1.png"
         alt=""
-        width={48}
-        height={48}
+        width={55}
+        height={46}
         priority
         unoptimized
         aria-hidden="true"
       />
       <span className="brand-wordmark">
-        <strong>CVF</strong>
         <small>SOLUÇÕES DIGITAIS</small>
       </span>
     </a>

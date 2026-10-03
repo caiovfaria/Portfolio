@@ -1,0 +1,713 @@
+/*
+ * Tema experimental CVF: azul suave + verde salvia + lilas + neutros.
+ * Mantido em um arquivo isolado para permitir reversao sem tocar na estrutura.
+ */
+:root {
+  --navy: #1d2638;
+  --teal: #a9cbbb;
+  --ink: #f4f3ef;
+  --muted: #c4c8d1;
+  --line: #465269;
+  --soft: #303a50;
+  --electric: #9687ad;
+  --cream: #171e2d;
+  --theme-surface: #222c40;
+  --theme-surface-raised: #303b52;
+  --theme-plum: #9687ad;
+  --theme-gold: #a9cbbb;
+  --theme-beige: #e1dbd0;
+  --theme-black: #151d2b;
+  --theme-text: #f4f3ef;
+  --theme-muted: #c4c8d1;
+}
+
+html {
+  background: var(--cream);
+  color-scheme: dark;
+}
+
+body,
+main,
+.detail-page,
+.privacy-page {
+  background: var(--cream);
+  color: var(--theme-text);
+}
+
+::selection {
+  background: var(--theme-plum);
+  color: #fff;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline-color: var(--theme-gold) !important;
+}
+
+/* Cabecalho e abertura */
+.hero,
+.detail-header,
+.detail-header::before,
+.detail-hero {
+  background: var(--navy);
+}
+
+.hero {
+  background-image:
+    radial-gradient(circle at 84% 28%, #9687ad24, transparent 30%),
+    radial-gradient(circle at 18% 88%, #a9cbbb20, transparent 24%);
+}
+
+.hero h1,
+.detail-hero h1,
+.section-heading h2,
+.about-copy h2,
+.contact-section h2,
+.quote-intro h2,
+.detail-story h2,
+.detail-section-heading h2,
+.detail-cta h2 {
+  color: var(--theme-text);
+}
+
+.lead,
+.hero-trust,
+.detail-hero-copy > span,
+.section-heading > span,
+.detail-story span,
+.detail-section-heading > span {
+  color: var(--theme-muted);
+}
+
+.browser-card,
+.phone-card,
+.demo-content,
+.detail-device,
+.detail-browser-bar {
+  background: var(--theme-surface);
+}
+
+.browser-card,
+.detail-device {
+  border-color: #ffffff20;
+  box-shadow: 18px 22px 0 #7896c780, 0 38px 80px #0008;
+}
+
+.demo-content {
+  background-image: linear-gradient(130deg, var(--theme-surface), var(--theme-surface-raised));
+}
+
+.hero-visual::before {
+  border-color: #a9cbbb66;
+}
+
+/* Faixa de beneficios */
+.feature-strip {
+  background: var(--theme-beige);
+  color: #1d2638;
+  box-shadow: 0 24px 65px #0005;
+}
+
+.feature-strip article + article,
+.carousel-topline,
+.featured-content,
+.carousel-controls {
+  border-color: var(--line);
+}
+
+.feature-strip strong,
+.feature-strip p,
+.process-grid h3,
+.process-grid p {
+  color: var(--theme-text);
+}
+
+.process-grid p {
+  color: var(--theme-muted);
+}
+
+.feature-strip strong {
+  color: #1d2638;
+}
+
+.feature-strip p {
+  color: #566173;
+}
+
+.feature-strip article + article {
+  border-color: #1d26382e;
+}
+
+.feature-strip article > span {
+  background: var(--theme-black);
+  color: var(--theme-gold);
+}
+
+/* Projetos: uma unica superficie calma, sem sombras concorrentes. */
+.featured-carousel,
+.projects-sequence > .featured-project-card,
+.projects-sequence > .featured-project-card:nth-child(even),
+.projects-sequence > .featured-project-card:hover,
+.projects-sequence > .featured-project-card:focus-within,
+.projects-sequence > .featured-project-card:nth-child(even):hover,
+.projects-sequence > .featured-project-card:nth-child(even):focus-within {
+  background: var(--theme-surface);
+  box-shadow: 0 22px 55px #0005;
+}
+
+.featured-carousel::before {
+  background-image:
+    linear-gradient(#ffffff06 1px, transparent 1px),
+    linear-gradient(90deg, #ffffff06 1px, transparent 1px);
+}
+
+.featured-visual::before,
+.featured-slide.pizza .featured-visual::before,
+.featured-slide.toninho .featured-visual::before,
+.featured-slide.lumina .featured-visual::before {
+  background: radial-gradient(circle, #9687ad2e, transparent 66%);
+}
+
+.featured-frame,
+.featured-slide.pizza .featured-frame,
+.featured-slide.toninho .featured-frame,
+.featured-slide.lumina .featured-frame,
+.projects-sequence .featured-frame,
+.projects-sequence .featured-slide.pizza .featured-frame {
+  border-color: #273249;
+  box-shadow: 0 22px 48px #0009;
+}
+
+.featured-content,
+.featured-browser-bar {
+  background: #1f293df2;
+}
+
+.featured-status {
+  background: var(--theme-plum);
+  box-shadow: 4px 4px 0 #273249;
+}
+
+.featured-status i,
+.availability-pill i {
+  background: var(--theme-gold);
+  box-shadow: 0 0 0 5px #a9cbbb2e;
+}
+
+.featured-category,
+.carousel-topline > span,
+.carousel-topline p b,
+.carousel-controls > button span {
+  color: var(--theme-gold);
+}
+
+.featured-description,
+.carousel-topline p {
+  color: var(--theme-muted);
+}
+
+.featured-content li {
+  border-color: #eee2cf;
+  background: var(--theme-beige);
+  color: #1d2638;
+}
+
+.featured-primary {
+  background: var(--theme-gold);
+  color: #1d2638;
+  box-shadow: 4px 4px 0 var(--theme-black);
+}
+
+.project-invitation {
+  background:
+    radial-gradient(circle at 88% 50%, #a9cbbb24 0 12%, transparent 34%),
+    linear-gradient(118deg, #202b40, #2c3650 58%, #403957);
+  box-shadow: 0 22px 55px #0005;
+}
+
+.project-invitation::before {
+  border-color: #a9cbbb80;
+}
+
+.project-invitation::after {
+  background: #9687ad33;
+}
+
+.project-invitation .concept-kicker,
+.project-invitation h3 strong {
+  color: var(--theme-gold);
+}
+
+.project-invitation .concept-copy > span {
+  color: var(--theme-muted);
+}
+
+.project-invitation .text-link,
+.project-invitation .text-link:hover,
+.project-invitation .text-link:focus-visible {
+  border-color: #a9cbbb8f;
+  background: var(--theme-gold);
+  color: #1d2638;
+  box-shadow: none;
+}
+
+/* Possibilidades */
+.capabilities-section::before {
+  color: #f4f3ef0a;
+}
+
+.capability-grid {
+  border-color: var(--line);
+  background: var(--line);
+}
+
+.capability-grid article {
+  background: var(--theme-surface);
+  color: var(--theme-text);
+}
+
+.capability-grid article:hover {
+  background: var(--theme-surface-raised);
+  color: var(--theme-text);
+  box-shadow: inset 0 0 0 1px #9687ad80, 0 18px 38px #0004;
+}
+
+.capability-grid article > div b,
+.capability-grid article:hover > div b {
+  background: #2d3950;
+  color: var(--theme-gold);
+  box-shadow: 0 0 0 3px var(--theme-black);
+}
+
+.capability-grid article > div small {
+  color: var(--theme-gold);
+}
+
+.capability-grid p,
+.capability-grid article:hover p {
+  color: var(--theme-muted);
+}
+
+/* Servicos, simulador e comparacao */
+.services-section,
+.comparison-section,
+.detail-features {
+  background: #182132;
+}
+
+.service-grid {
+  background: var(--line);
+}
+
+.service-grid article,
+.service-grid .recommended,
+.detail-feature-grid article {
+  background: var(--theme-surface);
+}
+
+.service-grid article:hover,
+.service-grid article:focus-within,
+.detail-feature-grid article:hover {
+  background: var(--theme-surface-raised);
+  box-shadow: inset 0 0 0 1px #9687ad8f, 0 20px 48px #0005;
+}
+
+.service-grid article:hover::before,
+.service-grid article:focus-within::before {
+  border-color: var(--theme-plum);
+}
+
+.service-grid .recommended em {
+  background: var(--theme-plum);
+  box-shadow: none;
+}
+
+.service-icon,
+.recommended .service-icon {
+  border: 1px solid #53627a;
+  background: var(--theme-black);
+  color: var(--theme-gold);
+}
+
+.service-grid h3,
+.service-grid strong,
+.recommended h3,
+.recommended strong,
+.service-grid article:hover h3,
+.service-grid article:hover > strong,
+.service-grid article:focus-within h3,
+.service-grid article:focus-within > strong {
+  color: var(--theme-text);
+}
+
+.service-grid p,
+.service-grid li,
+.service-grid small,
+.recommended p,
+.recommended li,
+.recommended small {
+  color: var(--theme-muted);
+}
+
+.service-grid article > a,
+.recommended > a,
+.service-grid article:hover > a,
+.service-grid article:focus-within > a {
+  background: var(--theme-gold) !important;
+  color: #1d2638 !important;
+  box-shadow: none;
+}
+
+.quote-builder {
+  background: var(--theme-surface);
+  box-shadow: 0 24px 60px #0005;
+}
+
+.quote-builder legend,
+.quote-result strong,
+.feature-choices label.selected,
+.case-meta b {
+  color: var(--theme-text);
+}
+
+.choice-row button,
+.feature-choices label {
+  border-color: var(--line);
+  background: var(--theme-surface-raised);
+  color: var(--theme-muted);
+}
+
+.choice-row button:hover,
+.choice-row button.selected {
+  border-color: var(--theme-plum);
+  background: var(--theme-plum);
+  color: #fff;
+}
+
+.feature-choices label.selected {
+  border-color: var(--theme-gold);
+  background: #a9cbbb2e;
+}
+
+.quote-result {
+  background: #182132;
+}
+
+.quote-result a,
+.quote-result button {
+  background: var(--theme-gold);
+  color: #1d2638;
+}
+
+.comparison-column.after {
+  border-color: #9687ad80;
+  background: #9687ad1a;
+}
+
+.comparison-column.after header span,
+.comparison-switch b {
+  background: var(--theme-plum);
+  color: #fff;
+}
+
+.comparison-column.after li::before {
+  background: var(--theme-gold);
+  box-shadow: none;
+}
+
+/* Processo e sobre */
+.process-section {
+  background: var(--cream);
+}
+
+.process-grid b {
+  border-color: var(--cream);
+  background: #2d3950;
+  color: var(--theme-gold);
+  box-shadow: 0 0 0 2px #53627a;
+}
+
+.process-grid article:not(:last-child)::after,
+.detail-process article:not(:last-child)::after {
+  background: linear-gradient(90deg, var(--theme-plum), var(--theme-gold));
+}
+
+.about-section {
+  color: var(--theme-text);
+}
+
+.about-copy p,
+.about-card > p,
+.about-portrait figcaption span {
+  color: var(--theme-muted);
+}
+
+.about-copy .section-label {
+  background: var(--theme-plum);
+  color: #fff;
+  box-shadow: 6px 6px 0 #a9cbbb80;
+}
+
+.about-card {
+  background: var(--theme-surface);
+  color: var(--theme-text);
+  box-shadow: 18px 18px 0 #7896c770;
+}
+
+.about-card small,
+.about-card > div b {
+  color: var(--theme-gold);
+}
+
+.about-card > div {
+  border-color: var(--line);
+}
+
+.about-points span {
+  background: var(--theme-beige);
+  color: #1d2638;
+}
+
+/* Contato e rodape */
+.contact-section,
+.brief-section {
+  background: linear-gradient(118deg, #222c40, #303b52);
+  box-shadow: 14px 14px 0 #7896c770;
+}
+
+.contact-section p,
+.brief-copy > p {
+  color: var(--theme-gold);
+}
+
+.contact-section span,
+.brief-copy > span {
+  color: var(--theme-muted);
+}
+
+.contact-button,
+.brief-submit,
+.brief-contact-actions > button {
+  background: var(--theme-gold);
+  color: #1d2638;
+}
+
+.button-dark,
+.featured-primary,
+.project-invitation .text-link,
+.service-grid article > a,
+.recommended > a,
+.quote-result a,
+.quote-result button,
+.contact-button,
+.brief-submit,
+.brief-contact-actions > button,
+.detail-cta a,
+.privacy-dialog-actions a {
+  border: 1px solid #53627a;
+  box-shadow: 3px 3px 0 #151d2bcc;
+}
+
+.brief-form {
+  border-color: var(--line);
+  background: var(--theme-surface);
+  color: var(--theme-text);
+}
+
+.brief-form input,
+.brief-form textarea,
+.brief-instagram {
+  border-color: #b7aa97;
+  background: var(--theme-beige);
+  color: #1d2638;
+}
+
+.brief-form input::placeholder,
+.brief-form textarea::placeholder {
+  color: #62596a;
+}
+
+.contact-feedback,
+.quote-feedback {
+  color: var(--theme-muted);
+}
+
+footer,
+footer .brand,
+footer > .brand-logo,
+.detail-footer,
+.detail-footer .brand-logo {
+  color: var(--theme-text);
+}
+
+footer p,
+footer small,
+.detail-footer {
+  color: var(--theme-muted);
+}
+
+.floating-whatsapp {
+  background: var(--theme-gold);
+  color: #1d2638;
+  box-shadow: 6px 6px 0 #53627a99;
+}
+
+/* Navegacao mobile e identidade */
+.brand-mark {
+  background: transparent;
+  box-shadow: none;
+  filter: none;
+}
+
+.brand-mark-accent {
+  stroke: var(--theme-gold);
+}
+
+@media (max-width: 820px) {
+  .site-header .mobile-nav {
+    border-color: var(--line);
+    background: #182132;
+    box-shadow: 8px 10px 0 #7896c780, 0 26px 58px #0009;
+  }
+
+  .mobile-nav a small,
+  .mobile-nav a b,
+  .site-header .mobile-nav > .mobile-instagram {
+    color: var(--theme-gold);
+  }
+}
+
+/* Paginas de projeto */
+.detail-summary {
+  background: var(--theme-surface);
+  box-shadow: 0 24px 65px #0004;
+}
+
+.detail-summary > div,
+.detail-story,
+.detail-process {
+  border-color: var(--line);
+  color: var(--theme-text);
+}
+
+.detail-summary small,
+.detail-story p,
+.detail-section-heading > p,
+.detail-feature-grid b {
+  color: var(--theme-gold);
+}
+
+.detail-feature-grid {
+  background: var(--line);
+}
+
+.detail-process article b {
+  background: #2d3950;
+  color: var(--theme-gold);
+  box-shadow: 0 0 0 7px var(--cream);
+}
+
+.detail-process article span {
+  color: var(--theme-muted);
+}
+
+.detail-cta > div:first-child {
+  background: var(--theme-plum);
+}
+
+.detail-cta > div:last-child {
+  background: var(--theme-gold);
+  color: #1d2638;
+}
+
+.detail-cta > div:last-child h2 {
+  color: #1d2638;
+}
+
+.detail-cta > div:first-child a {
+  background: var(--theme-gold);
+  color: #1d2638;
+}
+
+/* Privacidade e dialogo */
+.privacy-header,
+.privacy-footer,
+.privacy-content article,
+.privacy-content article section {
+  border-color: var(--line);
+}
+
+.privacy-header .brand-logo,
+.privacy-footer .brand-logo,
+.privacy-header > a,
+.privacy-footer > a,
+.privacy-hero h1,
+.privacy-content h2 {
+  color: var(--theme-text);
+}
+
+.privacy-hero > span,
+.privacy-hero > small,
+.privacy-content article p,
+.privacy-footer p {
+  color: var(--theme-muted);
+}
+
+.privacy-content aside {
+  border-color: var(--line);
+  background: var(--theme-surface);
+  box-shadow: 9px 9px 0 #7896c770;
+}
+
+.privacy-dialog-card {
+  border-color: var(--line);
+  background: var(--theme-surface);
+  color: var(--theme-text);
+  box-shadow: 10px 10px 0 #7896c780, 0 30px 80px #0009;
+}
+
+.privacy-dialog-card h2,
+.privacy-dialog-card > .privacy-dialog-close {
+  color: var(--theme-text);
+}
+
+.privacy-dialog-card > span,
+.privacy-dialog-actions button {
+  color: var(--theme-muted);
+}
+
+.privacy-dialog-card > .privacy-dialog-close,
+.privacy-dialog-actions button {
+  border-color: var(--line);
+  background: var(--theme-surface-raised);
+}
+
+.privacy-dialog-actions a {
+  border-color: var(--theme-gold);
+  background: var(--theme-gold);
+  color: #1d2638;
+}
+
+@media (max-width: 600px) {
+  .browser-card,
+  .detail-device {
+    box-shadow: 7px 9px 0 #7896c770, 0 26px 55px #0008;
+  }
+
+  .projects-sequence {
+    gap: 46px;
+  }
+
+  .projects-sequence > .featured-project-card,
+  .projects-sequence > .featured-project-card:nth-child(even) {
+    box-shadow: 0 18px 42px #0005;
+  }
+
+  .contact-section,
+  .brief-section,
+  .about-card {
+    box-shadow: 8px 8px 0 #7896c75c;
+  }
+}
