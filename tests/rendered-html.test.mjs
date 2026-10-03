@@ -74,6 +74,23 @@ test("explica o uso dos dados na política de privacidade", async () => {
   assert.match(html, /01 de outubro de 2026/i);
 });
 
+test("renderiza a página completa sobre Caio", async () => {
+  const response = await render("/sobre");
+  assert.equal(response.status, 200);
+  const html = await response.text();
+
+  assert.match(html, /Minha trajetória/i);
+  assert.match(html, /caio-viana-portfolio-v2\.webp/i);
+  assert.match(html, /LandLytics/i);
+  assert.match(html, /Peneiras On/i);
+  assert.match(html, /NEXT 2026/i);
+  assert.match(html, /peneirason\.vercel\.app/i);
+  assert.match(html, /Norte Barbearia e Clube/i);
+  assert.match(html, /Pizzaria Fornalha/i);
+  assert.match(html, /caio-faria-6aab253b6/i);
+  assert.match(html, /Inglês em formação/i);
+});
+
 test("renderiza os estudos completos dos projetos", async () => {
   for (const [path, project, image] of [["/projetos/barbearia", "Barbearia Norte", "barbearia-menu.webp"], ["/projetos/pizzaria", "Pizzaria Fornalha", "pizzaria-menu.webp"]]) {
     const response = await render(path);

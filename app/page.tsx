@@ -4,6 +4,7 @@ import HeroShowcase from "./components/HeroShowcase";
 import QuoteSimulator from "./components/QuoteSimulator";
 import BrandLogo from "./components/BrandLogo";
 import SiteHeader from "./components/SiteHeader";
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -82,21 +83,15 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="section about-section" id="sobre">
-        <figure className="about-portrait about-portrait--square">
-          <img src="/caio-viana-portfolio-v2.webp" alt="Caio Viana, desenvolvedor web e estudante de Engenharia de Software" loading="lazy" decoding="async" />
-          <figcaption><b>Caio Viana</b><span>Desenvolvimento web · Engenharia de Software</span></figcaption>
-        </figure>
-        <div className="about-content">
-          <div className="about-copy">
-            <p className="section-label">SOBRE MIM</p>
-            <h2>Aprendizado constante, projetos reais e atenção aos detalhes.</h2>
-            <p>Sou Caio Viana, estudante de Engenharia de Software na FIAP e desenvolvedor web. Transformo o que estudo em soluções práticas, criando sites responsivos e experiências digitais que ajudam pequenos negócios a apresentar serviços, receber pedidos e organizar atendimentos.</p>
-            <p>Já desenvolvi projetos completos para uma barbearia e uma pizzaria, trabalhando com HTML, CSS, JavaScript, React, TypeScript, Vite e Tailwind CSS. Também utilizo Python, Git, GitHub e automações de publicação no meu processo.</p>
-            <p>Fora do código, meus 11 anos no movimento escoteiro fortaleceram minha escuta, colaboração e capacidade de resolver imprevistos. Também participei do Rio Innovation Week, fui sorteado pela FIAP para participar da BSides e criar novos contatos, e tive um projeto reconhecido como destaque acadêmico na Global Solution.</p>
-            <div className="about-points"><span>Engenharia de Software · FIAP</span><span>React · TypeScript · Python</span><span>Projetos do planejamento à publicação</span></div>
-          </div>
-          <div className="about-card"><small>MEU COMPROMISSO</small><strong>Entender antes de desenvolver.</strong><p>Cada projeto começa pelo problema do negócio. A tecnologia entra como ferramenta para construir uma solução clara, útil e preparada para evoluir.</p><div><b>ALUNO FIAP</b><span>Destaque acadêmico<br/>na Global Solution</span></div></div>
+      <section className="section about-teaser" id="sobre">
+        <div className="about-teaser-copy">
+          <p className="section-label">SOBRE MIM</p>
+          <h2>Aprendizado constante, projetos reais e atenção aos detalhes.</h2>
+          <p>Sou Caio Viana, aluno de Engenharia de Software na FIAP e desenvolvedor web. Transformo o que estudo em soluções digitais claras, úteis e pensadas para resolver necessidades reais.</p>
+        </div>
+        <div className="about-teaser-action">
+          <span>Conheça minha trajetória, experiências, habilidades e o que me inspira a criar.</span>
+          <Link className="about-more-link" href="/sobre">Saber mais sobre mim <b aria-hidden="true">→</b></Link>
         </div>
       </section>
 

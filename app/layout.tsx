@@ -15,6 +15,7 @@ import "./radius-system.css";
 import "./contact-channel.css";
 import "./privacy.css";
 import "./theme-indigo-plum.css";
+import "./about-page.css";
 const geist = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
 export async function generateMetadata(): Promise<Metadata> {
   const requestHeaders = await headers();
