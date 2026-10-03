@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import Link from "next/link";
 import BrandLogo from "../components/BrandLogo";
 
 export const metadata: Metadata = {
@@ -13,7 +12,7 @@ export default function AboutPage() {
     <main className="about-page">
       <header className="about-page-header">
         <BrandLogo href="/" label="Voltar ao portfólio" />
-        <Link href="/#sobre">Voltar ao portfólio</Link>
+        <a href="/#sobre">Voltar ao portfólio</a>
       </header>
 
       <section className="about-page-hero">
@@ -63,12 +62,12 @@ export default function AboutPage() {
           <article>
             <div><small>HTML · CSS · JAVASCRIPT</small><h3>Norte Barbearia e Clube</h3></div>
             <p>Site institucional criado do zero para uma barbearia, reunindo apresentação da marca, serviços, página de vendas, agendamento online e área de acesso.</p>
-            <Link href="/projetos/barbearia">Ver projeto →</Link>
+            <a href="/projetos/barbearia">Ver projeto →</a>
           </article>
           <article>
             <div><small>REACT · TYPESCRIPT · VITE</small><h3>Pizzaria Fornalha</h3></div>
             <p>Experiência responsiva com cardápio, escolha de pizzas salgadas e doces, opção meio a meio e personalização de tamanho, borda e adicionais.</p>
-            <Link href="/projetos/pizzaria">Ver projeto →</Link>
+            <a href="/projetos/pizzaria">Ver projeto →</a>
           </article>
         </div>
       </section>
@@ -81,10 +80,10 @@ export default function AboutPage() {
       <section className="about-page-cta">
         <p>VAMOS CONVERSAR?</p>
         <h2>Agora que você me conhece melhor, conte sobre a sua ideia.</h2>
-        <div><Link href="/#contato">Falar sobre um projeto →</Link><a className="about-page-cta-secondary" href="https://www.linkedin.com/in/caio-faria-6aab253b6/" target="_blank" rel="noreferrer">Acessar LinkedIn ↗</a></div>
+        <div><a href="/#contato">Falar sobre um projeto →</a><a className="about-page-cta-secondary" href="https://www.linkedin.com/in/caio-faria-6aab253b6/" target="_blank" rel="noreferrer">Acessar LinkedIn ↗</a></div>
       </section>
 
-      <footer className="about-page-footer"><BrandLogo href="/" label="Voltar ao portfólio" /><p>Soluções digitais para pequenos negócios.</p><Link href="/">Voltar ao início</Link></footer>
+      <footer className="about-page-footer"><BrandLogo href="/" label="Voltar ao portfólio" /><p>Soluções digitais para pequenos negócios.</p><a href="/">Voltar ao início</a></footer>
     </main>
   );
 }

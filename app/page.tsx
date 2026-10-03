@@ -4,7 +4,6 @@ import HeroShowcase from "./components/HeroShowcase";
 import QuoteSimulator from "./components/QuoteSimulator";
 import BrandLogo from "./components/BrandLogo";
 import SiteHeader from "./components/SiteHeader";
-import Link from "next/link";
 
 export default function Home() {
   return (
@@ -91,7 +90,7 @@ export default function Home() {
         </div>
         <div className="about-teaser-action">
           <span>Conheça minha trajetória, experiências, habilidades e o que me inspira a criar.</span>
-          <Link className="about-more-link" href="/sobre">Saber mais sobre mim <b aria-hidden="true">→</b></Link>
+          <a className="about-more-link" href="/sobre">Saber mais sobre mim <b aria-hidden="true">→</b></a>
         </div>
       </section>
 
