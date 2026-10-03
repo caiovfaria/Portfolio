@@ -29,9 +29,10 @@ export async function generateMetadata(): Promise<Metadata> {
     description,
     icons: {
       icon: [
-        { url: "/brand/favicon-cvf-navy-v3.png", sizes: "64x64", type: "image/png" },
+        { url: "/favicon.ico?v=4", type: "image/x-icon" },
+        { url: "/brand/favicon-cvf-navy-v4.png", sizes: "64x64", type: "image/png" },
       ],
-      shortcut: "/brand/favicon-cvf-navy-v3.png",
+      shortcut: "/favicon.ico?v=4",
       apple: "/brand/apple-touch-icon-cvf-monogram-v1.png",
     },
     openGraph: { title, description, type: "website", url: base, images: [{ url: new URL("/og.png", base).toString(), width: 1200, height: 630, alt: "Portfólio de desenvolvimento web" }] },

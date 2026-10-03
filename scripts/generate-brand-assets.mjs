@@ -1,11 +1,11 @@
 import { writeFile } from "node:fs/promises";
 import sharp from "sharp";
 
-const source = "public/brand/cvf-logo.webp";
-const faviconSource = "public/favicon-cvf-v2.svg";
+const profileSource = "public/brand/cvf-instagram-profile-1080.png";
+const faviconSource = "public/brand/favicon-cvf-navy-v4.png";
 
 async function png(size, output) {
-  await sharp(source)
+  await sharp(faviconSource)
     .resize(size, size, { fit: "cover" })
     .png({ compressionLevel: 9 })
     .toFile(output);
@@ -62,7 +62,7 @@ await sharp({
 })
   .composite([
     {
-      input: await sharp(source)
+      input: await sharp(profileSource)
         .resize(560, 560, { fit: "contain" })
         .png()
         .toBuffer(),
