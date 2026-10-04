@@ -23,3 +23,21 @@ button:focus-visible,a:focus-visible,summary:focus-visible,input:focus-visible,s
 .hero-availability{width:max-content;margin-bottom:24px}.hero-showcase{padding-bottom:58px}.showcase-browser{overflow:visible}.showcase-browser .browser-bar span{margin-left:auto;color:#aeb6b0;font-size:7px;font-weight:800;letter-spacing:1px}.showcase-screen{position:relative;display:block;min-height:325px;overflow:hidden;background:#101210}.showcase-screen>img{object-fit:cover;object-position:top;opacity:0;transform:scale(1.045) translateY(8px);transition:opacity .65s ease,transform 5.2s ease}.showcase-screen>img.active{opacity:1;transform:scale(1.075) translateY(-2.5%)}.showcase-overlay{position:absolute;z-index:3;left:24px;bottom:22px;display:flex;flex-direction:column;align-items:flex-start;max-width:260px;padding:14px 16px;background:#111413e8;box-shadow:9px 9px 0 var(--electric);backdrop-filter:blur(10px)}.showcase-overlay small{color:var(--teal);font-size:7px;font-weight:900;letter-spacing:1px;text-transform:uppercase}.showcase-overlay strong{margin:4px 0 9px;color:white;font-size:16px}.showcase-overlay b{color:#cdd3ce;font-size:8px}.showcase-phone{bottom:35px}.showcase-switch{position:absolute;left:0;right:0;bottom:0;z-index:4;display:grid;grid-template-columns:1fr 1fr;gap:7px}.showcase-switch button{display:flex;align-items:center;gap:9px;min-height:44px;padding:0 14px;border:1px solid #ffffff1f;background:#ffffff08;color:#8f9891;font:inherit;font-size:8px;font-weight:800;cursor:pointer;transition:.25s}.showcase-switch button span{color:#ffffff50}.showcase-switch button.active{border-color:var(--teal);background:#c6ff4a10;color:white}.showcase-switch button.active span{color:var(--teal)}.project-demo-status{position:absolute!important;z-index:2;top:18px;right:18px;margin:0!important;padding:8px 10px!important;border:1px solid #c6ff4a50;border-radius:99px!important;background:#111413d9!important;color:var(--teal)!important;font-size:7px!important;font-weight:900!important;letter-spacing:1px;backdrop-filter:blur(8px)}
 @media(max-width:600px){.hero-availability{max-width:100%;margin-bottom:22px;text-align:left;line-height:1.35}.hero-showcase{padding-bottom:103px}.showcase-screen{min-height:265px}.showcase-overlay{left:14px;bottom:14px}.showcase-phone{display:none}.showcase-switch{grid-template-columns:1fr;gap:5px}.project-actions{align-items:flex-start;flex-direction:column;gap:0}.project-demo-status{top:12px;right:12px}}
 @media(prefers-reduced-motion:reduce){.showcase-screen>img,.availability-pill i{transition:none;animation:none}.showcase-screen>img.active{transform:scale(1.02)}}
+
+/* Hero 3D identity */
+.hero-logo-stage{isolation:isolate;min-height:500px;transform:none!important;overflow:visible}
+.hero-logo-stage::before{display:none}
+.hero-logo-viewer{position:relative;z-index:2;width:min(100%,520px);height:460px;display:grid;place-items:center}
+.hero-logo-model{position:absolute;inset:0;width:100%;height:100%;background:transparent;opacity:0;transition:opacity .45s ease}
+.hero-logo-viewer.is-ready .hero-logo-model{opacity:1}
+.hero-logo-fallback{width:68%;height:auto;object-fit:contain;opacity:.94;transition:opacity .3s ease;filter:drop-shadow(0 18px 22px #0008)}
+.hero-logo-viewer.is-ready .hero-logo-fallback{opacity:0}
+.hero-logo-caption{position:absolute;z-index:3;right:2%;bottom:7%;display:flex;align-items:baseline;gap:10px;padding:10px 14px;border:1px solid #ffffff1c;background:#171e2dbd;color:white;backdrop-filter:blur(8px)}
+.hero-logo-caption b{font-size:11px;letter-spacing:1px}
+.hero-logo-caption span{color:var(--theme-gold);font-size:7px;font-weight:900;letter-spacing:1.4px}
+@media(max-width:900px){.hero-logo-stage{min-height:460px}.hero-logo-viewer{height:430px}.hero-logo-caption{right:8%}}
+@media(max-width:600px){.hero-logo-stage{min-height:340px}.hero-logo-viewer{height:330px}.hero-logo-caption{right:4%;bottom:3%;padding:8px 10px}}
+@media(prefers-reduced-motion:reduce){.hero-logo-model{transition:none}}
+
+/* Remove the former numbered hero decoration now that the 3D mark is the visual focus. */
+main .hero::after{display:none}

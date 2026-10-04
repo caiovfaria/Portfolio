@@ -1,74 +1,75 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useState } from "react";
-
-const projects = [
-  {
-    name: "Barbearia Norte",
-    type: "Site + agendamento",
-    image: "/projects/barbearia-menu.webp",
-    alt: "Tela inicial em modo escuro do site Barbearia Norte",
-    href: "/projetos/barbearia",
-  },
-  {
-    name: "Pizzaria Fornalha",
-    type: "Cardápio + pedidos",
-    image: "/projects/pizzaria-menu.webp",
-    alt: "Tela do menu principal da Pizzaria Fornalha",
-    href: "/projetos/pizzaria",
-  },
-];
+import { createElement, useEffect, useRef, useState } from "react";
 
 export default function HeroShowcase() {
-  const [active, setActive] = useState(0);
+  const [viewerReady, setViewerReady] = useState(false);
+  const [reducedMotion, setReducedMotion] = useState(true);
+  const modelViewerRef = useRef<HTMLElement | null>(null);
 
   useEffect(() => {
-    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (reducedMotion) return;
+    const motionPreference = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const updateMotionPreference = () => setReducedMotion(motionPreference.matches);
 
-    let timer: number | undefined;
-    const stop = () => {
-      if (timer) window.clearInterval(timer);
-      timer = undefined;
-    };
-    const start = () => {
-      stop();
-      if (document.visibilityState === "visible") {
-        timer = window.setInterval(() => setActive((current) => (current + 1) % projects.length), 5200);
-      }
-    };
+    updateMotionPreference();
+    motionPreference.addEventListener("change", updateMotionPreference);
+    void import("@google/model-viewer").then(() => setViewerReady(true));
 
-    start();
-    document.addEventListener("visibilitychange", start);
-    return () => {
-      stop();
-      document.removeEventListener("visibilitychange", start);
-    };
+    return () => motionPreference.removeEventListener("change", updateMotionPreference);
   }, []);
 
-  const current = projects[active];
+  useEffect(() => {
+    const viewer = modelViewerRef.current;
+    if (!viewer || !viewerReady || reducedMotion) return;
+
+    let frame = 0;
+    let lastUpdate = 0;
+    const animate = (time: number) => {
+      if (time - lastUpdate > 32) {
+        const angle = Math.sin(time / 2600) * 18;
+        viewer.setAttribute("camera-orbit", `${angle.toFixed(2)}deg 78deg 105%`);
+        lastUpdate = time;
+      }
+      frame = window.requestAnimationFrame(animate);
+    };
+
+    frame = window.requestAnimationFrame(animate);
+    return () => window.cancelAnimationFrame(frame);
+  }, [reducedMotion, viewerReady]);
+
+  const modelViewer = createElement("model-viewer", {
+    class: "hero-logo-model",
+    ref: modelViewerRef,
+    src: "/brand/logo-cvf-3d.glb?v=2",
+    poster: "/brand/cvf-monogram-white-clean-v1.png",
+    alt: "Monograma tridimensional CVF",
+    loading: "eager",
+    reveal: "auto",
+    exposure: "1.2",
+    "shadow-intensity": "0",
+    "camera-orbit": "0deg 78deg 105%",
+    "field-of-view": "26deg",
+    "interaction-prompt": "none",
+  });
 
   return (
-    <div className="hero-visual hero-showcase" role="group" aria-label="Demonstração dos projetos em computador e celular">
-      <div className="browser-card showcase-browser">
-        <div className="browser-bar"><i></i><i></i><i></i><span>cvf / projeto em destaque</span></div>
-        <a className="showcase-screen" href={current.href} aria-label={`${current.type} ${current.name} Explorar projeto →`}>
-          {projects.map((project, index) => (
-            <Image key={project.name} className={index === active ? "active" : ""} src={project.image} alt={project.alt} fill sizes="(max-width: 900px) 100vw, 50vw" priority={index === 0} unoptimized />
-          ))}
-          <span className="showcase-overlay"><small>{current.type}</small><strong>{current.name}</strong><b>Explorar projeto →</b></span>
-        </a>
+    <div className="hero-visual hero-logo-stage" role="img" aria-label="Logo tridimensional CVF girando lentamente">
+      <div className={`hero-logo-viewer${viewerReady ? " is-ready" : ""}`}>
+        <Image
+          className="hero-logo-fallback"
+          src="/brand/cvf-monogram-white-clean-v1.png"
+          alt=""
+          width={520}
+          height={520}
+          priority
+          aria-hidden="true"
+        />
+        {modelViewer}
       </div>
-      <div className="phone-card showcase-phone" aria-hidden="true">
-        <span>DEMONSTRAÇÃO</span><strong>{current.name}</strong><i>Experiência responsiva</i><i>Fluxo comercial claro</i>
-      </div>
-      <div className="showcase-switch" role="group" aria-label="Escolher projeto demonstrado">
-        {projects.map((project, index) => (
-          <button key={project.name} type="button" className={index === active ? "active" : ""} onClick={() => setActive(index)} aria-pressed={index === active}>
-            <span>0{index + 1}</span>{project.name}
-          </button>
-        ))}
+      <div className="hero-logo-caption" aria-hidden="true">
+        <b>CVF</b>
+        <span>SOLUÇÕES DIGITAIS</span>
       </div>
     </div>
   );

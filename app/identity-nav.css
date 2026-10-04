@@ -265,9 +265,25 @@ footer > .brand-logo {
   }
 }
 
-/* Keep the background signature aligned with the CVF monogram. */
+/* Use the real fused monogram instead of ordinary CVF lettering. */
 .capabilities-section::before {
-  content: "CVF";
+  content: "";
+  right: 22px;
+  top: 38px;
+  width: min(42vw, 520px);
+  height: 300px;
+  background: url("/brand/cvf-monogram-white-clean-v1.png") center / contain no-repeat;
+  opacity: .035;
+  pointer-events: none;
+}
+
+@media (max-width: 760px) {
+  .capabilities-section::before {
+    right: 10px;
+    top: 55px;
+    width: min(68vw, 330px);
+    height: 210px;
+  }
 }
 
 .feature-strip article {

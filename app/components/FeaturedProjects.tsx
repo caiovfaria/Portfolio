@@ -32,7 +32,6 @@ export default function FeaturedProjects() {
         {projects.map((project, index) => (
           <article className="featured-carousel featured-project-card" key={project.name}>
             <div className="carousel-topline">
-              <span>PROJETO 0{index + 1}</span>
               <p><b>0{index + 1}</b><i>/</i>0{projects.length}</p>
             </div>
 

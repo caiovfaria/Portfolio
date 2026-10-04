@@ -9,7 +9,6 @@ import SiteHeader from "./components/SiteHeader";
 export default function Home() {
   return (
     <main>
-      <div className="identity-rail" aria-hidden="true">CVF — DIGITAL / 2026</div>
       <SiteHeader />
       <section className="hero" id="inicio">
         <div className="hero-copy">

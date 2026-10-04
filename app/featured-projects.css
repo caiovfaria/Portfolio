@@ -45,7 +45,7 @@
   z-index: 2;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-end;
   min-height: 44px;
   padding: 0 4px 17px;
   border-bottom: 1px solid #ffffff1a;
@@ -711,6 +711,7 @@
 
 .project-invitation .concept-kicker {
   display: flex;
+  justify-content: flex-end;
   align-items: center;
   gap: 10px;
   color: #d9ff82;
