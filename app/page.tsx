@@ -3,6 +3,7 @@ import FeaturedProjects from "./components/FeaturedProjects";
 import HeroShowcase from "./components/HeroShowcase";
 import QuoteSimulator from "./components/QuoteSimulator";
 import BrandLogo from "./components/BrandLogo";
+import BrandSeal from "./components/BrandSeal";
 import SiteHeader from "./components/SiteHeader";
 
 export default function Home() {
@@ -22,7 +23,7 @@ export default function Home() {
           <div className="hero-trust" aria-label="Diferenciais">
             <span>✓ Entrega organizada</span><span>✓ Contato simplificado</span><span>✓ Foco em resultados</span>
           </div>
-          <div className="hero-signature" aria-hidden="true"><b>CVF</b><span>CLAREZA<br/>PERFORMANCE<br/>CONVERSÃO</span></div>
+          <div className="hero-signature" aria-hidden="true"><b><BrandSeal /></b><span>CLAREZA<br/>PERFORMANCE<br/>CONVERSÃO</span></div>
         </div>
         <HeroShowcase />
       </section>
@@ -70,7 +71,7 @@ export default function Home() {
         <div className="comparison-heading"><p>ANTES / DEPOIS</p><h2>Uma presença digital muda a forma como o negócio é percebido.</h2></div>
         <div className="comparison-board">
           <div className="comparison-column before"><header><span>—</span><strong>Sem uma solução própria</strong></header><ul><li>Atendimento espalhado e repetitivo</li><li>Informações difíceis de encontrar</li><li>Dependência total das redes sociais</li><li>Clientes desistem no caminho</li><li>Processos feitos manualmente</li></ul></div>
-          <div className="comparison-switch" aria-hidden="true"><b>CVF</b><span>TRANSFORMA</span></div>
+          <div className="comparison-switch" aria-hidden="true"><b><BrandSeal /></b><span>TRANSFORMA</span></div>
           <div className="comparison-column after"><header><span>+</span><strong>Com uma solução bem construída</strong></header><ul><li>Solicitações organizadas</li><li>Serviços e preços apresentados com clareza</li><li>Presença digital própria e profissional</li><li>Caminho rápido até o contato ou pedido</li><li>Rotinas simplificadas e automatizadas</li></ul></div>
         </div>
       </section>
