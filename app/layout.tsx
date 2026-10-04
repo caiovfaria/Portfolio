@@ -22,7 +22,7 @@ export async function generateMetadata(): Promise<Metadata> {
   const host = requestHeaders.get("host") ?? "localhost:3000";
   const protocol = host.includes("localhost") ? "http" : "https";
   const base = new URL(`${protocol}://${host}`);
-  const title = "CVF | Soluções digitais para pequenos negócios";
+  const title = "Caio Viana | Soluções digitais para pequenos negócios";
   const description = "Soluções digitais claras, responsivas e pensadas para gerar contatos e organizar experiências para pequenos negócios.";
   return {
     metadataBase: base,
