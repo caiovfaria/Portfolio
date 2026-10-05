@@ -1,6 +1,7 @@
 "use client";
 
 import { useLayoutEffect } from "react";
+import { translations } from "../translations";
 
 const revealGroups = [
   [".feature-strip article", "up"],
@@ -61,16 +62,25 @@ const waveTextBlocks = [
   ".detail-process article > span",
 ];
 
-function prepareWaveText(element: HTMLElement) {
-  if (element.dataset.waveReady === "true") return;
+function prepareWaveText(element: HTMLElement, force = false) {
+  if (element.dataset.waveReady === "true" && !force) return;
 
-  const label = element.textContent?.replace(/\s+/g, " ").trim();
-  if (!label) return;
+  const visibleLabel = element.textContent?.replace(/\s+/g, " ").trim();
+  const sourceLabel = element.dataset.waveSource ?? visibleLabel;
+  if (!sourceLabel) return;
+
+  element.dataset.waveSource = sourceLabel;
+  const english = document.documentElement.lang === "en";
+  const label = english ? translations[sourceLabel] ?? sourceLabel : sourceLabel;
+  element.textContent = label;
 
   element.dataset.waveReady = "true";
   element.classList.add("wave-text");
+  element.classList.remove("wave-block");
 
-  if (label.length > 160) {
+  // English copy is usually longer and wraps more often. Animating it as one
+  // block prevents individual words from crossing adjacent lines mid-motion.
+  if (english || label.length > 160) {
     element.classList.add("wave-block");
     return;
   }
@@ -147,12 +157,21 @@ export default function ScrollReveal() {
       document.querySelectorAll<HTMLElement>(selector).forEach(prepareWaveText);
     });
 
+    const updateWaveLanguage = () => {
+      waveTextBlocks.forEach((selector) => {
+        document.querySelectorAll<HTMLElement>(selector).forEach((element) => prepareWaveText(element, true));
+      });
+    };
+
+    window.addEventListener("cvf-language-change", updateWaveLanguage);
+
     updateScrollProgress();
     window.addEventListener("scroll", updateScrollProgress, { passive: true });
 
     if (reducedMotion || !("IntersectionObserver" in window)) {
       elements.forEach((element) => element.classList.add("is-visible"));
       return () => {
+        window.removeEventListener("cvf-language-change", updateWaveLanguage);
         window.removeEventListener("scroll", updateScrollProgress);
         cancelAnimationFrame(frame);
       };
@@ -172,6 +191,7 @@ export default function ScrollReveal() {
 
     elements.forEach((element) => observer.observe(element));
     return () => {
+      window.removeEventListener("cvf-language-change", updateWaveLanguage);
       observer.disconnect();
       window.removeEventListener("scroll", updateScrollProgress);
       cancelAnimationFrame(frame);

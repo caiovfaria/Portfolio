@@ -2,6 +2,7 @@
 
 import { FormEvent, useState } from "react";
 import InstagramCta from "./InstagramCta";
+import { translations } from "../translations";
 
 export default function ContactBrief() {
   const [name, setName] = useState("");
@@ -13,7 +14,15 @@ export default function ContactBrief() {
 
   const submit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const message = [
+    const english = document.documentElement.lang === "en";
+    const message = english ? [
+      `Hi! My name is ${name}.`,
+      `Business: ${business}.`,
+      `Already has a website: ${translations[hasSite] ?? hasSite}.`,
+      `Main goal: ${translations[goal] ?? goal}.`,
+      `Details: ${details || "I would rather explain during our conversation."}`,
+      "I would like some initial guidance.",
+    ].join("\n") : [
       `Olá! Meu nome é ${name}.`,
       `Negócio: ${business}.`,
       `Já possui site: ${hasSite}.`,

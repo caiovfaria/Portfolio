@@ -1,7 +1,8 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import BrandSeal from "./BrandSeal";
+import { translations } from "../translations";
 
 const projectTypes = [
   { id: "landing", label: "Landing page", base: 800 },
@@ -18,17 +19,29 @@ const additions = [
   { id: "seo", label: "SEO e métricas", value: 200 },
 ] as const;
 
-const formatMoney = (value: number) => new Intl.NumberFormat("pt-BR", {
+const formatMoney = (value: number, locale: "pt" | "en" = "pt") => new Intl.NumberFormat(locale === "en" ? "en-US" : "pt-BR", {
   style: "currency",
-  currency: "BRL",
+  currency: locale === "en" ? "USD" : "BRL",
   maximumFractionDigits: 0,
-}).format(value);
+}).format(locale === "en" ? Math.round((value / 5) / 10) * 10 : value);
 
 export default function QuoteSimulator() {
+  const [locale, setLocale] = useState<"pt" | "en">("pt");
   const [projectType, setProjectType] = useState<(typeof projectTypes)[number]["id"]>("institucional");
   const [selected, setSelected] = useState<string[]>([]);
   const [deadline, setDeadline] = useState("normal");
   const [feedback, setFeedback] = useState("");
+
+  useEffect(() => {
+    const updateLocale = (event?: Event) => {
+      const requested = (event as CustomEvent<{ locale?: "pt" | "en" }> | undefined)?.detail?.locale;
+      setLocale(requested ?? (document.documentElement.lang === "en" ? "en" : "pt"));
+    };
+
+    updateLocale();
+    window.addEventListener("cvf-language-change", updateLocale);
+    return () => window.removeEventListener("cvf-language-change", updateLocale);
+  }, []);
 
   const estimate = useMemo(() => {
     const base = projectTypes.find((item) => item.id === projectType)?.base ?? 0;
@@ -44,16 +57,25 @@ export default function QuoteSimulator() {
 
   const selectedType = projectTypes.find((item) => item.id === projectType)?.label ?? "Projeto web";
   const selectedAdditions = additions.filter((item) => selected.includes(item.id)).map((item) => item.label);
-  const message = [
-    "Olá! Montei uma estimativa no seu portfólio.",
-    `Projeto: ${selectedType}.`,
-    `Funcionalidades: ${selectedAdditions.length ? selectedAdditions.join(", ") : "escopo básico"}.`,
-    `Prazo: ${deadline === "prioridade" ? "prioridade (+20%)" : deadline === "flexivel" ? "flexível (-10%)" : projectType === "sistema" ? "até 30 dias para a primeira versão funcional" : "até 30 dias"}.`,
-    `Estimativa inicial exibida: ${formatMoney(estimate.minimum)} a ${formatMoney(estimate.maximum)}.`,
-    "Gostaria de conversar sobre o escopo.",
-  ].join("\n");
-
   const copyEstimate = () => {
+    const english = document.documentElement.lang === "en";
+    const translatedType = translations[selectedType] ?? selectedType;
+    const translatedAdditions = selectedAdditions.map((item) => translations[item] ?? item);
+    const message = english ? [
+      "Hi! I prepared an estimate on your portfolio.",
+      `Project: ${translatedType}.`,
+      `Features: ${translatedAdditions.length ? translatedAdditions.join(", ") : "basic scope"}.`,
+      `Timeline: ${deadline === "prioridade" ? "priority (+20%)" : deadline === "flexivel" ? "flexible (-10%)" : projectType === "sistema" ? "up to 30 days for the first functional version" : "up to 30 days"}.`,
+      `Displayed initial estimate: ${formatMoney(estimate.minimum, "en")} to ${formatMoney(estimate.maximum, "en")}.`,
+      "I would like to discuss the scope.",
+    ].join("\n") : [
+      "Olá! Montei uma estimativa no seu portfólio.",
+      `Projeto: ${selectedType}.`,
+      `Funcionalidades: ${selectedAdditions.length ? selectedAdditions.join(", ") : "escopo básico"}.`,
+      `Prazo: ${deadline === "prioridade" ? "prioridade (+20%)" : deadline === "flexivel" ? "flexível (-10%)" : projectType === "sistema" ? "até 30 dias para a primeira versão funcional" : "até 30 dias"}.`,
+      `Estimativa inicial exibida: ${formatMoney(estimate.minimum)} a ${formatMoney(estimate.maximum)}.`,
+      "Gostaria de conversar sobre o escopo.",
+    ].join("\n");
     navigator.clipboard.writeText(message)
       .then(() => setFeedback("Estimativa copiada. Use este resumo na sua próxima conversa."))
       .catch(() => setFeedback("Não foi possível copiar a estimativa automaticamente."));
@@ -101,7 +123,7 @@ export default function QuoteSimulator() {
         </fieldset>
 
         <div className="quote-result" aria-live="polite">
-          <div><small>Estimativa inicial</small><strong>{formatMoney(estimate.minimum)} <i>—</i> {formatMoney(estimate.maximum)}</strong><span>Valor sujeito à definição do escopo.</span></div>
+          <div><small>Estimativa inicial</small><strong>{formatMoney(estimate.minimum, locale)} <i>—</i> {formatMoney(estimate.maximum, locale)}</strong><span>Valor sujeito à definição do escopo.</span></div>
           <button type="button" onClick={copyEstimate}>Copiar estimativa →</button>
         </div>
         <p className="quote-feedback" aria-live="polite">{feedback}</p>

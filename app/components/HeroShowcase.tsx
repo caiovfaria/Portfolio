@@ -27,8 +27,9 @@ export default function HeroShowcase() {
     let lastUpdate = 0;
     const animate = (time: number) => {
       if (time - lastUpdate > 32) {
-        const angle = Math.sin(time / 2600) * 18;
-        viewer.setAttribute("camera-orbit", `${angle.toFixed(2)}deg 78deg 105%`);
+        const angle = Math.sin(time / 1500) * 32;
+        const height = 77 + Math.sin(time / 3000) * 3;
+        viewer.setAttribute("camera-orbit", `${angle.toFixed(2)}deg ${height.toFixed(2)}deg 105%`);
         lastUpdate = time;
       }
       frame = window.requestAnimationFrame(animate);
@@ -46,7 +47,8 @@ export default function HeroShowcase() {
     alt: "Monograma tridimensional CVF",
     loading: "eager",
     reveal: "auto",
-    exposure: "1.2",
+    exposure: "1.35",
+    "tone-mapping": "commerce",
     "shadow-intensity": "0",
     "camera-orbit": "0deg 78deg 105%",
     "field-of-view": "26deg",
