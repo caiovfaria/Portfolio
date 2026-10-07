@@ -1,4 +1,13 @@
 export const translations: Record<string, string> = {
+  "Solicitar orçamento": "Request a quote",
+  "ORÇAMENTO": "QUOTE",
+  "Conte sobre o seu negócio": "Tell me about your business",
+  "Serviços": "Services",
+  "Um investimento pensado para o seu negócio.": "An investment designed for your business.",
+  "Conheça os valores iniciais e monte uma estimativa com as funcionalidades que você precisa.": "Explore starting prices and build an estimate with the features you need.",
+  "Os valores são referências iniciais. O orçamento final depende do escopo, das integrações e do prazo combinado.": "Prices are starting estimates. The final quote depends on scope, integrations and the agreed timeline.",
+  "Vamos conversar sobre a sua ideia?": "Shall we talk about your idea?",
+  "Leve sua estimativa para a conversa e vamos definir juntos o melhor caminho.": "Bring your estimate to our conversation and we will find the best way forward together.",
   "SOLUÇÕES DIGITAIS": "DIGITAL SOLUTIONS",
   "Agenda aberta para novos projetos": "Available for new projects",
   "Soluções digitais para pequenos negócios": "Digital solutions for small businesses",

@@ -33,6 +33,12 @@ export default function QuoteSimulator() {
   const [feedback, setFeedback] = useState("");
 
   useEffect(() => {
+    const requested = new URLSearchParams(window.location.search).get("solucao");
+    const solution = projectTypes.find((item) => item.id === requested);
+    if (solution) setProjectType(solution.id);
+  }, []);
+
+  useEffect(() => {
     const updateLocale = (event?: Event) => {
       const requested = (event as CustomEvent<{ locale?: "pt" | "en" }> | undefined)?.detail?.locale;
       setLocale(requested ?? (document.documentElement.lang === "en" ? "en" : "pt"));

@@ -1,7 +1,7 @@
 import ContactBrief from "./components/ContactBrief";
 import FeaturedProjects from "./components/FeaturedProjects";
 import HeroShowcase from "./components/HeroShowcase";
-import QuoteSimulator from "./components/QuoteSimulator";
+import ServiceCards from "./components/ServiceCards";
 import BrandLogo from "./components/BrandLogo";
 import BrandSeal from "./components/BrandSeal";
 import SiteHeader from "./components/SiteHeader";
@@ -57,14 +57,9 @@ export default function Home() {
 
       <section className="section services-section" id="servicos">
         <div className="section-heading"><p>SERVIÇOS</p><h2>Escolha o ponto de partida</h2><span>Escopos claros que podem evoluir junto com o seu negócio.</span></div>
-        <div className="service-grid">
-          <article><div className="service-icon">LP</div><h3>Landing page</h3><p>Página estratégica para apresentar uma oferta e gerar contatos.</p><small>A partir de</small><strong>R$ 800</strong><ul><li>Design responsivo</li><li>Integração com canais de contato</li><li>Publicação e orientação</li></ul><a href="#contato">Quero uma landing page →</a></article>
-          <article className="recommended"><em>MAIS INDICADO</em><div className="service-icon">SI</div><h3>Site institucional</h3><p>Presença profissional para explicar serviços e construir confiança.</p><small>A partir de</small><strong>R$ 1.700</strong><ul><li>Até 5 páginas</li><li>SEO técnico básico</li><li>Formulário e métricas</li></ul><a href="#contato">Quero um site institucional →</a></article>
-          <article><div className="service-icon">SW</div><h3>Sistema web</h3><p>Solução personalizada para organizar processos do seu negócio.</p><small>Investimento</small><strong>Sob orçamento</strong><ul><li>Escopo personalizado</li><li>Painel administrativo</li><li>Treinamento e suporte</li></ul><a href="#contato">Quero um sistema web →</a></article>
-        </div>
+        <ServiceCards />
       </section>
 
-      <QuoteSimulator />
 
       <section className="comparison-section">
         <div className="comparison-heading"><p>ANTES / DEPOIS</p><h2>Uma presença digital muda a forma como o negócio é percebido.</h2></div>
@@ -96,7 +91,7 @@ export default function Home() {
 
       <ContactBrief />
 
-      <footer><BrandLogo href="#inicio" /><p>Soluções digitais para pequenos negócios.</p><div><a href="#projetos">Projetos</a><a href="#solucoes">Soluções</a><a href="#orcamento">Orçamento</a><a href="#sobre">Sobre</a><a href="/privacidade">Privacidade</a></div><small>© 2026 CVF. Projeto de portfólio.</small></footer>
+      <footer><BrandLogo href="#inicio" /><p>Soluções digitais para pequenos negócios.</p><div><a href="#projetos">Projetos</a><a href="#solucoes">Soluções</a><a href="/orcamento">Orçamento</a><a href="#sobre">Sobre</a><a href="/privacidade">Privacidade</a></div><small>© 2026 CVF. Projeto de portfólio.</small></footer>
     </main>
   );
 }

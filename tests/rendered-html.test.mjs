@@ -45,8 +45,6 @@ test("renderiza o portfólio completo", async () => {
   assert.match(html, /Espaço reservado para a sua ideia/i);
   assert.doesNotMatch(html, /class="concept-number">03/i);
   assert.match(html, /O que eu consigo criar para o seu negócio/i);
-  assert.match(html, /Monte uma primeira versão do seu projeto/i);
-  assert.match(html, /Fluxo de contato avançado/i);
   assert.match(html, /Enviar mensagem/i);
   assert.match(html, /Sua privacidade importa/i);
   assert.match(html, /Continuar para o Instagram/i);
@@ -54,11 +52,31 @@ test("renderiza o portfólio completo", async () => {
   assert.match(html, /Copiar resumo do projeto/i);
   assert.doesNotMatch(html, /WhatsApp/i);
   assert.doesNotMatch(html, /wa\.me/i);
+  assert.match(html, /Sem uma solução própria/i);
+  assert.match(html, /Conte sobre o seu negócio/i);
+});
+
+test("separa os preços e o simulador na página de orçamento", async () => {
+  const home = await (await render()).text();
+  assert.match(home, /href="\/orcamento"/i);
+  assert.match(home, /Solicitar orçamento/i);
+  for (const solution of ["landing", "institucional", "sistema"]) {
+    assert.match(home, new RegExp(`href="/orcamento\\?solucao=${solution}#orcamento"`));
+  }
+  assert.doesNotMatch(home, /class="quote-section"/i);
+  assert.doesNotMatch(home, /R\$ 800|R\$ 1\.700/i);
+  const response = await render("/orcamento");
+  assert.equal(response.status, 200);
+  const html = await response.text();
+  assert.doesNotMatch(html, /class="service-grid"/i);
+  assert.doesNotMatch(html, /Escolha o ponto de partida/i);
+  assert.match(html, /O orçamento final depende do escopo/i);
+  assert.match(html, /Monte uma primeira versão do seu projeto/i);
+  assert.match(html, /Fluxo de contato avançado/i);
   assert.match(html, /Prioridade/i);
   assert.match(html, /valor normal/i);
   assert.match(html, /−10%/i);
-  assert.match(html, /Sem uma solução própria/i);
-  assert.match(html, /Conte sobre o seu negócio/i);
+  assert.match(html, /href="\/#contato"/i);
 });
 
 test("explica o uso dos dados na política de privacidade", async () => {

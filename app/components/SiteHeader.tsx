@@ -7,7 +7,7 @@ import InstagramCta from "./InstagramCta";
 const links = [
   ["#projetos", "Projetos"],
   ["#solucoes", "Soluções"],
-  ["#orcamento", "Orçamento"],
+  ["/orcamento", "Orçamento"],
   ["#sobre", "Sobre"],
 ] as const;
 
@@ -40,6 +40,10 @@ export default function SiteHeader() {
   const closeMenu = () => setOpen(false);
 
   const navigateToSection = (event: MouseEvent<HTMLAnchorElement>, href: string) => {
+    if (!href.startsWith("#")) {
+      closeMenu();
+      return;
+    }
     const target = document.querySelector<HTMLElement>(href);
     if (!target) return;
 

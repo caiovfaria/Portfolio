@@ -1,0 +1,15 @@
+.budget-page { max-width: 1440px; margin: 0 auto; }
+.budget-intro { padding-top: 70px; padding-bottom: 20px; }
+.budget-intro h1 { color: #f5f5f3; max-width: 900px; font-size: clamp(2.4rem, 5.5vw, 4.8rem); line-height: 1.08; letter-spacing: -.035em; margin: 22px 0; }
+.budget-intro > p:last-child { max-width: 680px; font-size: 18px; line-height: 1.65; }
+.budget-disclaimer { margin: 28px auto; padding: 0 30px; max-width: 1180px; color: #c3c8d0; font-size: 16px; line-height: 1.7; }
+.budget-page .quote-section { margin-top: 40px; margin-bottom: 28px; }
+.budget-contact h2 { color: #f5f5f3; }
+.budget-page .service-grid p, .budget-page .service-grid li { font-size: 16px; }
+.budget-page .service-grid article > a { gap: 8px; font-size: 14px; }
+.budget-page .quote-builder legend, .budget-page .choice-row button, .budget-page .feature-choices label { font-size: 14px; }
+.budget-page .choice-row.compact button small, .budget-page .quote-result span { font-size: 12px; }
+.budget-contact { padding: 30px; margin: 50px 30px 90px; }
+.budget-contact h2 { font-size: clamp(1.8rem, 3vw, 2.8rem); line-height: 1.2; }
+.budget-contact p { font-size: 16px; line-height: 1.7; margin: 20px 0; }
+@media (max-width: 600px) { .budget-intro { padding-top: 35px; } .budget-contact { margin: 30px 0 60px; padding: 24px; } }
