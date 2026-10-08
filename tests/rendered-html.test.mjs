@@ -1,26 +1,78 @@
 import assert from "node:assert/strict";
-import test from "node:test";
+import test, { before, after } from "node:test";
 
-async function render(path = "/") {
-  const workerUrl = new URL("../dist/server/index.js", import.meta.url);
-  workerUrl.searchParams.set("test", `${process.pid}-${Date.now()}`);
-  const { default: worker } = await import(workerUrl.href);
+let runtime;
+before(async () => {
+  process.env.WRANGLER_WRITE_LOGS = "false";
+  process.env.WRANGLER_LOG_PATH = ".wrangler/logs";
+  process.env.MINIFLARE_REGISTRY_PATH = ".wrangler/registry";
+  const { createTestHarness } = await import("wrangler");
+  runtime = createTestHarness({
+    workers: [{ configPath: new URL("../dist/server/wrangler.json", import.meta.url) }],
+  });
+  await runtime.listen();
+});
+after(async () => { await runtime?.close(); });
 
-  return worker.fetch(
-    new Request(`http://localhost${path}`, {
-      headers: { accept: "text/html" },
-    }),
-    {
-      ASSETS: {
-        fetch: async () => new Response("Not found", { status: 404 }),
-      },
-    },
-    {
-      waitUntil() {},
-      passThroughOnException() {},
+async function render(path = "/", options = {}) {
+  return runtime.getWorker().fetch(
+    `${options.origin ?? "http://localhost"}${path}`, {
+      method: options.method ?? "GET",
+      redirect: "manual",
+      headers: { accept: "text/html", ...options.headers },
     },
   );
 }
+
+test("usa nonce aleatório e protege as respostas HTML", async () => {
+  const first = await render("/", { origin: "https://portfolio.caiovfaria07.workers.dev", headers: { "Content-Security-Policy": "script-src 'nonce-attacker'" } });
+  const policy = first.headers.get("content-security-policy");
+  const nonce = policy?.match(/'nonce-([^']+)'/)?.[1];
+  assert.ok(nonce);
+  assert.notEqual(nonce, "attacker");
+  assert.doesNotMatch(policy, /script-src[^;]*unsafe-inline|'unsafe-eval'/);
+  const html = await first.text();
+  const scripts = [...html.matchAll(/<script\b([^>]*)>/g)];
+  assert.ok(scripts.length > 0);
+  for (const [, attrs] of scripts) assert.ok(attrs.includes(`nonce="${nonce}"`), "script sem nonce");
+  assert.equal(first.headers.get("x-content-type-options"), "nosniff");
+  assert.equal(first.headers.get("x-frame-options"), "DENY");
+  assert.equal(first.headers.get("strict-transport-security"), "max-age=31536000");
+  assert.equal(first.headers.get("cache-control"), "no-store");
+  const second = await render();
+  assert.notEqual(second.headers.get("content-security-policy"), policy);
+  assert.equal(second.headers.get("strict-transport-security"), null);
+});
+
+test("redireciona HTTP público preservando caminho e parâmetros", async () => {
+  const response = await render("/orcamento?solucao=landing", { origin: "http://portfolio.caiovfaria07.workers.dev" });
+  assert.equal(response.status, 308);
+  assert.equal(response.headers.get("location"), "https://portfolio.caiovfaria07.workers.dev/orcamento?solucao=landing");
+  const asset = await render("/brand/cvf-monogram-white.svg", { origin: "http://portfolio.caiovfaria07.workers.dev" });
+  assert.equal(asset.status, 308);
+  assert.equal(asset.headers.get("location"), "https://portfolio.caiovfaria07.workers.dev/brand/cvf-monogram-white.svg");
+});
+
+test("protege arquivos públicos e não expõe arquivos internos", async () => {
+  const asset = await render("/brand/cvf-monogram-white.svg");
+  assert.equal(asset.status, 200);
+  assert.equal(asset.headers.get("x-content-type-options"), "nosniff");
+  assert.match(asset.headers.get("content-security-policy"), /sandbox/);
+  for (const path of ["/.env", "/.dev.vars", "/worker/index.ts", "/.git/config"]) {
+    assert.equal((await render(path)).status, 404, path);
+  }
+});
+
+test("recusa escrita sem endpoint e URLs remotas no otimizador", async () => {
+  const response = await render("/", { method: "POST" });
+  assert.equal(response.status, 405);
+  assert.equal(response.headers.get("allow"), "GET, HEAD");
+  for (const source of ["https://example.com/a.png", "//example.com/a.png", "/\\example.com/a.png"]) {
+    const image = await render(`/_vinext/image?url=${encodeURIComponent(source)}&w=640&q=75`);
+    assert.equal(image.status, 400);
+    assert.equal(image.headers.get("x-content-type-options"), "nosniff");
+  }
+});
 
 test("renderiza o portfólio completo", async () => {
   const response = await render();

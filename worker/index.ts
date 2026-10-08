@@ -1,6 +1,7 @@
 /** Cloudflare Worker entry point for the vinext-starter template. */
 import { handleImageOptimization, DEFAULT_DEVICE_SIZES, DEFAULT_IMAGE_SIZES } from "vinext/server/image-optimization";
 import handler from "vinext/server/app-router-entry";
+import { contentSecurityPolicy, isLocal, secureResponse } from "./security";
 
 interface Env {
   ASSETS: Fetcher;
@@ -29,18 +30,44 @@ const worker = {
   async fetch(request: Request, env: Env, ctx: ExecutionContext): Promise<Response> {
     const url = new URL(request.url);
 
+    if (url.protocol === "http:" && !isLocal(url)) {
+      url.protocol = "https:";
+      return secureResponse(new Response(null, { status: 308, headers: { Location: url.href } }), url);
+    }
+
+    // This portfolio has no server actions or form submission endpoints.
+    // Reject writes before the framework parses an unnecessary request body.
+    if (request.method !== "GET" && request.method !== "HEAD") {
+      return secureResponse(new Response("Method not allowed", {
+        status: 405, headers: { Allow: "GET, HEAD" },
+      }), url);
+    }
+
     if (url.pathname === "/_vinext/image") {
       const allowedWidths = [...DEFAULT_DEVICE_SIZES, ...DEFAULT_IMAGE_SIZES];
-      return handleImageOptimization(request, {
+      const response = await handleImageOptimization(request, {
         fetchAsset: (path) => env.ASSETS.fetch(new Request(new URL(path, request.url))),
         transformImage: async (body, { width, format, quality }) => {
           const result = await env.IMAGES.input(body).transform(width > 0 ? { width } : {}).output({ format, quality });
           return result.response();
         },
       }, allowedWidths);
+      return secureResponse(response, url);
     }
 
-    return handler.fetch(request, env, ctx);
+    // Go through the Worker even for assets so HTTP redirects apply everywhere.
+    // ASSETS is a local binding (not an external request).
+    const asset = await env.ASSETS.fetch(request);
+    if (asset.status !== 404) return secureResponse(asset, url);
+
+    const nonce = btoa(String.fromCharCode(...crypto.getRandomValues(new Uint8Array(18))));
+    const policy = contentSecurityPolicy(nonce);
+    const requestHeaders = new Headers(request.headers);
+    // Never accept a visitor-supplied nonce/policy as the server's own policy.
+    requestHeaders.set("Content-Security-Policy", policy);
+    requestHeaders.delete("Content-Security-Policy-Report-Only");
+    const response = await handler.fetch(new Request(request, { headers: requestHeaders }), env, ctx);
+    return secureResponse(response, url, policy);
   },
 };
 
