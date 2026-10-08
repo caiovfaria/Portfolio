@@ -1,0 +1,26 @@
+.brand-intro { position: fixed; inset: 0; z-index: 10000; display: grid; place-items: center; animation: intro-failsafe .2s 3.2s forwards; }
+.brand-intro-backdrop { position: absolute; inset: 0; background: var(--navy, #1d2638); will-change: opacity; }
+.brand-intro-mark { position: relative; width: min(42vw, 340px); height: auto; overflow: visible; will-change: transform; }
+.intro-halo { position: absolute; width: min(85vw, 680px); aspect-ratio: 1; left: 50%; top: 50%; margin-left: calc(min(85vw, 680px) / -2); margin-top: calc(min(85vw, 680px) / -2); background: radial-gradient(circle, rgba(169,203,187,.09), rgba(150,135,173,.045) 38%, transparent 68%); animation: intro-atmosphere 1.8s ease-out both; }
+.intro-details { position: absolute; inset: 0; pointer-events: none; transition: opacity .2s ease; color: #a9cbbb; font-family: var(--font-geist-sans), sans-serif; }
+.is-departing .intro-details { opacity: 0; }
+.intro-corner { position: absolute; font-size: 9px; font-weight: 600; letter-spacing: .2em; }
+.intro-corner-top { top: 30px; left: 32px; display: flex; align-items: center; gap: 12px; }
+.intro-corner-top i { width: 22px; height: 1px; background: #465269; }
+.intro-corner-bottom { bottom: 30px; right: 32px; color: #c4c8d1; opacity: .65; font-size: 8px; }
+.intro-signature { position: absolute; top: calc(50% + min(42vw, 340px) * .402 + 30px); left: 0; right: 0; display: grid; justify-items: center; gap: 20px; }
+.intro-signature > span { font-size: 10px; letter-spacing: .35em; opacity: 0; animation: intro-caption .6s .5s forwards; }
+.intro-progress { width: 100px; height: 1px; background: rgba(169,203,187,.15); overflow: hidden; }
+.intro-progress i { display: block; height: 100%; background: #a9cbbb; transform-origin: left; animation: intro-progress 2s ease-in-out both; }
+@keyframes intro-progress { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+@keyframes intro-caption { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes intro-atmosphere { from { opacity: 0; transform: scale(.9); } to { opacity: 1; transform: scale(1); } }
+.intro-stroke { stroke-dasharray: 1; stroke-dashoffset: 1; animation: intro-draw .7s cubic-bezier(.4,0,.2,1) forwards; }
+.intro-v { animation-delay: .65s; }
+.intro-f { animation-delay: 1.3s; }
+.intro-complete { opacity: 0; animation: intro-complete .15s 2s forwards; }
+@keyframes intro-complete { to { opacity: 1; } }
+@keyframes intro-draw { to { stroke-dashoffset: 0; } }
+@keyframes intro-failsafe { to { opacity: 0; visibility: hidden; pointer-events: none; } }
+@media (max-width: 600px) { .brand-intro-mark { width: min(65vw, 280px); } .intro-signature { top: calc(50% + min(65vw, 280px) * .402 + 24px); } .intro-corner-top { top: 24px; left: 24px; } .intro-corner-bottom { bottom: 24px; right: 24px; letter-spacing: .1em; font-size: 7px; } }
+@media (prefers-reduced-motion: reduce) { .brand-intro { display: none; } }

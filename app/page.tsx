@@ -5,10 +5,12 @@ import ServiceCards from "./components/ServiceCards";
 import BrandLogo from "./components/BrandLogo";
 import BrandSeal from "./components/BrandSeal";
 import SiteHeader from "./components/SiteHeader";
+import BrandIntro from "./components/BrandIntro";
 
 export default function Home() {
   return (
     <main>
+      <BrandIntro />
       <SiteHeader />
       <section className="hero" id="inicio">
         <div className="hero-copy">

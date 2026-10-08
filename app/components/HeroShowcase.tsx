@@ -14,9 +14,34 @@ export default function HeroShowcase() {
 
     updateMotionPreference();
     motionPreference.addEventListener("change", updateMotionPreference);
-    void import("@google/model-viewer").then(() => setViewerReady(true));
+    let mounted = true;
+    let started = false;
+    const startViewer = () => {
+      if (started || !mounted) return;
+      started = true;
+      void import("@google/model-viewer").then(() => { if (mounted) setViewerReady(true); }).catch(() => {
+        modelViewerRef.current?.dispatchEvent(new Event("error"));
+      });
+    };
+    // Fetch the model during the intro, but postpone parsing the viewer and
+    // creating its WebGL context until the foreground animation has finished.
+    const preload = document.createElement("link");
+    preload.rel = "preload";
+    preload.as = "fetch";
+    preload.href = "/brand/logo-cvf-3d.glb?v=2";
+    preload.crossOrigin = "anonymous";
+    document.head.append(preload);
+    window.addEventListener("cvf-intro-complete", startViewer, { once: true });
+    if (!document.querySelector(".brand-intro") || motionPreference.matches || window.location.hash) startViewer();
+    const fallbackTimer = window.setTimeout(startViewer, 3500);
 
-    return () => motionPreference.removeEventListener("change", updateMotionPreference);
+    return () => {
+      mounted = false;
+      window.clearTimeout(fallbackTimer);
+      window.removeEventListener("cvf-intro-complete", startViewer);
+      preload.remove();
+      motionPreference.removeEventListener("change", updateMotionPreference);
+    };
   }, []);
 
   useEffect(() => {
@@ -25,8 +50,11 @@ export default function HeroShowcase() {
 
     let frame = 0;
     let lastUpdate = 0;
+    let inView = true;
+    const observer = new IntersectionObserver(([entry]) => { inView = entry.isIntersecting; });
+    observer.observe(viewer);
     const animate = (time: number) => {
-      if (time - lastUpdate > 32) {
+      if (time - lastUpdate > 32 && inView && !document.hidden) {
         const angle = Math.sin(time / 1500) * 32;
         const height = 77 + Math.sin(time / 3000) * 3;
         viewer.setAttribute("camera-orbit", `${angle.toFixed(2)}deg ${height.toFixed(2)}deg 105%`);
@@ -36,7 +64,7 @@ export default function HeroShowcase() {
     };
 
     frame = window.requestAnimationFrame(animate);
-    return () => window.cancelAnimationFrame(frame);
+    return () => { window.cancelAnimationFrame(frame); observer.disconnect(); };
   }, [reducedMotion, viewerReady]);
 
   const modelViewer = createElement("model-viewer", {

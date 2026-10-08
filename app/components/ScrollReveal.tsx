@@ -123,6 +123,14 @@ function prepareWaveText(element: HTMLElement, force = false) {
 
 export default function ScrollReveal() {
   useLayoutEffect(() => {
+    let cleanup: (() => void) | undefined;
+    let started = false;
+    const initialize = () => {
+      if (started) return;
+      started = true;
+      cleanup = setup();
+    };
+    function setup() {
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const elements = new Set<HTMLElement>();
     const progressElement = document.querySelector<HTMLElement>("[data-scroll-reveal-controller]");
@@ -196,6 +204,18 @@ export default function ScrollReveal() {
       window.removeEventListener("scroll", updateScrollProgress);
       cancelAnimationFrame(frame);
       document.documentElement.classList.remove("reveal-ready");
+    };
+    }
+    // Keep text splitting and background entrance effects out of the intro.
+    const waitForIntro = document.querySelector(".brand-intro") &&
+      !window.matchMedia("(prefers-reduced-motion: reduce)").matches && !window.location.hash;
+    window.addEventListener("cvf-intro-complete", initialize, { once: true });
+    if (!waitForIntro) initialize();
+    const safetyTimer = window.setTimeout(initialize, 3500);
+    return () => {
+      window.clearTimeout(safetyTimer);
+      window.removeEventListener("cvf-intro-complete", initialize);
+      cleanup?.();
     };
   }, []);
 
