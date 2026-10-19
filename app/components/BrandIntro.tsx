@@ -10,12 +10,17 @@ export default function BrandIntro() {
 
   useEffect(() => {
     const preference = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const contour = mark.current?.querySelector<SVGPathElement>("#intro-monogram");
+    if (contour) mark.current?.style.setProperty("--intro-path-length", String(contour.getTotalLength()));
+    layer.current?.setAttribute("data-ready", "true");
     let disposed = false;
     let closing = false;
+    let completed = false;
     const timers: number[] = [];
     const animations: Animation[] = [];
     const hide = () => {
-      if (!disposed) {
+      if (!disposed && !completed) {
+        completed = true;
         setVisible(false);
         window.dispatchEvent(new Event("cvf-intro-complete"));
       }
@@ -24,29 +29,29 @@ export default function BrandIntro() {
       if (closing || disposed) return;
       closing = true;
       layer.current?.classList.add("is-departing");
-      const target = document.querySelector(".site-header .brand-mark");
-      if (preference.matches || !target || !mark.current || !layer.current) {
-        hide();
+      if (!preference.matches && mark.current && layer.current) {
+        const zoom = mark.current.animate([
+          { transform: "scale(1)", opacity: 1, offset: 0 },
+          { transform: "scale(1.12)", opacity: 1, offset: .22 },
+          { transform: "scale(10)", opacity: 0, offset: 1 },
+        ], { duration: 1150, easing: "cubic-bezier(.65,0,.25,1)", fill: "forwards" });
+        animations.push(zoom);
+        const backdrop = layer.current.querySelector(".brand-intro-backdrop");
+        if (backdrop) animations.push(backdrop.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 700, delay: 450, fill: "forwards" }));
+        void zoom.finished.then(hide).catch(() => {});
+        timers.push(window.setTimeout(hide, 1400));
         return;
       }
-      const from = mark.current.getBoundingClientRect();
-      const to = target.getBoundingClientRect();
-      animations.push(mark.current.animate([
-        { transform: "translate(0, 0) scale(1)" },
-        { transform: `translate(${to.left + to.width / 2 - from.left - from.width / 2}px, ${to.top + to.height / 2 - from.top - from.height / 2}px) scale(${to.width / from.width}, ${to.height / from.height})` },
-      ], { duration: 650, easing: "cubic-bezier(.65,0,.25,1)", fill: "forwards" }));
-      const backdrop = layer.current.querySelector(".brand-intro-backdrop");
-      if (backdrop) animations.push(backdrop.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 650, fill: "forwards" }));
-      timers.push(window.setTimeout(hide, 670));
+      hide();
     };
     if (preference.matches || window.location.hash) {
       hide();
       return;
     }
-    const onPreference = () => { if (preference.matches) exit(); };
+    const onPreference = () => { if (preference.matches) hide(); };
     preference.addEventListener("change", onPreference);
     // The model loads in parallel; a slow GPU/network must not hold the page hostage.
-    timers.push(window.setTimeout(exit, 2050));
+    timers.push(window.setTimeout(exit, 3200));
     return () => {
       disposed = true;
       timers.forEach(window.clearTimeout);
@@ -57,11 +62,12 @@ export default function BrandIntro() {
 
   if (!visible) return null;
   return (
-    <div className="brand-intro" ref={layer}>
+    <div className="brand-intro" data-study="true" ref={layer}>
       <div className="brand-intro-backdrop" aria-hidden="true">
         <div className="intro-halo" />
       </div>
       <div className="intro-details" aria-hidden="true" data-no-translate>
+        <div className="intro-construction"><i /><i /><i /><i /><span>01 / CVF — CONSTRUÇÃO DA MARCA</span></div>
         <span className="intro-corner intro-corner-top">CVF <i /> DIGITAL STUDIO</span>
         <div className="intro-signature"><span>SOLUÇÕES DIGITAIS</span><div className="intro-progress"><i /></div></div>
         <span className="intro-corner intro-corner-bottom">CLAREZA · PERFORMANCE · CONVERSÃO</span>
@@ -76,7 +82,8 @@ export default function BrandIntro() {
             <path className="intro-stroke intro-f" pathLength="1" d="M680 195 L1030 195 L1090 110 M750 215 L750 580 M750 450 L1025 350" />
           </g>
         </mask></defs>
-        <use href="#intro-monogram" fill="white" mask="url(#intro-draw)" />
+        <use className="intro-outline" href="#intro-monogram" fill="none" stroke="currentColor" strokeWidth="2" />
+        <use className="intro-painted" href="#intro-monogram" fill="white" mask="url(#intro-draw)" />
         <use className="intro-complete" href="#intro-monogram" fill="white" />
       </svg>
     </div>
