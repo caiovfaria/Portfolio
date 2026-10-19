@@ -211,7 +211,7 @@ export default function ScrollReveal() {
       !window.matchMedia("(prefers-reduced-motion: reduce)").matches && !window.location.hash;
     window.addEventListener("cvf-intro-complete", initialize, { once: true });
     if (!waitForIntro) initialize();
-    const safetyTimer = window.setTimeout(initialize, 3500);
+    const safetyTimer = window.setTimeout(initialize, 5800);
     return () => {
       window.clearTimeout(safetyTimer);
       window.removeEventListener("cvf-intro-complete", initialize);
