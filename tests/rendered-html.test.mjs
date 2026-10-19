@@ -87,7 +87,7 @@ test("renderiza o portfólio completo", async () => {
   assert.match(html, /Agenda aberta/i);
   assert.doesNotMatch(html, /5 vagas/i);
   assert.match(html, /Ver estudo completo/i);
-  assert.match(html, /pizzaria-menu\.webp/i);
+  assert.match(html, /pizzaria-fornalha-balcao\.webp/i);
   assert.match(html, /Landing page/i);
   assert.match(html, /Site institucional/i);
   assert.match(html, /Sistema web/i);
@@ -112,7 +112,7 @@ test("separa os preços e o simulador na página de orçamento", async () => {
   const home = await (await render()).text();
   assert.match(home, /href="\/orcamento"/i);
   assert.match(home, /Solicitar orçamento/i);
-  for (const solution of ["landing", "institucional", "sistema"]) {
+  for (const solution of ["landing", "institucional"]) {
     assert.match(home, new RegExp(`href="/orcamento\\?solucao=${solution}#orcamento"`));
   }
   assert.doesNotMatch(home, /class="quote-section"/i);
@@ -125,6 +125,9 @@ test("separa os preços e o simulador na página de orçamento", async () => {
   assert.match(html, /O orçamento final depende do escopo/i);
   assert.match(html, /Monte uma primeira versão do seu projeto/i);
   assert.match(html, /Fluxo de contato avançado/i);
+  assert.match(html, /Sistema web — indisponível no momento/i);
+  assert.match(html, /<button[^>]*disabled=""[^>]*>Sistema web<\/button>/);
+  assert.match(html, /Não inclui desenvolvimento de backend/i);
   assert.match(html, /Prioridade/i);
   assert.match(html, /valor normal/i);
   assert.match(html, /−10%/i);
@@ -142,6 +145,15 @@ test("explica o uso dos dados na política de privacidade", async () => {
   assert.match(html, /Instagram/i);
   assert.match(html, /direitos sobre seus dados/i);
   assert.match(html, /01 de outubro de 2026/i);
+});
+
+test("inicia o orçamento com a solução indicada na URL", async () => {
+  for (const [solution, label] of [["landing", "Landing page"], ["institucional", "Site institucional"], ["sistema", "Site institucional"], ["invalida", "Site institucional"]]) {
+    const response = await render(`/orcamento?solucao=${solution}`);
+    assert.equal(response.status, 200);
+    const html = await response.text();
+    assert.match(html, new RegExp(`<button[^>]*aria-pressed="true"[^>]*>${label}</button>`));
+  }
 });
 
 test("renderiza a página completa sobre Caio", async () => {
@@ -171,7 +183,7 @@ test("mantém o menu no resumo e liga Saber mais à página completa", async () 
 });
 
 test("renderiza os estudos completos dos projetos", async () => {
-  for (const [path, project, image] of [["/projetos/barbearia", "Barbearia Norte", "barbearia-menu.webp"], ["/projetos/pizzaria", "Pizzaria Fornalha", "pizzaria-menu.webp"]]) {
+  for (const [path, project, image] of [["/projetos/barbearia", "Barbearia Norte", "barbearia-menu.webp"], ["/projetos/pizzaria", "Pizzaria Fornalha", "pizzaria-fornalha-balcao.webp"]]) {
     const response = await render(path);
     assert.equal(response.status, 200);
     const html = await response.text();
@@ -180,6 +192,11 @@ test("renderiza os estudos completos dos projetos", async () => {
     assert.match(html, /O projeto vai além da aparência/i);
     assert.match(html, /Demonstração do projeto/i);
     assert.match(html, /Quero algo semelhante/i);
+    assert.match(html, /Do desafio à entrega/i);
+    assert.match(html, /O que o projeto demonstra/i);
+    assert.match(html, /O caminho do cliente/i);
+    assert.match(html, /sem métricas/i);
+    assert.match(html, path.endsWith("barbearia") ? /Escolher o agendamento/ : /Revisar o pedido/);
     assert.doesNotMatch(html, /WhatsApp/i);
     assert.doesNotMatch(html, /wa\.me/i);
     assert.match(html, new RegExp(`<title>${project} \\| Projeto CVF</title>`, "i"));

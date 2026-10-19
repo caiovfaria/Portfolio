@@ -71,3 +71,29 @@ Versão Cloudflare: `691cd2f4-e086-4e5d-a523-1d1144574a32`, Worker `portfolio`.
 - Navegador no oficial: home e logo 3D exibidos, console sem erros/avisos nesta verificação. Os 11 testes locais aprovados continuam sendo a evidência dos fluxos detalhados; não houve novo teste exaustivo de todos os fluxos em produção.
 - Os 11 alertas residuais descritos acima permanecem. Publicação não equivale a garantia de segurança absoluta.
 - Código registrado em commit local. Não enviar automaticamente para main enquanto o workflow legado de GitHub Pages publica a pasta dist inteira, que agora inclui artefatos do servidor; o destino oficial desta publicação é exclusivamente Cloudflare.
+
+## Publicação das melhorias visuais — 2026-10-08
+
+- Autorização explícita do usuário: “pode upar ja”.
+- Worker `portfolio`, versão `02858c7f-36b9-421f-9d1e-f609b37ea1e5`.
+- Build e 12 testes aprovados antes do deploy, incluindo a seleção inicial do orçamento pela URL.
+- GET HTTPS em home, Sobre, dois estudos e orçamento com `solucao=landing`: 200 e headers CSP/nosniff presentes.
+- Conteúdo novo dos estudos confirmado nas duas rotas; seleção inicial de Landing page confirmada no HTML publicado.
+- Inclui transições, cards interativos, prévia do orçamento, narrativa dos estudos, microinterações, traduções e bordas arredondadas. Sem alterações nas proteções do Worker.
+- Não realizado teste visual exaustivo em produção nesta entrega. Os riscos residuais de dependências registrados anteriormente permanecem; sem push para o workflow legado de GitHub Pages.
+
+## Atualização da captura da pizzaria — 2026-10-17
+
+- Autorização explícita para publicar a imagem nova no destaque e no estudo da pizzaria.
+- Worker `portfolio`, versão `7b12190d-fe71-4ca9-a819-743fd024df9c`; versão anterior `01f0da00-cd85-48cc-967d-4b6f853a72f3` mantida no histórico da Cloudflare.
+- Build e 12 testes aprovados na preparação. Comparação pré-publicação em cinco rotas: HTML idêntico ao público, exceto a imagem/alt solicitados, origem local e identificadores aleatórios. As três folhas de estilo eram byte a byte idênticas às públicas; melhorias antigas preservadas.
+- Nova imagem confirmada por GET no destaque e no estudo. Navegador confirmou o destaque publicado. Sem alterações nas proteções do Worker e sem push para o workflow legado de GitHub Pages.
+
+## Nova identidade de balcão da Fornalha — 2026-10-17
+
+- Autorização explícita: “pode atualiza ja e no portfolio tbm”.
+- Nova captura `pizzaria-fornalha-balcao.webp` (80.996 bytes), atualizada no destaque, estudo e respectivos metadados. Imagens anteriores preservadas.
+- Build e 12 testes aprovados. Comparação pré-publicação das cinco rotas e três folhas CSS confirmou que só a imagem/alt autorizados mudavam no HTML normalizado.
+- Worker `portfolio`, versão `1b857b9d-c435-4f58-a40f-4373d77ed4d3`, anterior `7b12190d-fe71-4ca9-a819-743fd024df9c`.
+- Destaque inspecionado no navegador público, imagem carregada; estudo confirmado por GET. Proteções e demais elementos preservados.
+- Pizzaria publicada separadamente no GitHub Pages, commit `620f7cbbbf1a3a50c292cdaac02f747e8be82236`; workflow `39000878026` concluído com sucesso. Dois seletores de sabores e recálculo conferidos no navegador público. Os 17 testes da pizzaria passaram na preparação.
