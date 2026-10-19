@@ -35,9 +35,14 @@ export default function ProjectDetail({ project }: { project: ProjectData }) {
         <div><small>INDICADO PARA</small><strong>{project.audience}</strong></div>
       </section>
 
-      <section className="detail-story">
-        <div><p>01 · O DESAFIO</p><h2>O que precisava ser resolvido</h2><span>{project.challenge}</span></div>
-        <div><p>02 · A SOLUÇÃO</p><h2>Como a experiência foi construída</h2><span>{project.solution}</span></div>
+      <section className="detail-story case-narrative" aria-label="Do desafio à entrega">
+        <div className="detail-section-heading case-story-heading"><p>POR TRÁS DO PROJETO</p><h2>Do desafio à entrega.</h2><span>Decisões de design que conectam o negócio à experiência de quem usa.</span></div>
+        <div className="case-story-grid">
+          <article><span className="case-step-number" aria-hidden="true">01</span><p>01 · O DESAFIO</p><h2>O que precisava ser resolvido</h2><span>{project.challenge}</span></article>
+          <article><span className="case-step-number" aria-hidden="true">02</span><p>02 · A SOLUÇÃO</p><h2>Como a experiência foi construída</h2><span>{project.solution}</span></article>
+          <article className="case-delivery"><span className="case-step-number" aria-hidden="true">03</span><p>03 · A ENTREGA</p><h2>O que o projeto demonstra</h2><span>{project.outcome}</span></article>
+        </div>
+        <div className="case-journey"><h3>O caminho do cliente</h3><ol>{project.journey.map((step, index) => <li key={step}><b aria-hidden="true">0{index + 1}</b><span>{step}</span></li>)}</ol></div>
       </section>
 
       <section className="detail-features">

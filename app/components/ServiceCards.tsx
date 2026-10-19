@@ -12,7 +12,7 @@ export default function ServiceCards({ showPrices = false }: { showPrices?: bool
       <h3>{service.title}</h3><p>{service.description}</p>
       {showPrices && <><small>{service.code === "SW" ? "Investimento" : "A partir de"}</small><strong>{service.price}</strong></>}
       <ul>{service.features.map((feature) => <li key={feature}>{feature}</li>)}</ul>
-      <a href={`/orcamento?solucao=${service.code === "LP" ? "landing" : service.code === "SI" ? "institucional" : "sistema"}#orcamento`}>Solicitar orçamento <span aria-hidden="true">→</span></a>
+      {service.code === "SW" ? <span className="service-unavailable">Indisponível no momento</span> : <a href={`/orcamento?solucao=${service.code === "LP" ? "landing" : "institucional"}#orcamento`}>Solicitar orçamento <span aria-hidden="true">→</span></a>}
     </article>
   ))}</div>;
 }

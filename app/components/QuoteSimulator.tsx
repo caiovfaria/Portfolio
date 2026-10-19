@@ -25,18 +25,12 @@ const formatMoney = (value: number, locale: "pt" | "en" = "pt") => new Intl.Numb
   maximumFractionDigits: 0,
 }).format(locale === "en" ? Math.round((value / 5) / 10) * 10 : value);
 
-export default function QuoteSimulator() {
+export default function QuoteSimulator({ initialProjectType = "institucional" }: { initialProjectType?: (typeof projectTypes)[number]["id"] }) {
   const [locale, setLocale] = useState<"pt" | "en">("pt");
-  const [projectType, setProjectType] = useState<(typeof projectTypes)[number]["id"]>("institucional");
+  const [projectType, setProjectType] = useState<(typeof projectTypes)[number]["id"]>(initialProjectType === "sistema" ? "institucional" : initialProjectType);
   const [selected, setSelected] = useState<string[]>([]);
   const [deadline, setDeadline] = useState("normal");
   const [feedback, setFeedback] = useState("");
-
-  useEffect(() => {
-    const requested = new URLSearchParams(window.location.search).get("solucao");
-    const solution = projectTypes.find((item) => item.id === requested);
-    if (solution) setProjectType(solution.id);
-  }, []);
 
   useEffect(() => {
     const updateLocale = (event?: Event) => {
@@ -63,6 +57,7 @@ export default function QuoteSimulator() {
 
   const selectedType = projectTypes.find((item) => item.id === projectType)?.label ?? "Projeto web";
   const selectedAdditions = additions.filter((item) => selected.includes(item.id)).map((item) => item.label);
+  const previewText = (pt: string, en: string) => locale === "en" ? en : pt;
   const copyEstimate = () => {
     const english = document.documentElement.lang === "en";
     const translatedType = translations[selectedType] ?? selectedType;
@@ -94,6 +89,34 @@ export default function QuoteSimulator() {
         <h2>Monte uma primeira versão do seu projeto.</h2>
         <p>Escolha o tipo de solução e as funções mais importantes. O contato básico já está incluído; o fluxo avançado organiza mensagens e etapas personalizadas. A faixa fica exata depois de uma conversa rápida.</p>
         <div className="quote-seal" aria-hidden="true"><b><BrandSeal /></b><span>PROJETO SOB MEDIDA</span></div>
+        <div className="quote-preview" data-no-translate>
+          <div className="quote-preview-caption">
+            <span>{previewText("SUA SOLUÇÃO, EM VISÃO GERAL", "YOUR SOLUTION AT A GLANCE")}</span>
+            <strong>{locale === "en" ? translations[selectedType] ?? selectedType : selectedType}</strong>
+          </div>
+          <div className={`quote-wireframe quote-wireframe-${projectType}`} aria-hidden="true">
+            <div className="quote-wireframe-bar"><i /><i /><i /><b>CVF</b></div>
+            {projectType === "sistema" ? (
+              <div className="quote-wireframe-dashboard">
+                <div className="quote-wireframe-sidebar"><i /><i /><i /></div>
+                <div className="quote-wireframe-workspace"><div className="quote-wireframe-stats"><i /><i /><i /></div><div className="quote-wireframe-table"><i /><i /><i /></div></div>
+              </div>
+            ) : (
+              <div className="quote-wireframe-site">
+                <div className="quote-wireframe-hero"><div><i /><i /><b /></div><span /></div>
+                {projectType === "institucional" && <div className="quote-wireframe-pages"><i /><i /><i /></div>}
+                <div className="quote-wireframe-blocks">{selected.map(id => <i key={id} />)}</div>
+              </div>
+            )}
+          </div>
+          <p className="quote-preview-note">{previewText("Prévia ilustrativa da estrutura, não do design final.", "Illustrative structure preview, not the final design.")}</p>
+          <div className="quote-preview-scope">
+            <small>{previewText("Incluído na base", "Included in the base")}</small>
+            <p>{projectType === "landing" ? previewText("Uma página focada em apresentar sua oferta e gerar contatos.", "One page focused on your offer and generating enquiries.") : projectType === "institucional" ? previewText("Páginas para apresentar seu negócio, serviços e contato.", "Pages to present your business, services and contact details.") : previewText("Estrutura personalizada para organizar processos do negócio.", "A tailored structure to organise your business processes.")}</p>
+            <small>{previewText("Funcionalidades adicionadas", "Added features")}</small>
+            {selectedAdditions.length ? <ul>{selectedAdditions.map(label => <li key={label}><span aria-hidden="true">✓ </span>{locale === "en" ? translations[label] ?? label : label}</li>)}</ul> : <p>{previewText("Escolha as opções ao lado para compor sua solução.", "Select features in the builder to shape your solution.")}</p>}
+          </div>
+        </div>
       </div>
 
       <div className="quote-builder">
@@ -101,13 +124,15 @@ export default function QuoteSimulator() {
           <legend>1. Qual solução você precisa?</legend>
           <div className="choice-row">
             {projectTypes.map((item) => (
-              <button type="button" key={item.id} className={projectType === item.id ? "selected" : ""} onClick={() => setProjectType(item.id)}>{item.label}</button>
+              <button type="button" key={item.id} disabled={item.id === "sistema"} aria-describedby={item.id === "sistema" ? "system-unavailable" : undefined} aria-pressed={projectType === item.id} className={projectType === item.id ? "selected" : ""} onClick={() => setProjectType(item.id)}>{item.label}</button>
             ))}
           </div>
+          <p id="system-unavailable" className="availability-note">Sistema web — indisponível no momento. Atualmente, os orçamentos são para landing pages e sites institucionais.</p>
         </fieldset>
 
         <fieldset>
           <legend>2. O que ela deve fazer?</legend>
+          <p className="availability-note">Agendamento, pagamentos e painel administrativo dependem de integrações com serviços existentes e avaliação prévia. Não inclui desenvolvimento de backend ou banco de dados personalizado.</p>
           <div className="feature-choices">
             {additions.map((item) => (
               <label key={item.id} className={selected.includes(item.id) ? "selected" : ""}>
@@ -121,9 +146,9 @@ export default function QuoteSimulator() {
         <fieldset>
           <legend>3. Qual é o prazo?</legend>
           <div className="choice-row compact">
-            <button type="button" className={deadline === "prioridade" ? "selected" : ""} onClick={() => setDeadline("prioridade")}>Prioridade <small>+20%</small></button>
-            <button type="button" className={deadline === "normal" ? "selected" : ""} onClick={() => setDeadline("normal")}>Até 30 dias <small>valor normal</small></button>
-            <button type="button" className={deadline === "flexivel" ? "selected" : ""} onClick={() => setDeadline("flexivel")}>Flexível <small>−10%</small></button>
+            <button type="button" aria-pressed={deadline === "prioridade"} className={deadline === "prioridade" ? "selected" : ""} onClick={() => setDeadline("prioridade")}>Prioridade <small>+20%</small></button>
+            <button type="button" aria-pressed={deadline === "normal"} className={deadline === "normal" ? "selected" : ""} onClick={() => setDeadline("normal")}>Até 30 dias <small>valor normal</small></button>
+            <button type="button" aria-pressed={deadline === "flexivel"} className={deadline === "flexivel" ? "selected" : ""} onClick={() => setDeadline("flexivel")}>Flexível <small>−10%</small></button>
           </div>
           {projectType === "sistema" && <p className="deadline-note">Para sistemas web, “até 30 dias” corresponde à primeira versão funcional.</p>}
         </fieldset>

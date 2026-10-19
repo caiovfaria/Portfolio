@@ -14,7 +14,7 @@ const revealGroups = [
   [".about-section > *", "zoom"],
   [".brief-section > *", "up"],
   [".detail-summary > div", "up"],
-  [".detail-story > *", "up"],
+  [".detail-story > :not(.case-story-grid), .case-story-grid > article", "up"],
   [".detail-feature-grid article", "up"],
   [".detail-process article", "up"],
   [".detail-cta > div", "zoom"],

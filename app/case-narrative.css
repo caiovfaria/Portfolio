@@ -1,0 +1,19 @@
+.detail-story.case-narrative{display:block;padding-block:90px;max-width:1240px}
+.case-story-heading{max-width:680px;margin-bottom:40px}
+.case-story-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.case-story-grid article{position:relative;isolation:isolate;overflow:hidden;padding:30px;min-width:0;border:1px solid var(--line);border-radius:20px;background:var(--theme-surface)}
+.case-story-grid .case-step-number{position:absolute;z-index:-1;right:16px;top:8px;color:var(--teal);opacity:.08;font-size:100px;font-weight:800;line-height:1;letter-spacing:-6px;pointer-events:none}
+.case-story-grid article p{margin:12px 0 30px;color:var(--teal)}
+.detail-story .case-story-grid h2{font-size:clamp(26px,2.7vw,36px);line-height:1.14;letter-spacing:-1px;margin:0 0 20px}
+.case-story-grid article>span:not(.case-step-number){display:block;color:var(--muted);font-size:14px;line-height:1.8}
+.case-story-grid .case-delivery{border-color:var(--teal);background:linear-gradient(145deg,#a9cdbd0d,transparent),var(--theme-surface)}
+.case-journey{margin-top:32px;padding:28px;border:1px solid var(--line);border-radius:20px}
+.case-journey h3{margin:0 0 24px;color:var(--ink);font-size:18px;letter-spacing:-.3px}
+.case-journey ol{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:30px;list-style:none;padding:0;margin:0}
+.case-journey li{display:flex;align-items:center;gap:14px;position:relative;min-width:0}
+.case-journey li:not(:last-child):after{content:"→";position:absolute;right:-20px;color:var(--teal)}
+.case-journey b{flex-shrink:0;display:grid;place-items:center;width:36px;height:36px;border-radius:50%;background:var(--teal);color:var(--navy);font-size:11px}
+.case-journey li span{color:var(--ink);font-size:14px;line-height:1.5}
+html[lang="en"] .detail-story .case-story-grid h2{font-size:clamp(26px,2.7vw,36px);line-height:1.14;letter-spacing:-1px}
+@media(max-width:900px){.case-story-grid{grid-template-columns:1fr}.case-story-grid article{padding:28px}.case-story-grid article p{margin-bottom:20px}.case-story-heading{max-width:100%}}
+@media(max-width:600px){.detail-story.case-narrative{padding:64px 20px}.case-journey{padding:24px}.case-journey ol{grid-template-columns:1fr;gap:24px}.case-journey li:not(:last-child):after{content:"↓";left:13px;right:auto;bottom:-22px}}

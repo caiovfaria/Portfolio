@@ -1,0 +1,85 @@
+/* Stable cards: interacting with one never squeezes or dims its neighbour. */
+.projects-sequence > .featured-project-card,
+.projects-sequence > .featured-project-card:hover,
+.projects-sequence > .featured-project-card:focus-within,
+.projects-sequence:has(> .featured-project-card:hover) > .featured-project-card:not(:hover),
+.projects-sequence:has(> .featured-project-card:focus-within) > .featured-project-card:not(:focus-within) {
+  flex-grow: 1;
+  opacity: 1;
+  filter: none;
+  transform: none;
+}
+
+.projects-sequence > .featured-project-card {
+  outline: 1px solid var(--line);
+  outline-offset: -1px;
+  transition: outline-color 180ms ease;
+}
+
+.projects-sequence > .featured-project-card:focus-within {
+  outline-color: var(--teal);
+}
+
+.projects-sequence .featured-screen img {
+  transform: scale(1);
+  transition: transform 420ms cubic-bezier(.22, 1, .36, 1);
+}
+
+.projects-sequence .featured-actions a {
+  transform: none;
+  transition: background-color 180ms ease, color 180ms ease;
+}
+
+.projects-sequence .featured-actions a span {
+  display: inline-block;
+  transition: transform 180ms ease;
+}
+
+.projects-sequence .featured-actions a:focus-visible {
+  outline: 3px solid var(--teal);
+  outline-offset: 4px;
+}
+
+.projects-sequence .featured-actions a:active {
+  opacity: .85;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .projects-sequence > .featured-project-card:hover {
+    outline-color: var(--teal);
+  }
+
+  .projects-sequence > .featured-project-card:hover .featured-screen img {
+    transform: scale(1.025);
+  }
+
+  .projects-sequence .featured-actions a:hover span {
+    transform: translateX(4px);
+  }
+}
+
+.projects-sequence > .featured-project-card:focus-within .featured-screen img {
+  transform: scale(1.025);
+}
+
+.projects-sequence .featured-actions a:focus-visible span {
+  transform: translateX(4px);
+}
+
+/* Reset older hover movement on touch devices and for reduced motion. */
+@media (hover: none), (prefers-reduced-motion: reduce) {
+  .projects-sequence .featured-frame,
+  .projects-sequence .featured-project-card:hover .featured-frame,
+  .projects-sequence .featured-project-card:focus-within .featured-frame,
+  .projects-sequence .featured-screen img,
+  .projects-sequence .featured-project-card:hover .featured-screen img,
+  .projects-sequence .featured-project-card:focus-within .featured-screen img,
+  .projects-sequence .featured-actions a,
+  .projects-sequence .featured-actions a:hover,
+  .projects-sequence .featured-actions a span,
+  .projects-sequence .featured-actions a:hover span,
+  .projects-sequence .featured-actions a:focus-visible span {
+    transform: none;
+    transition: none;
+  }
+}

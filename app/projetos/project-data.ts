@@ -12,6 +12,8 @@ export type ProjectData = {
   liveUrl: string;
   challenge: string;
   solution: string;
+  outcome: string;
+  journey: string[];
   features: string[];
   technologies: string;
   timeline: string;
@@ -33,6 +35,8 @@ export const projects: Record<ProjectData["slug"], ProjectData> = {
     liveUrl: "https://caiovfaria.github.io/Landing-Page-Barbearia/",
     challenge: "Apresentar serviços, profissionais e produtos sem deixar a navegação pesada, além de tornar o agendamento simples no celular.",
     solution: "Uma página de alto impacto com identidade visual consistente, hierarquia clara e chamadas posicionadas para levar o visitante ao agendamento.",
+    outcome: "O demonstrativo reúne marca, serviços e agendamento em uma experiência responsiva. O resultado apresentado é a estrutura construída, sem métricas de conversão de clientes reais.",
+    journey: ["Conhecer a barbearia", "Explorar os serviços", "Escolher o agendamento"],
     features: ["Serviços organizados", "Apresentação da equipe", "Catálogo comercial", "Agendamento rápido", "Layout responsivo", "Identidade visual premium"],
     technologies: "HTML · CSS · JavaScript",
     timeline: "7–10 dias",
@@ -47,11 +51,13 @@ export const projects: Record<ProjectData["slug"], ProjectData> = {
     eyebrow: "CARDÁPIO DIGITAL + SISTEMA DE PEDIDOS",
     headline: "Um cardápio completo que organiza escolhas e facilita cada pedido.",
     description: "Sistema demonstrativo criado para apresentar sabores, permitir personalizações e conduzir o cliente da descoberta até a revisão do pedido.",
-    image: "/projects/pizzaria-menu.webp",
-    imageAlt: "Tela do menu principal da Pizzaria Fornalha",
+    image: "/projects/pizzaria-fornalha-balcao.webp",
+    imageAlt: "Pizzaria Fornalha com letreiro marcante, cartaz vermelho e fotografia de pizza no tema escuro",
     liveUrl: "https://caiovfaria.github.io/Pizzaria/",
     challenge: "Exibir diversas opções de pizzas doces e salgadas sem confundir o cliente, mantendo a montagem do pedido rápida e agradável.",
     solution: "Uma experiência dividida por categorias, com busca, favoritos, personalização e um resumo claro antes da finalização.",
+    outcome: "O demonstrativo conecta descoberta, personalização e revisão do pedido em um fluxo responsivo. O resultado apresentado é a experiência construída, sem métricas de vendas de clientes reais.",
+    journey: ["Explorar o cardápio", "Personalizar a pizza", "Revisar o pedido"],
     features: ["15 sabores cadastrados", "Categorias separadas", "Busca e favoritos", "Personalização do pedido", "Carrinho e resumo", "Experiência responsiva"],
     technologies: "React · TypeScript · Vite",
     timeline: "3–5 semanas",

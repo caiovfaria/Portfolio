@@ -1,0 +1,26 @@
+/* Lightweight feedback: transforms never change the surrounding layout. */
+:is(.button, .about-more-link, .brief-contact-actions > button, .brief-instagram, .quote-result > button, .detail-cta a, .contact-button, .choice-row button) {
+  min-height:44px;
+  transform:none;
+  transition:transform 160ms ease, background-color 160ms ease, color 160ms ease, border-color 160ms ease, opacity 160ms ease;
+  -webkit-tap-highlight-color:transparent;
+}
+:is(.button, .about-more-link, .brief-contact-actions > button, .brief-instagram, .quote-result > button, .detail-cta a, .contact-button, .choice-row button):focus-visible {
+  outline:3px solid var(--teal);
+  outline-offset:4px;
+}
+.feature-choices label:focus-within {outline:3px solid var(--teal);outline-offset:3px}
+@media(hover:hover) and (pointer:fine) {
+  :is(.button, .about-more-link, .brief-contact-actions > button, .brief-instagram, .quote-result > button, .detail-cta a, .contact-button):not(:disabled):hover {transform:translateY(-2px)}
+  .choice-row button:not(:disabled):hover,.feature-choices label:hover {border-color:var(--teal)}
+}
+:is(.button, .about-more-link, .brief-contact-actions > button, .brief-instagram, .quote-result > button, .detail-cta a, .contact-button, .choice-row button):not(:disabled):active {transform:scale(.985);opacity:.88}
+:is(.brief-contact-actions > button, .quote-result > button, .choice-row button):disabled {cursor:not-allowed;opacity:.5;transform:none}
+@media(hover:none) {
+  :is(.button, .about-more-link, .brief-instagram):hover{transform:none}
+}
+@media(prefers-reduced-motion:reduce) {
+  :is(.button, .about-more-link, .brief-contact-actions > button, .brief-instagram, .quote-result > button, .detail-cta a, .contact-button, .choice-row button),
+  :is(.button, .about-more-link, .brief-contact-actions > button, .brief-instagram, .quote-result > button, .detail-cta a, .contact-button, .choice-row button):hover,
+  :is(.button, .about-more-link, .brief-contact-actions > button, .brief-instagram, .quote-result > button, .detail-cta a, .contact-button, .choice-row button):active {transform:none;transition:none}
+}

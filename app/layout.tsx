@@ -18,6 +18,12 @@ import "./privacy.css";
 import "./theme-indigo-plum.css";
 import "./about-page.css";
 import "./language-switcher.css";
+import "./page-transitions.css";
+import "./project-interactions.css";
+import "./quote-preview.css";
+import "./case-narrative.css";
+import "./button-interactions.css";
+import "./card-polish.css";
 const geist = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
 export async function generateMetadata(): Promise<Metadata> {
   const requestHeaders = await headers();

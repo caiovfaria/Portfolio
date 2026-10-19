@@ -1,5 +1,8 @@
 export const translations: Record<string, string> = {
   "Solicitar orçamento": "Request a quote",
+  "Indisponível no momento": "Currently unavailable",
+  "Sistema web — indisponível no momento. Atualmente, os orçamentos são para landing pages e sites institucionais.": "Web systems are currently unavailable. Quotes are currently offered for landing pages and business websites.",
+  "Agendamento, pagamentos e painel administrativo dependem de integrações com serviços existentes e avaliação prévia. Não inclui desenvolvimento de backend ou banco de dados personalizado.": "Booking, payments and admin dashboards depend on integrations with existing services and prior assessment. Custom backend or database development is not included.",
   "ORÇAMENTO": "QUOTE",
   "Conte sobre o seu negócio": "Tell me about your business",
   "Serviços": "Services",
@@ -259,6 +262,7 @@ export const translations: Record<string, string> = {
   "Acessar LinkedIn": "Open LinkedIn",
   "Voltar ao início": "Back to homepage",
   "Todos os projetos": "All projects",
+  "← Todos os projetos": "← All projects",
   "Quero algo semelhante": "I want something similar",
   "Demonstração do projeto": "Project demo",
   "ROLAGEM AUTOMÁTICA": "AUTO SCROLL",
@@ -326,6 +330,21 @@ export const translations: Record<string, string> = {
   "Não foi possível copiar automaticamente. Selecione os dados preenchidos e tente novamente.": "The summary could not be copied automatically. Select the information you entered and try again.",
   "Estimativa copiada. Use este resumo na sua próxima conversa.": "Estimate copied. Use this summary in your next conversation.",
   "Não foi possível copiar a estimativa automaticamente.": "The estimate could not be copied automatically.",
+  "Do desafio à entrega": "From challenge to delivery",
+  "POR TRÁS DO PROJETO": "BEHIND THE PROJECT",
+  "Do desafio à entrega.": "From challenge to delivery.",
+  "Decisões de design que conectam o negócio à experiência de quem usa.": "Design decisions that connect the business to the user experience.",
+  "03 · A ENTREGA": "03 · THE DELIVERY",
+  "O que o projeto demonstra": "What the project demonstrates",
+  "O caminho do cliente": "The customer journey",
+  "Conhecer a barbearia": "Discover the barbershop",
+  "Explorar os serviços": "Explore the services",
+  "Escolher o agendamento": "Choose booking",
+  "Explorar o cardápio": "Explore the menu",
+  "Personalizar a pizza": "Customise the pizza",
+  "Revisar o pedido": "Review the order",
+  "O demonstrativo reúne marca, serviços e agendamento em uma experiência responsiva. O resultado apresentado é a estrutura construída, sem métricas de conversão de clientes reais.": "The demo brings brand, services and booking together in a responsive experience. The result shown is the structure built, not conversion metrics from real clients.",
+  "O demonstrativo conecta descoberta, personalização e revisão do pedido em um fluxo responsivo. O resultado apresentado é a experiência construída, sem métricas de vendas de clientes reais.": "The demo connects discovery, customisation and order review in a responsive flow. The result shown is the experience built, not sales metrics from real clients.",
 };
 
 export const titleTranslations: Record<string, string> = {

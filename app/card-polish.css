@@ -1,0 +1,14 @@
+/* Separate, rounded surfaces rather than the old joined rectangular frame. */
+.service-grid{gap:18px;background:transparent}
+.service-grid article,.service-grid .recommended{border-radius:var(--radius-lg);overflow:hidden;border:1px solid var(--line)}
+.service-grid .recommended em{top:18px;right:18px;left:auto;bottom:auto;transform:none;margin:0;border-radius:var(--radius-pill);max-width:calc(100% - 100px);text-align:center}
+.detail-feature-grid{gap:14px;background:transparent;border-radius:var(--radius-lg)}
+.detail-feature-grid article{border-radius:var(--radius-md);border:1px solid var(--line)}
+
+/* About-page surfaces use the same corner scale as the portfolio. */
+.about-page-tags span,.about-page-skills span,.about-more-link,.about-page-cta a{border-radius:var(--radius-sm)}
+.about-project-list article,.about-page-values,.about-page-cta{border-radius:var(--radius-lg)}
+.about-page-grid{border:0;gap:18px}
+.about-page-grid article{border:1px solid var(--line);border-radius:var(--radius-md)}
+.availability-note{color:var(--muted);font-size:13px;line-height:1.65;margin:14px 0 18px}
+.service-unavailable{display:block;margin-top:22px;padding:14px;border:1px solid var(--line);border-radius:var(--radius-sm);color:var(--muted);font-size:13px;text-align:center}
